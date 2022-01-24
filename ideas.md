@@ -37,4 +37,4 @@ Fontossági sorrend:
 1. Embereknek saját privát jegyzet.
 2. Megosztás másokkal.
 3. Publikus jegyzetek.
-4. Témák.
+4. Témák/címkék.
