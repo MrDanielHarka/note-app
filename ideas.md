@@ -2,7 +2,7 @@
 **A Note App elkészítésének a jegyzetei.**
 
 ## 2022.01.24.
-Videó a jegyzethez: `2022-01-24-tanacsok.webm` Itt található:
+Videó a jegyzethez: `2022-01-24-tanacsok.webm` Itt található:\
 CL2122_E_13A_Projektmunka/Jegyzet App Projekt/Fájlok/note-app
 
 ### Adatbázis
@@ -10,7 +10,7 @@ Karakterszám: Max mennyi karakter. Jó ötlet lehet. Adatbázisban viszont val�
 összesen hány karaktert írhat/még hány karakter van hátra.
 
 "Mentes" tábla nem feltétlenül kell. Inkább menjenek ezek az "adatok_jegyzetekrol"-be.
-- Pláne nem: Első mentés VAGY LÉTREHOZÁS.
+- Pláne nem: Első mentés VAGY létrehozás
 - Maximum: Utolsó mentés??? "Dokumentum utolsó mentésének az időpontja."
 
 "Jegyzetek" jó csak áttenni az "Adatok_jegyzetekrol"-be. A "mentes"-t is.
@@ -20,11 +20,11 @@ Titkosítás.
 1 tábla: téma/címkék.
 
 ### Ötletek
-Topic: téma. Egyelőre lenyiló ablakból, előre hard code-olt timákból kiválasztani. Később saját 1 (vagy több) címkét beírni.
+Topic: téma. Egyelőre lenyíló ablakból, előre hardcode-olt témákból kiválasztani. Később saját 1 (vagy több) címkét beírni.
 
 Megosztás email címre. Ez ok. Max teljes név idővel. Email annak aki még nincsen regisztrálva.
 
-Publikus: sokadig lépés.
+Publikus jegyzetek: sokadik lépés.
 
 Nyomtatás, export PDF-be: 
 talán
