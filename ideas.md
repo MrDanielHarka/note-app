@@ -2,6 +2,30 @@
 
 **A Note App elkészítésének a jegyzetei.**
 
+## 2022.02.07.
+
+### Teendők jövő szerdára
+- NodeJS
+- nodemon
+- express
+- mySQL module !
+
+### Érdekesség
+package.json-ban scripts:  
+"dev": "nodemon index.js"
+
+### Fontos
+
+Password ne varchar típusú legyen. (Valószínűleg ASH vagy SHA.)
+
+## 2022.02.02.
+
+Nem feltétlenül kell email és felhasználónév is.  
+Kulcsmező lehet id vagy az email vagy a felhasználónév.  
+Viszont nem javasolt, hogy az legyen a kulcsmező, mert akkor többet nem lehet azt megváltoztatni.  
+Valószínűleg kell legyen auto increment mint kulcsmező.  
+Mellette lehet email cím.
+
 ## 2022.01.24.
 
 Videó a jegyzethez: `2022-01-24-tanacsok.webm` Itt található:\
@@ -41,10 +65,10 @@ Nem valószínű. Sima szöveget írnak be az emberek. Nehéz lenne .docx-et kon
 
 Fontossági sorrend:
 
-1. Embereknek saját privát jegyzet.
-2. Megosztás másokkal.
-3. Publikus jegyzetek.
-4. Témák/címkék.
+1. Felhasználóknak saját, privát jegyzet.
+2. Publikus jegyzetek.
+3. Megosztás másokkal.
+4. Kategória/témák/címkék.
 
 ## 2022.12.10.
 
