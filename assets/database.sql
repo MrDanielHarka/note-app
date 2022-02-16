@@ -56,7 +56,7 @@ CREATE TABLE `notes` (
 
 CREATE TABLE `registration` (
   `id` int(11) NOT NULL,
-  `password` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
+  `password` varchar(32) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `mail_address` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
