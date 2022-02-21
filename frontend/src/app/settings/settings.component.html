@@ -1,0 +1,15 @@
+<form submit="onFormSubmit($event)" (keyup.enter)="onFormSubmit($event)">
+  <label for="email">Email</label>
+  <br />
+  <input type="email" id="email" [value]="user.email" autofocus />
+  <br />
+  <label for="new-password">New password</label>
+  <br />
+  <input type="password" id="new-password" />
+  <br /><br /><br />
+  <label for="current-password">Current password</label>
+  <br />
+  <input type="password" id="current-password" />
+  <br />
+  <button type="button" (click)="onFormSubmit($event)">Change settings</button>
+</form>

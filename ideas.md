@@ -18,6 +18,23 @@ package.json-ban scripts:
 
 Password ne varchar típusú legyen. (Valószínűleg ASH vagy SHA.)
 
+### Ötletek
+
+- Elfelejtett jelszó / új jelszó beállítása
+- Főoldalon a kép carousel alatt szövegdoboz, amiben el tud kezdeni gépelni.
+- Ha rámegy a mentésre, akkor popup, hogy regisztráljon vagy lépjen be.
+- Mindenhol automatikus mentés a szövegdobozoknál. Trigger: onInput.
+
+[      email     ]
+[    password    ]
+[register] [login]
+
+Bejelentkezve: Jobb lenti sarokban take note.
+- Az átirányít a "saját jegyzetek" oldalra (ha éppen nem ott van a user).
+- Létrehoz egy új szövegdobozt az oldal tetején.
+
+Footer: An open source cross-platform note taking app, by Jozsef & Daniel.
+
 ## 2022.02.02.
 
 Nem feltétlenül kell email és felhasználónév is.  

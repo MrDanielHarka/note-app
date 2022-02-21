@@ -1,0 +1,18 @@
+<p>
+  <b> {{ message }} </b>
+</p>
+<form
+  *ngIf="!isRegistered"
+  submit="onFormSubmit($event)"
+  (keyup.enter)="onFormSubmit($event)"
+>
+  <label for="email">Email</label>
+  <br />
+  <input type="email" id="email" autofocus />
+  <br />
+  <label for="password">Password</label>
+  <br />
+  <input type="password" id="password" />
+  <br />
+  <button type="button" (click)="onFormSubmit($event)">Register</button>
+</form>
