@@ -2,15 +2,63 @@
 
 **A Note App elkészítésének a jegyzetei.**
 
+## 2022.02.22.
+
+**Prezentáció infók**
+
+Teljes hossz: 30 perc
+
+### Slide 1 & 2. | Magyar | 5 perc
+
+Rövid bemutatkozás projektről
+
+- micsoda
+- miért ezt
+- mi volt a cél
+
+### Slide 3 & 4. | Angol | 5 perc
+
+Projekt bemutatása 3. slide
+
+Projektben szerepünk 4. slide
+
+- feladatok
+- nehézségek
+- ki mit csinált
+
+### Slide 5 - max 16. | Magyar | 20 perc
+
+- Feladatok, lépések, miért ebben, miért ezt, pl. Miért JS.
+- Elakadás, váltás, problémák, elgondolás újragondolása/ megváltoztatása
+- Projekt felépülése, részei, funckiók,
+- Felhasnzálók lehetőségei
+- Asztali + webes (+ reszponzív)
+- Hogyan kapcsolódik, miért ezt választottuk,
+- Lezárás (utolsó 2 slide)
+
+### Dátumok
+
+Márc 28-29 PPT leadás és átolvasás a tanárral. Kb. 1 óra.
+
+Április 25, 26 live premier az osztály felének bemutatva.
+
+### Egyéb random info
+
+Március 28-29. szeretnék minden csoporttal online találkozni külön-külön, hogy átnézzük az elkészített prezentációt és megbeszéljük, egyeztessük annak tartalmi és formai részeit. Időpontokat egyeztessetek egymással, ki milyen időpontban jön. Körülbelül 1 órával kell számolni!
+
+Április 25-én és 26-án pedig két részre osztva az osztályt számítok mindenki részvételére. Itt élesben elő kell adni a prezentációt a többiek előtt mintha vizsgáznánk. A beosztást, ki melyik csapat melyik nap jön (1. fele 25, második fele 26) egyeztessétek egymással és az eredményt kérem majd legkésőbb április 11-ig eljuttatni hozzám.
+
 ## 2022.02.07.
 
 ### Teendők jövő szerdára
+
 - NodeJS
 - nodemon
 - express
 - mySQL module !
 
 ### Érdekesség
+
 package.json-ban scripts:  
 "dev": "nodemon index.js"
 
@@ -25,11 +73,12 @@ Password ne varchar típusú legyen. (Valószínűleg ASH vagy SHA.)
 - Ha rámegy a mentésre, akkor popup, hogy regisztráljon vagy lépjen be.
 - Mindenhol automatikus mentés a szövegdobozoknál. Trigger: onInput.
 
-[      email     ]
-[    password    ]
+[ email ]
+[ password ]
 [register] [login]
 
 Bejelentkezve: Jobb lenti sarokban take note.
+
 - Az átirányít a "saját jegyzetek" oldalra (ha éppen nem ott van a user).
 - Létrehoz egy új szövegdobozt az oldal tetején.
 

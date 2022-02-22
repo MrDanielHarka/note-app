@@ -1,23 +1,25 @@
-<h1>Note App</h1>
-<p>A simple note taking app.</p>
+<header>
+  <h1>Note App</h1>
+  <p>A simple note taking app.</p>
 
-<nav *ngIf="!user.isLoggedIn">
-  <a [routerLink]="['/']">Home</a>
+  <nav *ngIf="!user.isLoggedIn">
+    <a [routerLink]="['/']">Home</a>
 
-  <a [routerLink]="['/public']">Public notes</a>
+    <a [routerLink]="['/public']">Public notes</a>
 
-  <a [routerLink]="['/register']">Register</a>
+    <a [routerLink]="['/register']">Register</a>
 
-  <a [routerLink]="['/login']">Login</a>
-</nav>
+    <a [routerLink]="['/login']">Login</a>
+  </nav>
 
-<nav *ngIf="user.isLoggedIn">
-  <a [routerLink]="['/']">My notes</a>
+  <nav *ngIf="user.isLoggedIn">
+    <a [routerLink]="['/']">My notes</a>
 
-  <a [routerLink]="['/public']">Public notes</a>
+    <a [routerLink]="['/public']">Public notes</a>
 
-  <a [routerLink]="['/settings']">Settings</a>
+    <a [routerLink]="['/settings']">Settings</a>
 
-  <a (click)="onLogout()">Logout</a>
-</nav>
-<hr />
+    <a (click)="onLogout()">Logout</a>
+  </nav>
+  <hr />
+</header>

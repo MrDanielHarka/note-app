@@ -1,26 +1,8 @@
-<p>
-  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora excepturi
-  doloribus obcaecati autem rerum cupiditate.
-</p>
-<p>
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni corporis
-  similique, dolorum esse modi quas.
-</p>
-<p>
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias animi delectus
-  asperiores soluta maiores quia.
-</p>
-<p>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit ratione vitae
-  voluptas? Neque, rerum molestias!
-</p>
-<p>
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui repellendus
-  debitis dicta, ducimus excepturi beatae!
-</p>
-<p>
-  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel quos qui,
-  explicabo rerum tempora ea?
-</p>
+<div *ngFor="let note of notes; let i = index">
+  <b> {{ i + 1 }}. {{ note.title }} </b>
+  <br />
+  {{ note.content }}
+  <br /><br />
+</div>
 
-<button type="button" (click)="getInfo()">Get</button>
+<!-- <button type="button" (click)="getInfo()">Get</button> -->

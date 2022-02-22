@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PublicComponent } from './public/public.component';
 import { SettingsComponent } from './settings/settings.component';
+import { AutoFocusDirective } from './auto-focus.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SettingsComponent } from './settings/settings.component';
     RegisterComponent,
     PublicComponent,
     SettingsComponent,
+    AutoFocusDirective,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],

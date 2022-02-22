@@ -15,15 +15,40 @@ app.use((req, res, next) => {
   next();
 });
 
-const notes = [
+let notes = [
   {
-    id: 'fadf12421l',
-    title: 'First server-side post',
-    content: 'This is coming from the server',
+    id: 1,
+    title: 'server-side post',
+    content: 'This is coming from the server!',
   },
   {
-    id: 'ksajflaj132',
-    title: 'Second server-side post',
+    id: 2,
+    title: ' server-side post',
+    content: 'This is coming from the server!',
+  },
+  {
+    id: 3,
+    title: ' server-side post',
+    content: 'This is coming from the server!',
+  },
+  {
+    id: 4,
+    title: ' server-side post',
+    content: 'This is coming from the server!',
+  },
+  {
+    id: 5,
+    title: ' server-side post',
+    content: 'This is coming from the server!',
+  },
+  {
+    id: 6,
+    title: ' server-side post',
+    content: 'This is coming from the server!',
+  },
+  {
+    id: 7,
+    title: ' server-side post',
     content: 'This is coming from the server!',
   },
 ];

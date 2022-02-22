@@ -31,6 +31,7 @@
                 <Item>*\desktop.ini</Item>
                 <Item>*\thumbs.db</Item>
                 <Item>\.git\*</Item>
+		<Item>*\node_modules\</Item>
             </Exclude>
             <TimeSpan Type="None">0</TimeSpan>
             <SizeMin Unit="None">0</SizeMin>
