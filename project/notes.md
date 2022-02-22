@@ -28,17 +28,17 @@ Projektben szerepünk 4. slide
 
 ### Slide 5 - max 16. | Magyar | 20 perc
 
-- Feladatok, lépések, miért ebben, miért ezt, pl. Miért JS.
-- Elakadás, váltás, problémák, elgondolás újragondolása/ megváltoztatása
-- Projekt felépülése, részei, funckiók,
-- Felhasnzálók lehetőségei
+- Feladatok, lépések, miért ebben, miért ezt, pl. Miért JS, miért NodeJS, miért Angular
+- Elakadás, váltás, problémák, elgondolás újragondolása/megváltoztatása
+- Projekt felépülése, részei, funkciók
+- Felhasználók lehetőségei
 - Asztali + webes (+ reszponzív)
-- Hogyan kapcsolódik, miért ezt választottuk,
+- Hogyan kapcsolódik, miért ezt választottuk
 - Lezárás (utolsó 2 slide)
 
 ### Dátumok
 
-Márc 28-29 PPT leadás és átolvasás a tanárral. Kb. 1 óra.
+Március 28-29 PPT leadás és átolvasás a tanárral. Kb. 1 óra.
 
 Április 25, 26 live premier az osztály felének bemutatva.
 
