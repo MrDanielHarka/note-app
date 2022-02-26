@@ -4,19 +4,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { HomeComponent } from './home/home.component';
-import { MenuComponent } from './menu/menu.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { PublicComponent } from './public/public.component';
-import { SettingsComponent } from './settings/settings.component';
+import { HomeComponent } from './components/home/home.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { PublicComponent } from './components/public/public.component';
+import { SettingsComponent } from './components/settings/settings.component';
 import { AutoFocusDirective } from './auto-focus.directive';
+import { TestComponent } from './components/test/test.component';
+import { NoteComponent } from './components/home/note/note.component';
+import { WelcomeComponent } from './components/home/welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
     HomeComponent,
     MenuComponent,
     LoginComponent,
@@ -24,6 +25,9 @@ import { AutoFocusDirective } from './auto-focus.directive';
     PublicComponent,
     SettingsComponent,
     AutoFocusDirective,
+    TestComponent,
+    NoteComponent,
+    WelcomeComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
+import { PublicService } from 'src/app/services/public.service';
 
 @Component({
   selector: 'app-public',
@@ -8,20 +8,15 @@ import { HttpService } from '../http.service';
 })
 export class PublicComponent implements OnInit {
   public notes!: any;
-  constructor(private httpService: HttpService) {}
+  constructor(private publicService: PublicService) {}
 
   getInfo() {
-    this.httpService.getPublicNotes().subscribe((response) => {
+    this.publicService.getPublicNotes().subscribe((response) => {
       this.notes = response.notes;
     });
   }
 
   ngOnInit() {
     this.getInfo();
-
-    // this.httpService.getPublicNotes().subscribe((response) => {
-    //   console.log(response);
-    //   this.notes = response;
-    // });
   }
 }
