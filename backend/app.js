@@ -1,73 +1,57 @@
-let databaseHost,
-  databaseUser,
-  databasePassword,
-  databaseName,
-  user,
-  userId,
-  userEmail,
-  userPassword;
+let databaseHost;
+let databaseUser;
+let databasePassword;
+let databaseName;
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
-
-// const cors = require('cors');
-// var corsOptions = {
-//   origin: 'http://localhost:5000',
-// };
-// app.use(cors(corsOptions));
-
-// const mysql = require('mysql');
-// const isLocalEnvironment = false;
-
-// if (isLocalEnvironment) {
-//   databaseHost = 'localhost';
-//   databaseUser = 'root';
-//   databasePassword = '';
-//   databaseName = 'note_app';
-// } else {
-//   const mysqlCredentials = require('./mysql-credentials');
-//   databaseHost = mysqlCredentials.host;
-//   databaseUser = mysqlCredentials.user;
-//   databasePassword = mysqlCredentials.password;
-//   databaseName = mysqlCredentials.database;
-// }
-
-// const con = mysql.createConnection({
-//   host: databaseHost,
-//   user: databaseUser,
-//   password: databasePassword,
-//   database: databaseName,
-// });
-
-// con.connect(function (err) {
-//   if (err) throw err;
-//   console.log('Connected!');
-// });
-
-user = {
-  userId,
-  userEmail,
-  userPassword,
+const cors = require('cors');
+var corsOptions = {
+  origin: '*',
 };
+app.use(cors(corsOptions));
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PATCH, DELETE, OPTIONS'
-  );
-  next();
+const mysql = require('mysql');
+const isLocalEnvironment = false;
+
+if (isLocalEnvironment) {
+  databaseHost = 'localhost';
+  databaseUser = 'root';
+  databasePassword = '';
+  databaseName = 'note_app';
+} else {
+  const mysqlCredentials = require('./mysql-credentials');
+  databaseHost = mysqlCredentials.host;
+  databaseUser = mysqlCredentials.user;
+  databasePassword = mysqlCredentials.password;
+  databaseName = mysqlCredentials.database;
+}
+
+const con = mysql.createConnection({
+  host: databaseHost,
+  user: databaseUser,
+  password: databasePassword,
+  database: databaseName,
+});
+
+con.connect(function (err) {
+  if (err) throw err;
+  console.log('Connected!');
 });
 
 app.post('/register', bodyParser.json(), (req, res) => {
-  console.log(req.body);
-  console.log('Hali.');
-  return res.send(req.body).sendStatus(200);
+  userObject = req.body;
+  email = req.body.email;
+  password = req.body.password;
+  query = `INSERT INTO users 
+        (id, mail_address, password) VALUES (?, ?, ?);`;
+
+  con.query(query, [null, email, password], (err, rows) => {
+    if (err) throw err;
+    console.log('User added.');
+  });
+  return res.send(req.body).status(200);
 });
 
 let notes = [
