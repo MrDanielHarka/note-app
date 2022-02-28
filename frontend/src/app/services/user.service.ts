@@ -4,8 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UserService {
-  email: string = 'daniel@harka.com';
-  password: string = '19930209';
+  email: string = '';
+  password: string = '';
+  userId?: number;
   isLoggedIn: boolean = false;
 
   constructor() {}

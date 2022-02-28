@@ -2,6 +2,12 @@
 
 **A Note App elkészítésének a jegyzetei.**
 
+## 2022.02.28.
+
+- Lehetséges, hogy két héttel a vizsga előtt be kell "adni" a munkát. GitHub repo jó.
+- Nem feltétlenül kötelező a kész munkát megmutatni a vizsgán, elég a prezentációban képekkel.
+- Lehetőség viszont van rá és biztosan pozitív, hogy ha a bemutató közben megmutatjuk a kész munkát.
+
 ## 2022.02.22.
 
 **Prezentáció infók**

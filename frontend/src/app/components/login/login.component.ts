@@ -5,7 +5,6 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   email: string = '';
@@ -13,24 +12,30 @@ export class LoginComponent implements OnInit {
   message: string = '';
   textColor: string = 'black';
 
+  constructor(private router: Router, private userService: UserService) {}
+
   onFormSubmit(event: any) {
     event.preventDefault();
     if (
-      this.email === this.user.email &&
-      this.password === this.user.password
+      this.email === this.userService.email &&
+      this.password === this.userService.password
     ) {
-      this.user.isLoggedIn = true;
+      this.userService.isLoggedIn = true;
       this.router.navigate(['/']);
-    } else if (this.email !== this.user.email) {
+    } else if (this.email !== this.userService.email) {
       this.message = 'Invalid email!';
       this.textColor = 'red';
-    } else if (this.password !== this.user.password) {
+    } else if (this.password !== this.userService.password) {
       this.message = 'Invalid password!';
       this.textColor = 'red';
     }
   }
 
-  constructor(private router: Router, private user: UserService) {}
+  getUserInfo() {
+    this.userService.getUserInfo().subscribe((response) => {
+      console.log(response);
+    });
+  }
 
   ngOnInit(): void {
     this.message = 'Fill out for logging in.';
