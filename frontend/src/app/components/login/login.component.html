@@ -2,23 +2,12 @@
   <b [ngStyle]="{ color: textColor }"> {{ message }} </b>
 </p>
 
-<form submit="onFormSubmit($event)" (keyup.enter)="onFormSubmit($event)">
-  <label for="email">Email</label>
-  <br />
-  <input
-    type="email"
-    id="email"
-    (input)="email = $any($event.target).value"
-    autofocus
-  />
-  <br />
-  <label for="password">Password</label>
-  <br />
-  <input
-    type="password"
-    id="password"
-    (input)="password = $any($event.target).value"
-  />
-  <br />
-  <button type="button" (click)="onFormSubmit($event)">Login</button>
-</form>
+<label for="email">Email</label>
+<br />
+<input type="email" id="email" [(ngModel)]="userData.email" autofocus />
+<br />
+<label for="password">Password</label>
+<br />
+<input type="password" id="password" [(ngModel)]="userData.password" />
+<br />
+<button type="button" (click)="onFormSubmit($event)">Login</button>

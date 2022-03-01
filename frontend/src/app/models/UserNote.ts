@@ -1,3 +1,6 @@
 export interface UserNote {
-  notes: { id: number; title: string; content: string }[];
+  userId: number;
+  title: string;
+  content: string;
+  isPublic: number;
 }

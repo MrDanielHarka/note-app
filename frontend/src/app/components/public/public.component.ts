@@ -6,12 +6,13 @@ import { PublicService } from 'src/app/services/public.service';
   templateUrl: './public.component.html',
 })
 export class PublicComponent implements OnInit {
-  public notes!: any;
+  public notes: any;
   constructor(private publicService: PublicService) {}
 
   getPublicNotes() {
     this.publicService.getPublicNotes().subscribe((response) => {
-      this.notes = response.notes;
+      this.notes = response;
+      console.log(response);
     });
   }
 

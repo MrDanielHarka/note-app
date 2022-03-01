@@ -1,1 +1,11 @@
 <p>My notes page.</p>
+
+<label for="title">Title</label>
+<br />
+<input type="title" id="title" [(ngModel)]="note.title" autofocus />
+<br />
+<label for="content">Content</label>
+<br />
+<input type="content" id="content" [(ngModel)]="note.content" />
+<br />
+<button type="button" (click)="onFormSubmit($event)">Save note</button>

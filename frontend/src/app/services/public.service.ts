@@ -9,9 +9,6 @@ export class PublicService {
   constructor(private httpClient: HttpClient) {}
 
   public getPublicNotes() {
-    const something = this.httpClient.get<PublicNote>(
-      'http://localhost:5000/public'
-    );
-    return something;
+    return this.httpClient.get<PublicNote>('http://localhost:5000/public');
   }
 }

@@ -43,7 +43,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 const mysql = require('mysql');
-const isLocalEnvironment = false;
+const isLocalEnvironment = true;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const corsOptions = {
@@ -55,7 +55,7 @@ if (isLocalEnvironment) {
   databaseHost = 'localhost';
   databaseUser = 'root';
   databasePassword = '';
-  databaseName = 'note_app';
+  databaseName = 'note_app2';
 } else {
   const mysqlCredentials = require('./mysql-credentials');
   databaseHost = mysqlCredentials.host;
@@ -81,62 +81,57 @@ app.post('/', bodyParser.json(), (req, res) => {
   userId = req.body.userId;
   title = req.body.title;
   content = req.body.content;
+  public = req.body.isPublic;
 
-  query = `INSERT INTO notes 
-        (note_id, user_id, title, content, public, shared, creation_date, last_saved) VALUES (?, ?, ?, ?, ?, ?, ?, ?);`;
+  query = `INSERT INTO notes
+  (note_id, user_id, title, content, public)
+  VALUES (?, ?, ?, ?, ?);`;
 
-  con.query(
-    query,
-    [null, userId, title, content, 0, 0, null, null],
-    (err, rows) => {
-      if (err) throw err;
-      console.log('Note added.');
-    }
-  );
+  con.query(query, [null, userId, title, content, public], (err, rows) => {
+    if (err) throw err;
+    console.log('Note added.');
+  });
   return res.send(req.body).status(200);
 });
 
 app.get('/public', (req, res, next) => {
-  res.status(200).json({
-    notes,
-  });
-});
+  query = `SELECT * FROM notes WHERE public = '1' ORDER BY note_id DESC;`;
 
-app.get('/login', bodyParser.json(), (req, res) => {
-  con.connect(function (err) {
+  con.query(query, (err, result) => {
     if (err) throw err;
-    query = `SELECT * FROM customers`;
-    con.query(query, [null, email, password], (err, result) => {
-      if (err) throw err;
-      console.log(result);
-    });
+    console.log(result[0]);
+    res.status(200).json(result);
   });
-
-  console.log((userObject = req.body));
-  email = req.body.email;
-  password = req.body.password;
-  query = `INSERT INTO users 
-        (id, mail_address, password) VALUES (?, ?, ?);`;
-
-  con.query(query, [null, email, password], (err, rows) => {
-    if (err) throw err;
-    console.log('User added.');
-  });
-  return res.send(req.body).status(200);
+  // return res.send(req.body).status(200);
 });
 
 app.post('/register', bodyParser.json(), (req, res) => {
   console.log((userObject = req.body));
   email = req.body.email;
   password = req.body.password;
-  query = `INSERT INTO users 
-        (id, mail_address, password) VALUES (?, ?, ?);`;
+  query = `INSERT INTO users
+  (id, email, password)
+  VALUES (?, ?, ?);`;
 
   con.query(query, [null, email, password], (err, rows) => {
     if (err) throw err;
     console.log('User added.');
   });
-  return res.send(req.body).status(200);
+  return res.send(req.body).status(201);
+});
+
+app.post('/login', bodyParser.json(), (req, res) => {
+  console.log((userObject = req.body));
+  email = req.body.email;
+  password = req.body.password;
+  query = `SELECT * FROM users WHERE email = '${email}'`;
+
+  con.query(query, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    // console.log(result[0].password);
+    return res.status(201).json(result[0]);
+  });
 });
 
 app.get('/public', (req, res, next) => {
@@ -146,3 +141,27 @@ app.get('/public', (req, res, next) => {
 });
 
 app.listen(port, () => console.log(`Listening on ${port}.`));
+
+// app.get('/login', bodyParser.json(), (req, res) => {
+//   console.log('Get request received.');
+//   con.connect(function (err) {
+//     if (err) throw err;
+//     query = `SELECT * FROM users`;
+//     con.query(query, [null, email, password], (err, result) => {
+//       if (err) throw err;
+//       console.log(result);
+//     });
+//   });
+
+//   console.log((userObject = req.body));
+//   email = req.body.email;
+//   password = req.body.password;
+//   query = `INSERT INTO users
+//         (id, email, password) VALUES (?, ?, ?);`;
+
+//   con.query(query, [null, email, password], (err, rows) => {
+//     if (err) throw err;
+//     console.log('User added.');
+//   });
+//   return res.send(req.body).status(200);
+// });

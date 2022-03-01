@@ -4,9 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UserService {
+  userId: number = 0;
   email: string = '';
   password: string = '';
-  userId?: number;
+  firstName: string = '';
+  lastName: string = '';
+  username: string = '';
   isLoggedIn: boolean = false;
 
   constructor() {}

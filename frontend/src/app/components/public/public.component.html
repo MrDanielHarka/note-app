@@ -1,8 +1,7 @@
 <div *ngFor="let note of notes; let i = index">
-  <b> {{ i + 1 }}. {{ note.title }} </b>
+  <b> Title: {{ note.title }} </b>
   <br />
-  {{ note.content }}
-  <br /><br />
+  Content: {{ note.content }} <br /><br />
 </div>
 
 <!-- <button type="button" (click)="getInfo()">Get</button> -->

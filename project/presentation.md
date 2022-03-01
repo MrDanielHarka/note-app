@@ -20,7 +20,7 @@ Eddig tart: 05:00
 
 ---
 
-Slide 3 (EN)
+Slide 3
 
 Note:
 - Introducing the project
@@ -29,7 +29,7 @@ Note:
 
 ---
 
-Slide 4 (EN)
+Slide 4
 
 Note:
 - Our roles in the project
