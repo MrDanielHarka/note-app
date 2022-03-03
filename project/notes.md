@@ -30,6 +30,10 @@ Teljes hossz: 30 perc
 
 ### Slide 1 & 2. | Magyar | 5 perc
 
+Rövid bemutatkozás magunkról
+- C++ korábban
+- Js korábban
+
 Rövid bemutatkozás projektről
 
 - micsoda
@@ -156,7 +160,7 @@ Fontossági sorrend:
 3. Megosztás másokkal.
 4. Kategória/témák/címkék.
 
-## 2022.12.10.
+## 2022.01.10.
 
 awesome-note.com
 super-duper-note.web.app
