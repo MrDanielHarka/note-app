@@ -2,7 +2,19 @@
 
 **A Note App elkészítésének a jegyzetei.**
 
-
+## 2022.03.03.
+- Technikai dokumentáció
+- KKK-ban szerepel hogy mi legyen a dokumentációban
+- szoftver célja
+- egyes elemek technikailag hogyan működnek
+- hardver követelmény
+- szoftver követelmény
+- be kell mutatni röviden mit hogyan kell használni:
+  - felhasználói kézikönyv
+- tesztelés
+- how does it work?
+- how was it made?
+- https://infotanarium.hu/archivum/13
 
 ## 2022.03.02.
 
