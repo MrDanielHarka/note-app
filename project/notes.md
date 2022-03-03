@@ -6,14 +6,12 @@
 
 ## 2022.03.02.
 
-- Előre legyártott template is lehet. (Valószínűleg nem az lesz.)
+- Honlap előre legyártott template is lehet. (Valószínűleg nem az lesz.)
 - Fejlesztői, tesztelési dokumentáció
-- Doc: bevezetés, szoftver bemutatása, keretrendszer, további tervek
-- Screenshots
-- Wireframe
-- Józsi adatbázis képe
-- Descktop app screenshots
-- Try catch if hibaüzenet errno 1062 akkor stb.
+    - bevezetés, szoftver bemutatása, keretrendszer, további tervek
+    - Screenshots, wireframe, Józsi adatbázis képe
+    - Desktop app screenshots
+- Try catch if (hibaüzenet) errno 1062 => akkor etc.
 - Inner join
 - Hashing
 - Cookie / localstorage
