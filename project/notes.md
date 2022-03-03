@@ -2,6 +2,22 @@
 
 **A Note App elkészítésének a jegyzetei.**
 
+
+
+## 2022.03.02.
+
+- Előre legyártott template is lehet. (Valószínűleg nem az lesz.)
+- Fejlesztői, tesztelési dokumentáció
+- Doc: bevezetés, szoftver bemutatása, keretrendszer, további tervek
+- Screenshots
+- Wireframe
+- Józsi adatbázis képe
+- Descktop app screenshots
+- Try catch if hibaüzenet errno 1062 akkor stb.
+- Inner join
+- Hashing
+- Cookie / localstorage
+
 ## 2022.02.28.
 
 - Lehetséges, hogy két héttel a vizsga előtt be kell "adni" a munkát. GitHub repo jó.

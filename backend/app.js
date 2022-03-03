@@ -1,40 +1,3 @@
-let notes = [
-  {
-    id: 1,
-    title: 'server-side post',
-    content: 'This is coming from the server!',
-  },
-  {
-    id: 2,
-    title: ' server-side post',
-    content: 'This is coming from the server!',
-  },
-  {
-    id: 3,
-    title: ' server-side post',
-    content: 'This is coming from the server!',
-  },
-  {
-    id: 4,
-    title: ' server-side post',
-    content: 'This is coming from the server!',
-  },
-  {
-    id: 5,
-    title: ' server-side post',
-    content: 'This is coming from the server!',
-  },
-  {
-    id: 6,
-    title: ' server-side post',
-    content: 'This is coming from the server!',
-  },
-  {
-    id: 7,
-    title: ' server-side post',
-    content: 'This is coming from the server!',
-  },
-];
 let databaseHost;
 let databaseUser;
 let databasePassword;
@@ -49,6 +12,7 @@ const cors = require('cors');
 const corsOptions = {
   origin: '*',
 };
+
 app.use(cors(corsOptions));
 
 if (isLocalEnvironment) {
@@ -109,11 +73,10 @@ app.post('/register', bodyParser.json(), (req, res) => {
   console.log((userObject = req.body));
   email = req.body.email;
   password = req.body.password;
-  query = `INSERT INTO users
-  (id, email, password)
-  VALUES (?, ?, ?);`;
+  query = `INSERT INTO users (id, email, password)
+  VALUES (null, '${email}', '${password}')`;
 
-  con.query(query, [null, email, password], (err, rows) => {
+  con.query(query, (err, rows) => {
     if (err) throw err;
     console.log('User added.');
   });
@@ -131,12 +94,6 @@ app.post('/login', bodyParser.json(), (req, res) => {
     console.log(result);
     // console.log(result[0].password);
     return res.status(201).json(result[0]);
-  });
-});
-
-app.get('/public', (req, res, next) => {
-  res.status(200).json({
-    notes,
   });
 });
 
