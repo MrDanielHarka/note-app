@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
         this.userService.firstName = this.user.first_name;
         this.userService.lastName = this.user.last_name;
         this.userService.username = this.user.username;
+        this.router.navigate(['/']);
         this.userService.isLoggedIn = true
           ? this.user.email === this.userData.email
           : false;

@@ -1,7 +1,4 @@
-let databaseHost;
-let databaseUser;
-let databasePassword;
-let databaseName;
+let databaseHost, databaseUser, databasePassword, databaseName;
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
@@ -19,7 +16,7 @@ if (isLocalEnvironment) {
   databaseHost = 'localhost';
   databaseUser = 'root';
   databasePassword = '';
-  databaseName = 'note_app2';
+  databaseName = 'note_app';
 } else {
   const mysqlCredentials = require('./mysql-credentials');
   databaseHost = mysqlCredentials.host;
@@ -58,6 +55,18 @@ app.post('/', bodyParser.json(), (req, res) => {
   return res.send(req.body).status(200);
 });
 
+app.get('/', (req, res, next) => {
+  userId = req.body.userId;
+  query = `SELECT * FROM notes WHERE user_id = '2' ORDER BY note_id DESC;`;
+
+  con.query(query, (err, result) => {
+    if (err) throw err;
+    console.log(result[0]);
+    res.status(200).json(result);
+  });
+  // return res.send(req.body).status(200);
+});
+
 app.get('/public', (req, res, next) => {
   query = `SELECT * FROM notes WHERE public = '1' ORDER BY note_id DESC;`;
 
@@ -70,11 +79,20 @@ app.get('/public', (req, res, next) => {
 });
 
 app.post('/register', bodyParser.json(), (req, res) => {
-  console.log((userObject = req.body));
   email = req.body.email;
   password = req.body.password;
   query = `INSERT INTO users (id, email, password)
   VALUES (null, '${email}', '${password}')`;
+
+  // try {
+  //   con.query(query, (err, rows) => {
+  //     if (err) throw err;
+  //     console.log('User added.');
+  //   });
+  //   return res.send(req.body).status(201);
+  // } catch (error) {
+  //   console.error(error);
+  // }
 
   con.query(query, (err, rows) => {
     if (err) throw err;

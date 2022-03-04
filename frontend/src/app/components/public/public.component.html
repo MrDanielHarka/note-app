@@ -1,7 +1,7 @@
-<div *ngFor="let note of notes; let i = index">
-  <b> Title: {{ note.title }} </b>
+<div *ngFor="let publicNote of publicNotes">
+  <b> Title: {{ publicNote.title }} </b>
   <br />
-  Content: {{ note.content }} <br /><br />
+  Content: {{ publicNote.content }} <br /><br />
 </div>
 
 <!-- <button type="button" (click)="getInfo()">Get</button> -->
