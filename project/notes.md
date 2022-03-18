@@ -2,7 +2,38 @@
 
 **A Note App elkészítésének a jegyzetei.**
 
+## 2022.03.17
+
+Dokumentáció jegyzetek
+
+- hasonló tavalyihoz (bármit is jelent az)
+- talán nem kell annyira mélyre menni mint tavaly
+- fejlesztői dokumentáció
+- felhaszálói dokumentáció
+- tesztelési jegyzőkönyv
+- felhasznált irodalom lábjegyzék
+  - forrásmegjelölés
+  - szabadalom vagy jogtiszta vagy open source
+  - dátummal
+  - gyanús ha semmi nincsen (pl. Ng-Book, Angular.io etc.)
+- képek: mit ábrázol, kép sorszám, source
+- felhasználó/user === megrendelő
+- telepítés user szempontjából
+  - biztonsági mentésből adatbázis feltöltése phpmyadmin-ba
+- hardverkövetelmény: mondjuk XAMPP követelményei
+- eset diagram!
+- 3 teszt eset. Mondjuk: minden jó adat, csak email jó, email se jó
+
+## 2022.03.16.
+
+Prioritások:
+
+- design
+- pw hash
+- jegyzet megosztás más userekkel
+
 ## 2022.03.03.
+
 - Technikai dokumentáció
 - KKK-ban szerepel hogy mi legyen a dokumentációban
 - szoftver célja
@@ -20,9 +51,9 @@
 
 - Honlap előre legyártott template is lehet. (Valószínűleg nem az lesz.)
 - Fejlesztői, tesztelési dokumentáció
-    - bevezetés, szoftver bemutatása, keretrendszer, további tervek
-    - Screenshots, wireframe, Józsi adatbázis képe
-    - Desktop app screenshots
+  - bevezetés, szoftver bemutatása, keretrendszer, további tervek
+  - Screenshots, wireframe, Józsi adatbázis képe
+  - Desktop app screenshots
 - Try catch if (hibaüzenet) errno 1062 => akkor etc.
 - Inner join
 - Hashing
@@ -43,6 +74,7 @@ Teljes hossz: 30 perc
 ### Slide 1 & 2. | Magyar | 5 perc
 
 Rövid bemutatkozás magunkról
+
 - C++ korábban
 - Js korábban
 
