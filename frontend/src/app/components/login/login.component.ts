@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { LoginService } from 'src/app/services/login.service';
@@ -7,27 +8,33 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  @ViewChild('form') loginForm!: NgForm;
+  submitted = false;
+
   public user: any;
+
   userData: User = {
-    userId: 0,
     email: '',
     password: '',
   };
 
-  message: string = '';
-  textColor: string = 'black';
-
   constructor(
-    private router: Router,
     private userService: UserService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) {}
 
-  onFormSubmit(event: any) {
-    event.preventDefault();
+  onSubmit() {
+    this.submitted = true;
+    console.log(this.loginForm.value.email);
+    console.log(this.loginForm.value.password);
+    this.userData.email = this.loginForm.value.email;
+    this.userData.password = this.loginForm.value.password;
     this.getUserInfo();
+    // this.loginForm.reset();
   }
 
   getUserInfo() {
@@ -56,8 +63,5 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.message = 'Fill out for logging in.';
-    this.textColor = 'black';
-  }
+  ngOnInit(): void {}
 }

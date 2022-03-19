@@ -1,17 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
+import { UrlService } from './url.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private urlService: UrlService) {}
 
   public onLoginUser(userData: User) {
-    return this.httpClient.post('http://localhost:5000/login', userData, {
-      headers: { 'content-type': 'application/json' },
-    });
+    return this.httpClient.post(
+      `${this.urlService.serverUrl}/login`,
+      userData,
+      {
+        headers: { 'content-type': 'application/json' },
+      }
+    );
     // .subscribe((userData) => {
     //   console.log(userData);
     //   return userData;

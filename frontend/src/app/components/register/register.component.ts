@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { User } from 'src/app/models/User';
 import { RegisterService } from 'src/app/services/register.service';
 
@@ -8,28 +8,27 @@ import { RegisterService } from 'src/app/services/register.service';
   templateUrl: './register.component.html',
 })
 export class RegisterComponent implements OnInit {
-  message = 'Fill out for registration.';
-  isRegistered = false;
+  @ViewChild('form') registerForm!: NgForm;
+  submitted = false;
 
   userData: User = {
-    userId: 0,
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
   };
 
   constructor(private registerService: RegisterService) {}
 
-  onFormSubmit(event: any) {
-    event.preventDefault();
-    this.message = 'Awesome! Check your email for confirmation.';
-    this.isRegistered = true;
+  onSubmit() {
+    this.submitted = true;
+    this.userData.firstName = this.registerForm.value.firstname;
+    this.userData.lastName = this.registerForm.value.lastname;
+    this.userData.email = this.registerForm.value.email;
+    this.userData.password = this.registerForm.value.password;
     this.registerService.onRegisterUser(this.userData);
+    // this.registerForm.reset();
   }
 
   ngOnInit(): void {}
 }
-
-// post w/o subscribe
-// type inferring
-// clean code
-// js videók

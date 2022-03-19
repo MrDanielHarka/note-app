@@ -1,7 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url("~simpledotcss/simple.min.css");
+/* @import "https://fonts.googleapis.com/icon?family=Material+Icons"; */
 
-a {
-  cursor: pointer;
+/* @import url("~simpledotcss/simple.min.css"); */
+
+html,
+body {
+  height: 100%;
+  cursor: default;
+  font-size: 40px;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+app-login h1,
+app-register h1,
+.centered-button {
+  text-align: center;
+  padding: 10px 0;
+}
+
+main {
+  padding-top: 50px;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+mat-card {
+  margin: 5px;
+  width: 300px;
+}
+
+app-login,
+app-register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
 }

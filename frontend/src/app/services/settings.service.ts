@@ -6,19 +6,17 @@ import { UrlService } from './url.service';
 @Injectable({
   providedIn: 'root',
 })
-export class RegisterService {
+export class SettingsService {
   constructor(private httpClient: HttpClient, private urlService: UrlService) {}
 
-  public onRegisterUser(userData: User) {
-    console.log('User registered.');
-
+  public onUpdateSettings(settingsData: User) {
     this.httpClient
-      .post(`${this.urlService.serverUrl}/register`, userData, {
+      .put(`${this.urlService.serverUrl}/settings`, settingsData, {
         headers: { 'content-type': 'application/json' },
       })
-      .subscribe((userData) => {
-        console.log(userData);
-        return userData;
+      .subscribe((settingsData) => {
+        console.log(settingsData);
+        return settingsData;
       });
   }
 }
