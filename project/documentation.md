@@ -18,10 +18,10 @@ This is the documentation of the Note App.
   - [Brainstorming](#brainstorming)
   - [Wireframe](#wireframe)
   - [Git(Hub)](#git)
-  - [Database](#the-database)
-  - [Frontend](#the-frontend)
-  - [Backend](#the-backend)
-  - [Desktop](#the-desktop)
+  - [Database](#database)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+  - [Desktop](#desktop)
   - [Resources](#resources)
 - [How was it tested?](#testing)
 
@@ -38,7 +38,7 @@ This is the documentation of the Note App.
 
 ## What is this? <a id="what-is-this"></a>
 
-Here are some basic, TLDR information about the project.
+Here is some basic, TLDR information about the project.
 
 Random labels: Rest API, CRUD app, HTTP, JavaScript, RypeScript, Angular, requests, promises, observable, responsive, Cypress
 
@@ -48,19 +48,19 @@ This is simple and minimalistic note taking app, for developers, recruiters, tea
 
 ### Tech stack <a id="tech-stack"></a>
 
-#### Database
+**Database**
 
 For the database a MySQL database of the MariaDB type is used, which is running on phpMyAdmin.
 
-#### Frontend
+**Frontend**
 
 For the frontend the Angular framework is used. It's a development platform, which is built on TypeScript.
 
-#### Backend
+**Backend**
 
-For the backend Node.js is used. It's a JavaScript runtime built on Chrome's V8 JavaScript engine.
+For the backend Node.js is used, which is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 
-#### Desktop
+**Desktop**
 
 For the Desktop C# is used. It's an object-oriented and type-safe programming language.
 
@@ -79,15 +79,15 @@ These are the developers and maintainers of the project:
 
 ### Using the web app <a id="using-web-app"></a>
 
-#### Usage
+**Usage**
 
-#### Hardware & software requirements
+**Hardware & software requirements**
 
 ### Using the desktop app <a id="using-desktop-app"></a>
 
-#### Usage
+**Usage**
 
-#### Hardware & software requirements
+**Hardware & software requirements**
 
 [Top ↑](#top)
 
@@ -95,17 +95,17 @@ These are the developers and maintainers of the project:
 
 ### Web app source <a id="web-source"></a>
 
-#### Blabla
+**Blabla**
 
 Install dependencies.
 
-#### Hardware & software requirements
+**Hardware & software requirements**
 
 ### Desktop app source <a id="desktop-source"></a>
 
-#### Hardware & software requirements
+**Hardware & software requirements**
 
-#### Blabla
+**Blabla**
 
 [Top ↑](#top)
 
@@ -115,13 +115,13 @@ Here is how the applications function:
 
 Here is how it was made:
 
-### Brainstorming <a id="brainstorming"></a>
+### Brainstorming
 
 It was a completely random idea. A project was needed and since Jozsef and Daniel did not have any specific ideas, they just picked a topic which they thought they could learn the most from. Hence the choice was a note taking app, which is somewhat similar to Google Keep, but simpler and more minimalistic.
 
 The idea was that users can save notes after logging in. They can of course edit them. When that's done, then they wanted users to be able to make the notes public, so everybody can see them. After all that is done and there is still time left, then they wanted to enable users to share notes between eachother.
 
-### Wireframe <a id="wireframe"></a>
+### Wireframe
 
 Sorry, the initial wireframes were made in Hungarian, but hopefully you get the idea. This was just a quick example how the app might look like.
 
@@ -141,7 +141,7 @@ Then the Note App repository was born and they have collaborated in that, since 
 
 [Top ↑](#top)
 
-### Database <a id="the-database"></a>
+### Database
 
 The data of the web and desktop app needed to be stored somewhere, so a database was needed.
 
@@ -149,7 +149,7 @@ Jozsef worked mostly on this part, but got help from Daniel.
 
 [Top ↑](#top)
 
-### Frontend <a id="the-frontend"></a>
+### Frontend
 
 The frontend of the web app could be made with HTML5, CSS3 and vanilla JavaScript, but to be able to create something that is complex and can be scaled later on, Angular was chosen.
 
@@ -189,13 +189,13 @@ Daniel carried out this part. Js. Angular. Rxjs. Requestek. Material design.
 
 [Top ↑](#top)
 
-### Backend <a id="the-backend"></a>
+### Backend
 
 The backend of the application could be made with TypeScript, just like the frontend, but as most of the tutorials, lessons and walkthroughs are written in plain JavaScript, that's why it was written in vanilla JavaScript. It may be rewritten in TypeScript in the future.
 
 However, some Node packages were needed as it would be quite complicated to code all this without them. Hence the Express backend framework and the MySQL, BodyParser, Bcrypt, CORS and the Nodemon packages were used. Those can be installed all at once like this:
 
-```javascript
+```bash
 npm install express mysql cors bodyparser bcrypt nodemon
 ```
 
@@ -222,7 +222,7 @@ con.connect(function (err) {
 });
 ```
 
-The CORS package is needed, so the frontend would be able to connect to the backend. Code that are located on different servers and/or run on different ports are not able to communicate with eachother as a security measure, so that no unauthorised access would be made. It can be specified with this module from which server(s) are connections allowed. In the below example the \' * ' wildcard (or "catch all") symbol is used, which means connection is allowed from any server or port. Using this exact setup is generally not a good idea, as it might be a security issue, but since the application is still in beta and connections are made from different servers for testing purposes, that's why this was used.
+The CORS package is needed, so the frontend would be able to connect to the backend. Code that are located on different servers and/or run on different ports are not able to communicate with eachother as a security measure, so that no unauthorised access would be made. It can be specified with this module from which server(s) are connections allowed. In the below example the \' \* ' wildcard (or "catch all") symbol is used, which means connection is allowed from any server or port. Using this exact setup is generally not a good idea, as it might be a security issue, but since the application is still in beta and connections are made from different servers for testing purposes, that's why this was used.
 
 ```javascript
 // Initializing CORS module
@@ -238,13 +238,13 @@ In the following code snippet the cooperation of the Express framework, the Body
 
 **[Blabla register or login snippet]**
 
-The Nodemon package was also super useful. A node server needs to be stopped every single time a code change has been made and needs to be started again, so that the changes would be reflected on the app. Nodemon solves this useless waste of time by automatically restarting the backend every single time a change has been made. It can be imagined as an 'HTML live server' or 'ng serve', but for the Node.js backend.
+The Nodemon package was also super useful. A node server needs to be stopped every single time a code change has been made and needs to be started again, so that the changes would be reflected on the app. Nodemon solves this useless waste of time by automatically restarting the backend every single time the document is saved. It can be imagined as an HTML 'live server' or Angular's 'ng serve', but for the Node.js backend.
 
 Daniel worked mostly on this part, but got help from Jozsef. NodeJS. Express. Cors. Json. Nodemon.
 
 [Top ↑](#top)
 
-### Desktop <a id="the-desktop"></a>
+### Desktop
 
 Jozsef carried out this part. Lalalaaaa.
 
