@@ -2,7 +2,13 @@
 
 **A Note App elkészítésének a jegyzetei.**
 
-## 2022.03.17
+## 2022.03.21.
+
+- email login mysql error
+- más megoldás, hash más programozási nyelvvel
+- bcrypt C#-ban
+
+## 2022.03.17.
 
 Dokumentáció jegyzetek
 
