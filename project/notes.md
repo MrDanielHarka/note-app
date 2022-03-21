@@ -15,7 +15,7 @@ Dokumentáció jegyzetek
 - hasonló tavalyihoz (bármit is jelent az)
 - talán nem kell annyira mélyre menni mint tavaly
 - fejlesztői dokumentáció
-- felhaszálói dokumentáció
+- felhasználói dokumentáció
 - tesztelési jegyzőkönyv
 - felhasznált irodalom lábjegyzék
   - forrásmegjelölés
