@@ -1,4 +1,4 @@
-# Jegyzetek
+# Note App - Órai jegyzetek
 
 **A Note App elkészítésének a jegyzetei.**
 
@@ -230,8 +230,8 @@ futároknak
 tanároknak
 mindenkinek/bárkinek
 
-recruiters/toborzók = Adél
-teachers/tanárok = Eszter
+recruiters/toborzók = Adél?
+teachers/tanárok = Kata?
 }
 
 Képek rólunk.
@@ -239,7 +239,7 @@ Kék, lila/pink/orange, piros, lila/pink/orange
 
 Some public notes
 
-| Peter B. | Girl 1. | Daniel H. | Girl 2. |
+| Developer | Recruiter | Teacher | Courier |
 
 TOP LEFT - [Logo/app-text]
 MIDDLE - [Search public notes]
