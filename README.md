@@ -12,7 +12,7 @@ Mostly in English with some Hungarian content.
 
 Mostly in English with some Hungarian content.
 
-### [Presentation](https://motyar.github.io/markShow/?source=https://raw.githubusercontent.com/MrDanielHarka/note-app/main/project/presentation.md#/)
+### [Presentation](https://motyar.github.io/markshow/?source=https://raw.githubusercontent.com/MrDanielHarka/note-app/main/project/presentation.md#/)
 
 Mostly in Hungarian with some English content.
 
