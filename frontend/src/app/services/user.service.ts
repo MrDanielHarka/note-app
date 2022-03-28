@@ -9,7 +9,6 @@ export class UserService {
   password: string = '';
   firstName: string = '';
   lastName: string = '';
-  username: string = '';
   isLoggedIn: boolean = false;
 
   constructor() {}

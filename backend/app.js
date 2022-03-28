@@ -125,50 +125,30 @@ app.get('/public-notes', (req, res, next) => {
   // return res.send(req.body).status(200);
 });
 
-// app.post('/register', bodyParser.json(), (req, res) => {
-//   firstName = req.body.firstName;
-//   lastName = req.body.lastName;
-//   email = req.body.email;
-//   password = req.body.password;
-//   query = `INSERT INTO users (id, email, password, first_name, last_name)
-//   VALUES (null, '${email}', '${password}', '${firstName}', '${lastName}')`;
-
-//   // try {
-//   //   con.query(query, (err, rows) => {
-//   //     if (err) throw err;
-//   //     console.log('User added.');
-//   //   });
-//   //   return res.send(req.body).status(201);
-//   // } catch (error) {
-//   //   console.error(error);
-//   // }
-
-//   con.query(query, (err) => {
-//     if (err) throw err;
-//     console.log('User added.');
-//   });
-//   return res.send(req.body).status(201);
-// });
-
 app.post('/register', bodyParser.json(), async (req, res) => {
-  try {
-    firstName = req.body.firstName;
-    lastName = req.body.lastName;
-    email = req.body.email;
-    password = req.body.password;
-    hash = await bcrypt.hash(password, 12);
-    query = `INSERT INTO users (id, email, password, first_name, last_name)
+  firstName = req.body.firstName;
+  lastName = req.body.lastName;
+  email = req.body.email;
+  password = req.body.password;
+  hash = await bcrypt.hash(password, saltRounds);
+  query = `INSERT INTO users (id, email, password, first_name, last_name)
   VALUES (null, '${email}', '${hash}', '${firstName}', '${lastName}')`;
 
-    con.query(query, (err) => {
-      if (err) throw err;
-      console.log('User added.');
-    });
-    return res.send(req.body).status(201);
-  } catch (e) {
-    console.log(e);
-    res.status(500).send('Something broke.');
-  }
+  con.query(query, (err) => {
+    if (err) {
+      if (err.code == 'ER_DUP_ENTRY' || err.errno == 1062) {
+        res.status(200).send(`{
+            "message": "This email address is already registered."
+          }`);
+      } else {
+        console.log('Other error in the query');
+      }
+    } else {
+      res.status(200).send(`{
+            "success": "Success! You can now log in."
+          }`);
+    }
+  });
 });
 
 app.post('/login', bodyParser.json(), async (req, res) => {
@@ -198,45 +178,41 @@ app.post('/login', bodyParser.json(), async (req, res) => {
         console.log(this.user.password);
         console.log(validPassword);
         if (validPassword) {
-          res.status(200).send('Valid email and password!');
+          res.status(200).send(`{
+            "message": "Valid email and password.",
+            "userId": "${this.user.id}",
+            "email": "${this.user.email}",
+            "firstName": "${this.user.first_name}",
+            "lastName": "${this.user.last_name}",
+            "isLoggedIn": "${true}"
+          }`);
         } else {
-          res.send('Wrong password!');
+          res.status(200).send(`{
+            "message": "Invalid password."
+          }`);
         }
       } else {
         console.log(this.user);
-        res.status(404).send('User not found!');
+        res.status(200).send(`{
+            "message": "Invalid email."
+          }`);
       }
     });
   } catch (e) {
     console.log(e);
-    res.status(500).send('Something broke.');
+    res.status(200).send(`{
+            "message": "Something broke."
+          }`);
   }
 });
 
-// app.post('/login', bodyParser.json(), (req, res) => {
-//   console.log((userObject = req.body));
-//   email = req.body.email;
-//   password = req.body.password;
-//   query = `
-//   SELECT *
-//   FROM users
-//   WHERE email = '${email}'`;
-
-//   con.query(query, (err, result) => {
-//     if (err) throw err;
-//     console.log(result);
-//     // console.log(result[0].password);
-//     return res.status(201).json(result[0]);
-//   });
-// });
-
-app.put('/settings', bodyParser.json(), (req, res) => {
-  console.log(req.body);
+app.put('/settings', bodyParser.json(), async (req, res) => {
   userId = req.body.userId;
   email = req.body.email;
   password = req.body.password;
   firstName = req.body.firstName;
   lastName = req.body.lastName;
+  hash = await bcrypt.hash(password, saltRounds);
 
   query = `
   UPDATE users
@@ -279,4 +255,92 @@ app.listen(port, () => console.log(`Listening on ${port}.`));
 //     console.log('User added.');
 //   });
 //   return res.send(req.body).status(200);
+// });
+
+// app.post('/login', bodyParser.json(), (req, res) => {
+//   console.log((userObject = req.body));
+//   email = req.body.email;
+//   password = req.body.password;
+//   query = `
+//   SELECT *
+//   FROM users
+//   WHERE email = '${email}'`;
+
+//   con.query(query, (err, result) => {
+//     if (err) throw err;
+//     console.log(result);
+//     // console.log(result[0].password);
+//     return res.status(201).json(result[0]);
+//   });
+// });
+
+// app.post('/register', bodyParser.json(), (req, res) => {
+//   firstName = req.body.firstName;
+//   lastName = req.body.lastName;
+//   email = req.body.email;
+//   password = req.body.password;
+//   query = `INSERT INTO users (id, email, password, first_name, last_name)
+//   VALUES (null, '${email}', '${password}', '${firstName}', '${lastName}')`;
+
+//   // try {
+//   //   con.query(query, (err, rows) => {
+//   //     if (err) throw err;
+//   //     console.log('User added.');
+//   //   });
+//   //   return res.send(req.body).status(201);
+//   // } catch (error) {
+//   //   console.error(error);
+//   // }
+
+//   con.query(query, (err) => {
+//     if (err) throw err;
+//     console.log('User added.');
+//   });
+//   return res.send(req.body).status(201);
+// });
+
+// app.post('/register', bodyParser.json(), async (req, res) => {
+//   try {
+//     firstName = req.body.firstName;
+//     lastName = req.body.lastName;
+//     email = req.body.email;
+//     password = req.body.password;
+//     hash = await bcrypt.hash(password, saltRounds);
+//     query = `INSERT INTO users (id, email, password, first_name, last_name)
+//   VALUES (null, '${email}', '${hash}', '${firstName}', '${lastName}')`;
+
+//     con.query(query, (err) => {
+//       if (err) throw err;
+//       console.log('User added.');
+//     });
+//     return res.send(req.body).status(201);
+//   } catch (e) {
+//     console.log(e);
+//     res.status(500).send('Something broke.');
+//   }
+// });
+
+// app.put('/settings', bodyParser.json(), (req, res) => {
+//   console.log(req.body);
+//   userId = req.body.userId;
+//   email = req.body.email;
+//   password = req.body.password;
+//   firstName = req.body.firstName;
+//   lastName = req.body.lastName;
+
+//   query = `
+//   UPDATE users
+//   SET id = ${userId},
+//       email = '${email}',
+//       password = '${password}',
+//       first_name = '${firstName}',
+//       last_name = '${lastName}'
+//   WHERE id = ${userId}`;
+
+//   con.query(query, (err, result) => {
+//     if (err) throw err;
+//     console.log(result);
+//     // console.log(result[0].password);
+//     return res.status(201).json('Settings saved successfully.');
+//   });
 // });

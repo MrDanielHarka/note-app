@@ -45,7 +45,7 @@ export class NoteComponent implements OnInit {
   getUserNotes() {
     this.noteService.onGetUserNotes(this.userService).subscribe((response) => {
       this.userNotes = response;
-      console.log(this.userNotes);
+      // console.log(this.userNotes);
     });
   }
 

@@ -10,15 +10,16 @@ export class RegisterService {
   constructor(private httpClient: HttpClient, private urlService: UrlService) {}
 
   public onRegisterUser(userData: User) {
-    console.log('User registered.');
-
-    this.httpClient
-      .post(`${this.urlService.serverUrl}/register`, userData, {
+    return this.httpClient.post(
+      `${this.urlService.serverUrl}/register`,
+      userData,
+      {
         headers: { 'content-type': 'application/json' },
-      })
-      .subscribe((userData) => {
-        console.log(userData);
-        return userData;
-      });
+      }
+    );
+    // .subscribe((userData) => {
+    //   console.log(userData);
+    //   return userData;
+    // });
   }
 }

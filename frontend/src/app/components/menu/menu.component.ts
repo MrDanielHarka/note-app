@@ -28,10 +28,8 @@ export class MenuComponent implements OnInit {
   onLogout() {
     this.user.userId = 0;
     this.user.email = '';
-    this.user.password = '';
     this.user.firstName = '';
     this.user.lastName = '';
-    this.user.username = '';
     this.user.isLoggedIn = false;
     this.router.navigate(['/']);
   }

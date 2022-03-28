@@ -265,18 +265,17 @@ Jozsef carried out this part. Lalalaaaa.
 World domination of course, khm... on a more serious note:
 
 - GitHub, Google, Facebook login possibility
-- Email intergration for registration and forgotten passwords
-- In-app chat functionality
-- Plaintext note downloading as .txt files
+- email intergration for registration and forgotten passwords
 - dark mode
 - language selector
-- keresés jegyzetek között
-- biztonságos jelszó
-- chat?
-- image?
-- download txt?
-- upload txt?
+- public note content search
+- secure password check upon registration
+- download txt
+- upload txt
 - rewrite backend in TypeScript
+- user profile picture
+- note categories
+- filter personal and public notes by category
 
 [Top ↑](#top)
 
