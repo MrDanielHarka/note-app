@@ -1,46 +1,42 @@
-let databaseHost, databaseUser, databasePassword, databaseName;
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 const mysql = require('mysql');
+const mysqlCredentials = require('./mysql-credentials');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
-const isLocalEnvironment = true;
 const cors = require('cors');
-const corsOptions = {
-  origin: '*',
-};
-
-// app.use(express.json());
-app.use(cors(corsOptions));
-
-if (isLocalEnvironment) {
-  databaseHost = 'localhost';
-  databaseUser = 'root';
-  databasePassword = '';
-  databaseName = 'note_app';
-} else {
-  const mysqlCredentials = require('./mysql-credentials');
-  databaseHost = mysqlCredentials.host;
-  databaseUser = mysqlCredentials.user;
-  databasePassword = mysqlCredentials.password;
-  databaseName = mysqlCredentials.database;
-}
-
+const corsOptions = { origin: '*' };
 const con = mysql.createConnection({
-  host: databaseHost,
-  user: databaseUser,
-  password: databasePassword,
-  database: databaseName,
+  host: mysqlCredentials.host,
+  user: mysqlCredentials.user,
+  password: mysqlCredentials.password,
+  database: mysqlCredentials.database,
 });
 
 con.connect(function (err) {
-  if (err) throw err;
-  console.log('Connected to database.');
+  if (err) {
+    const con = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'note_app',
+    });
+
+    con.connect(function (err) {
+      if (err) throw err;
+      console.log('Connected to local database.');
+    });
+  } else {
+    console.log('Connected to remote database.');
+  }
 });
 
-app.post('/user-notes', bodyParser.json(), (req, res, next) => {
+app.use(express.json());
+app.use(cors(corsOptions));
+
+app.post('/user-notes', (req, res, next) => {
   console.log(req.body.userId);
   userId = req.body.userId;
   console.log(userId);
@@ -54,7 +50,7 @@ app.post('/user-notes', bodyParser.json(), (req, res, next) => {
   // return res.send(req.body).status(200);
 });
 
-app.post('/new-note', bodyParser.json(), (req, res) => {
+app.post('/new-note', (req, res) => {
   console.log((userObject = req.body));
   userId = req.body.userId;
   title = req.body.title;
@@ -72,7 +68,7 @@ app.post('/new-note', bodyParser.json(), (req, res) => {
   return res.send(req.body).status(200);
 });
 
-app.put('/update-note', bodyParser.json(), (req, res) => {
+app.put('/update-note', (req, res) => {
   console.log(req.body);
   noteId = req.body.note_id;
   userId = req.body.user_id;
@@ -98,7 +94,7 @@ app.put('/update-note', bodyParser.json(), (req, res) => {
   });
 });
 
-app.put('/delete-note', bodyParser.json(), (req, res) => {
+app.put('/delete-note', (req, res) => {
   console.log(req.body);
   noteId = req.body.note_id;
 
@@ -125,7 +121,7 @@ app.get('/public-notes', (req, res, next) => {
   // return res.send(req.body).status(200);
 });
 
-app.post('/register', bodyParser.json(), async (req, res) => {
+app.post('/register', async (req, res) => {
   firstName = req.body.firstName;
   lastName = req.body.lastName;
   email = req.body.email;
@@ -151,7 +147,7 @@ app.post('/register', bodyParser.json(), async (req, res) => {
   });
 });
 
-app.post('/login', bodyParser.json(), async (req, res) => {
+app.post('/login', async (req, res) => {
   try {
     console.log((userObject = req.body));
     email = req.body.email;
