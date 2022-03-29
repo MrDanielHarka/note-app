@@ -60,8 +60,6 @@ Note:
 
 ## Előkészületek
 
-<br><br>
-
 - **Téma:** Jegyzetek, cetlik, notes(z)
   <br><br>
 - **Ötletelés:** Feladatelosztás, határidők, drótváz
@@ -80,6 +78,12 @@ Note:
 
 ## Asztali app
 
+- **Template:** Windows Forms App (.NET Framework)
+
+- **Package:** BCrypt.Net-Next
+
+- **Using-ok:** System, System.Collections.Generic, System.ComponentModel, System.Data, System.Drawing, System.Linq, System.Text, System.Threading.Tasks, System.Windows.Forms, MySql.Data.MySqlClient
+
 Note:  
 **Max 10:00-ig**
 
@@ -91,8 +95,6 @@ Note:
 ---
 
 ## Web app
-
-<br><br>
 
 - **Frontend:** JavaScript, TypeScript, Angular, RXJS, HTTP, Material Design
   <br><br>
