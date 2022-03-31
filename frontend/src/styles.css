@@ -37,7 +37,10 @@ mat-card {
 }
 
 app-login,
-app-register {
+app-register,
+app-settings,
+app-home,
+app-public {
   display: flex;
   justify-content: center;
   align-items: center;

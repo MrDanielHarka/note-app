@@ -269,6 +269,7 @@ World domination of course, khm... on a more serious note:
 - dark mode
 - language selector
 - public note content search
+- note character count
 - secure password check upon registration
 - download txt
 - upload txt

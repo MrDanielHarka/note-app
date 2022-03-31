@@ -1,132 +1,118 @@
-<form (ngSubmit)="onSubmit()" #form="ngForm" class="example-form">
-  <mat-form-field
-    class="example-full-width"
-    appearance="fill"
-    hideRequiredMarker
-  >
-    <mat-label>First name</mat-label>
+<mat-card>
+  <h1>Settings</h1>
 
-    <br />
+  <form (ngSubmit)="onSubmit()" #form="ngForm" class="example-form">
+    <mat-form-field class="example-full-width" hideRequiredMarker>
+      <mat-label>First name</mat-label>
 
-    <input
-      type="text"
-      name="firstname"
-      id="firstname"
-      [ngModel]="userService.firstName"
-      #firstname
-      matInput
-      text
-      required
-      minlength="3"
-    />
-    <mat-error>It must be filled out</mat-error>
-  </mat-form-field>
+      <br />
 
-  <br /><br />
+      <input
+        type="text"
+        name="firstname"
+        id="firstname"
+        [ngModel]="userService.firstName"
+        #firstname
+        matInput
+        text
+        required
+        minlength="3"
+      />
+      <mat-error>It must be filled out</mat-error>
+    </mat-form-field>
 
-  <mat-form-field
-    class="example-full-width"
-    appearance="fill"
-    hideRequiredMarker
-  >
-    <mat-label>Last name</mat-label>
+    <br /><br />
 
-    <br />
+    <mat-form-field class="example-full-width" hideRequiredMarker>
+      <mat-label>Last name</mat-label>
 
-    <input
-      type="text"
-      name="lastname"
-      id="lastname"
-      [ngModel]="userService.lastName"
-      #lastname
-      matInput
-      text
-      required
-      minlength="3"
-    />
-    <mat-error>It must be filled out</mat-error>
-  </mat-form-field>
+      <br />
 
-  <br /><br />
+      <input
+        type="text"
+        name="lastname"
+        id="lastname"
+        [ngModel]="userService.lastName"
+        #lastname
+        matInput
+        text
+        required
+        minlength="3"
+      />
+      <mat-error>It must be filled out</mat-error>
+    </mat-form-field>
 
-  <mat-form-field
-    class="example-full-width"
-    appearance="fill"
-    hideRequiredMarker
-  >
-    <mat-label>Email</mat-label>
+    <br /><br />
 
-    <br />
+    <mat-form-field class="example-full-width" hideRequiredMarker>
+      <mat-label>Email</mat-label>
 
-    <input
-      type="email"
-      name="email"
-      id="email"
-      [ngModel]="userService.email"
-      #email
-      matInput
-      email
-      required
-    />
-    <mat-error>It must be a valid email address</mat-error>
-  </mat-form-field>
-  <br /><br />
+      <br />
 
-  <mat-form-field
-    class="example-full-width"
-    appearance="fill"
-    hideRequiredMarker
-  >
-    <mat-label>New password</mat-label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        [ngModel]="userService.email"
+        #email
+        matInput
+        email
+        required
+      />
+      <mat-error>It must be a valid email address</mat-error>
+    </mat-form-field>
+    <br /><br />
 
-    <br />
+    <mat-form-field class="example-full-width" hideRequiredMarker>
+      <mat-label>New password</mat-label>
 
-    <input
-      type="password"
-      name="newPassword"
-      id="newPassword"
-      ngModel
-      #newPassword
-      matInput
-      password
-      minlength="6"
-    />
-    <mat-error>It must be over 5 characters</mat-error>
-  </mat-form-field>
+      <br />
 
-  <br /><br /><br /><br />
+      <input
+        type="password"
+        name="newPassword"
+        id="newPassword"
+        ngModel
+        #newPassword
+        matInput
+        password
+        minlength="6"
+      />
+      <mat-error>It must be over 5 characters</mat-error>
+    </mat-form-field>
 
-  <mat-form-field
-    class="example-full-width"
-    appearance="fill"
-    hideRequiredMarker
-  >
-    <mat-label>Current password</mat-label>
+    <br /><br /><br /><br />
 
-    <br />
+    <mat-form-field class="example-full-width" hideRequiredMarker>
+      <mat-label>Current password</mat-label>
 
-    <input
-      type="password"
-      name="currentPassword"
-      id="currentPassword"
-      ngModel
-      #currentPassword
-      matInput
-      password
-      required
-      minlength="1"
-    />
-    <mat-error>It must be over 5 characters</mat-error>
-  </mat-form-field>
+      <br />
 
-  <br /><br />
+      <input
+        type="password"
+        name="currentPassword"
+        id="currentPassword"
+        ngModel
+        #currentPassword
+        matInput
+        password
+        required
+        minlength="1"
+      />
+      <mat-error>It must be over 5 characters</mat-error>
+    </mat-form-field>
 
-  <button
-    type="submit"
-    [disabled]="!form.valid"
-    mat-raised-button
-    color="primary"
-  >
-    Save
-  </button>
-</form>
+    <br /><br />
+
+    <button
+      type="submit"
+      [disabled]="!form.valid"
+      mat-raised-button
+      color="primary"
+    >
+      Save
+    </button>
+  </form>
+
+  {{ message }}
+</mat-card>

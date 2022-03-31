@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
       console.log(this.userInfo.message);
       if (this.userInfo.message === undefined) {
         this.submitted = true;
-        this.message = this.userInfo.message;
+        this.message = this.userInfo.message; // Kell ez ide?
       }
       // if (
       //   this.userInfo.message === 'This email address is already registered.'

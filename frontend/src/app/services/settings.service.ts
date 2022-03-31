@@ -10,13 +10,16 @@ export class SettingsService {
   constructor(private httpClient: HttpClient, private urlService: UrlService) {}
 
   public onUpdateSettings(settingsData: User) {
-    this.httpClient
-      .put(`${this.urlService.serverUrl}/settings`, settingsData, {
+    return this.httpClient.put(
+      `${this.urlService.serverUrl}/settings`,
+      settingsData,
+      {
         headers: { 'content-type': 'application/json' },
-      })
-      .subscribe((settingsData) => {
-        console.log(settingsData);
-        return settingsData;
-      });
+      }
+    );
+    // .subscribe((settingsData) => {
+    //   console.log(settingsData);
+    //   return settingsData;
+    // });
   }
 }

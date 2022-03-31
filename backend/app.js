@@ -8,30 +8,42 @@ const bcrypt = require('bcrypt');
 const saltRounds = 12;
 const cors = require('cors');
 const corsOptions = { origin: '*' };
+// const con = mysql.createConnection({
+//   host: mysqlCredentials.host,
+//   user: mysqlCredentials.user,
+//   password: mysqlCredentials.password,
+//   database: mysqlCredentials.database,
+// });
+
 const con = mysql.createConnection({
-  host: mysqlCredentials.host,
-  user: mysqlCredentials.user,
-  password: mysqlCredentials.password,
-  database: mysqlCredentials.database,
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'note_app',
 });
 
 con.connect(function (err) {
-  if (err) {
-    const con = mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: '',
-      database: 'note_app',
-    });
-
-    con.connect(function (err) {
-      if (err) throw err;
-      console.log('Connected to local database.');
-    });
-  } else {
-    console.log('Connected to remote database.');
-  }
+  if (err) throw err;
+  console.log('Connected to database.');
 });
+
+// con.connect(function (err) {
+//   if (err) {
+//     const con = mysql.createConnection({
+//       host: 'localhost',
+//       user: 'root',
+//       password: '',
+//       database: 'note_app',
+//     });
+
+//     con.connect(function (err) {
+//       if (err) throw err;
+//       console.log('Connected to local database.');
+//     });
+//   } else {
+//     console.log('Connected to remote database.');
+//   }
+// });
 
 app.use(express.json());
 app.use(cors(corsOptions));
@@ -203,28 +215,81 @@ app.post('/login', async (req, res) => {
 });
 
 app.put('/settings', bodyParser.json(), async (req, res) => {
-  userId = req.body.userId;
-  email = req.body.email;
-  password = req.body.password;
-  firstName = req.body.firstName;
-  lastName = req.body.lastName;
-  hash = await bcrypt.hash(password, saltRounds);
+  try {
+    console.log((userObject = req.body));
+    userId = req.body.userId;
+    email = req.body.email;
+    firstName = req.body.firstName;
+    lastName = req.body.lastName;
+    currentPassword = req.body.currentPassword;
+    newPassword = req.body.newPassword;
+    newPasswordHash = await bcrypt.hash(newPassword, saltRounds);
+    let user;
+    query = `
+  SELECT *
+  FROM users
+  WHERE id = '${userId}'`;
 
-  query = `
-  UPDATE users
-  SET id = ${userId},
-      email = '${email}',
-      password = '${password}',
-      first_name = '${firstName}',
-      last_name = '${lastName}'
-  WHERE id = ${userId}`;
+    con.query(query, async (err, result) => {
+      if (err) throw err;
+      // console.log(result);
+      // console.log(result[0].password);
+      // return res.status(201).json(result[0]);
+      this.user = result[0];
+      if (this.user) {
+        console.log(this.user);
+        const validPassword = await bcrypt.compare(
+          currentPassword,
+          this.user.password
+        );
+        console.log(newPasswordHash);
+        console.log(this.user.password);
+        console.log(validPassword);
+        if (validPassword) {
+          query = `
+          UPDATE users
+          SET id = ${userId},
+              email = '${email}',
+              password = '${newPasswordHash}',
+              first_name = '${firstName}',
+              last_name = '${lastName}'
+          WHERE id = ${userId}`;
 
-  con.query(query, (err, result) => {
-    if (err) throw err;
-    console.log(result);
-    // console.log(result[0].password);
-    return res.status(201).json('Settings saved successfully.');
-  });
+          con.query(query, (err, result) => {
+            if (err) throw err;
+            console.log(result);
+            // console.log(result[0].password);
+            res.status(200).send(`{
+            "success": "Settings saved successfully."
+          }`);
+          });
+
+          // res.status(200).send(`{
+          //   "message": "Valid email and password.",
+          //   "userId": "${this.user.id}",
+          //   "email": "${this.user.email}",
+          //   "firstName": "${this.user.first_name}",
+          //   "lastName": "${this.user.last_name}",
+          //   "isLoggedIn": "${true}"
+          // }`);
+        } else {
+          res.status(200).send(`{
+            "message": "Invalid password."
+          }`);
+        }
+      } else {
+        console.log(this.user);
+        res.status(200).send(`{
+            "message": "Invalid email."
+          }`);
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    res.status(200).send(`{
+            "message": "Something broke."
+          }`);
+  }
 });
 
 app.listen(port, () => console.log(`Listening on ${port}.`));

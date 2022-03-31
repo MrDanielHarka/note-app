@@ -1,17 +1,17 @@
-<h1>Public notes</h1>
-<div class="flex-container">
-  <mat-card *ngFor="let publicNote of publicNotes">
-    <b>
-      Title:
+<div>
+  <h1>Public notes</h1>
+  <div class="flex-container">
+    <mat-card *ngFor="let publicNote of publicNotes">
+      <b>
+        Title:
+        <br />
+        {{ publicNote.title }}
+      </b>
       <br />
-      {{ publicNote.title }}
-    </b>
-    <br />
-    <br />
-    Content:
-    <br />
-    {{ publicNote.content }} <br /><br />
-  </mat-card>
+      <br />
+      Content:
+      <br />
+      {{ publicNote.content }} <br /><br />
+    </mat-card>
+  </div>
 </div>
-
-<!-- <button type="button" (click)="getInfo()">Get</button> -->
