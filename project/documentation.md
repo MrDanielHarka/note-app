@@ -264,6 +264,7 @@ Jozsef carried out this part. Lalalaaaa.
 
 World domination of course, khm... on a more serious note:
 
+- cookies, localstorage, sessionstorage
 - GitHub, Google, Facebook login possibility
 - email intergration for registration and forgotten passwords
 - dark mode

@@ -64,3 +64,6 @@ Open tabs: MarkShow, Note App, Code, phpMyAdmin
   - How about contribution?
   - What about contributing?
   - How to contribute?
+
+- settings / same email error
+

@@ -7,7 +7,12 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
 const cors = require('cors');
-const corsOptions = { origin: '*' };
+const corsOptions = {
+  origin: '*',
+  methods: 'GET,PUT,POST,DELETE',
+};
+
+// const functions = require('firebase-functions');
 
 const con = mysql.createConnection({
   host: mysqlCredentials.host,
@@ -20,6 +25,24 @@ con.connect(function (err) {
   if (err) throw err;
   console.log('Connected to database.');
 });
+
+exports.corsEnabledFunctionAuth = (req, res) => {
+  // Set CORS headers for preflight requests
+  // Allows GETs from origin https://mydomain.com with Authorization header
+
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Credentials', 'true');
+
+  if (req.method === 'OPTIONS') {
+    // Send response to OPTIONS requests
+    res.set('Access-Control-Allow-Methods', 'GET');
+    res.set('Access-Control-Allow-Headers', 'Authorization');
+    res.set('Access-Control-Max-Age', '3600');
+    res.status(204).send('');
+  } else {
+    res.send('Hello World!');
+  }
+};
 
 app.use(express.json());
 app.use(cors(corsOptions));

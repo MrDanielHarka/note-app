@@ -60,10 +60,10 @@ export class NoteComponent implements OnInit {
       // this.userNotes = response;
     });
     setTimeout(() => {
-      this.getUserNotes();
-      this.isCreatingNewNote = false;
       this.newNote.title = '';
       this.newNote.content = '';
+      this.getUserNotes();
+      this.isCreatingNewNote = false;
     }, 500);
   }
 

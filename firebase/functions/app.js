@@ -1,3 +1,4 @@
+const functions = require('firebase-functions');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
@@ -7,7 +8,13 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
 const cors = require('cors');
-const corsOptions = { origin: '*' };
+const corsOptions = {
+  origin: 'https://the-simple-notes.web.app/',
+  methods: 'GET,PUT,POST,DELETE, OPTIONS',
+  credentials: true,
+};
+
+// const functions = require('firebase-functions');
 
 const con = mysql.createConnection({
   host: mysqlCredentials.host,
@@ -20,6 +27,24 @@ con.connect(function (err) {
   if (err) throw err;
   console.log('Connected to database.');
 });
+
+exports.corsEnabledFunctionAuth = (req, res) => {
+  // Set CORS headers for preflight requests
+  // Allows GETs from origin https://mydomain.com with Authorization header
+
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Credentials', 'true');
+
+  if (req.method === 'OPTIONS') {
+    // Send response to OPTIONS requests
+    res.set('Access-Control-Allow-Methods', 'GET');
+    res.set('Access-Control-Allow-Headers', 'Authorization');
+    res.set('Access-Control-Max-Age', '3600');
+    res.status(204).send('');
+  } else {
+    res.send('Hello World!');
+  }
+};
 
 app.use(express.json());
 app.use(cors(corsOptions));
@@ -380,4 +405,14 @@ app.listen(port, () => console.log(`Listening on ${port}.`));
 //     // console.log(result[0].password);
 //     return res.status(201).json('Settings saved successfully.');
 //   });
+// });
+
+exports.app = functions.https.onRequest(app);
+
+// // Create and Deploy Your First Cloud Functions
+// // https://firebase.google.com/docs/functions/write-firebase-functions
+//
+// exports.helloWorld = functions.https.onRequest((request, response) => {
+//   functions.logger.info("Hello logs!", {structuredData: true});
+//   response.send("Hello from Firebase!");
 // });

@@ -1,15 +1,22 @@
-<div *ngIf="userService.isLoggedIn">
-  <h1>My notes</h1>
+<div class="container">
+  <div class="centered">
+    <h1>My notes</h1>
 
-  <div *ngIf="isCreatingNewNote == false">
-    <button
-      (click)="isCreatingNewNote = true"
-      mat-raised-button
-      color="primary"
-    >
-      Add new note
-    </button>
+    <div *ngIf="isCreatingNewNote == false">
+      <button
+        (click)="
+          isCreatingNewNote = true; newNote.title = ''; newNote.content = ''
+        "
+        mat-raised-button
+        color="primary"
+      >
+        Add new note
+      </button>
+    </div>
+    <div *ngIf="isCreatingNewNote == true"><br /><br /></div>
   </div>
+
+  <br /><br />
 
   <div class="flex-container">
     <mat-card *ngIf="isCreatingNewNote === true">
@@ -21,6 +28,8 @@
           id="title"
           [(ngModel)]="newNote.title"
           matInput
+          (keydown.escape)="isCreatingNewNote = false"
+          (keydown.control.s)="onFormSubmit($event)"
           auto-focus
         />
       </mat-form-field>
@@ -32,6 +41,8 @@
           id="content"
           [(ngModel)]="newNote.content"
           matInput
+          (keydown.escape)="isCreatingNewNote = false"
+          (keydown.control.s)="onFormSubmit($event)"
         ></textarea>
       </mat-form-field>
 
@@ -79,7 +90,7 @@
   </div>
 </div>
 
-<div *ngIf="!userService.isLoggedIn">
+<!-- <div *ngIf="!userService.isLoggedIn">
   <mat-card>
     <mat-form-field class="example-form">
       <mat-label for="title">Title</mat-label>
@@ -95,7 +106,7 @@
     <br />
     <div class="centered-button">
       <button type="button" mat-raised-button color="primary">Save note</button>
-      <!-- You can save your note, as soon as you register or login. -->
+     You can save your note, as soon as you register or login.
     </div>
   </mat-card>
-</div>
+</div> -->

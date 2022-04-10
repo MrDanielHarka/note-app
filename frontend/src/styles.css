@@ -15,8 +15,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-app-login h1,
-app-register h1,
+h1,
 .centered-button {
   text-align: center;
   padding: 10px 0;
@@ -29,6 +28,7 @@ main {
 .flex-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 mat-card {
@@ -36,14 +36,37 @@ mat-card {
   width: 300px;
 }
 
+.container {
+  padding: 0 10px;
+  margin: 10px auto;
+  max-width: 1380px;
+}
+
+app-welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 app-login,
 app-register,
-app-settings,
-app-home,
-app-public {
+app-settings {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+app-note,
+app-public,
+app-home {
+  padding: 0 10px;
+  margin: 10px auto;
+  max-width: 700px;
+}
+
+.centered {
+  text-align: center;
 }
 
 .example-form {
