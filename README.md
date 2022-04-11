@@ -4,7 +4,7 @@ A simple and minimalistic note taking app.
 
 ## Resources
 
-### [Website](https://note-app.harka.com)
+### [Website](https://the-simple-notes.web.app)
 
 Mostly in English with some Hungarian content.
 
