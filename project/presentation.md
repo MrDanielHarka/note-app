@@ -24,7 +24,7 @@ editor:
 
 A note taking app for anybody.
 
-**[note-app.harka.com](https://note-app.harka.com)**
+**[the-simple-notes.web.app](https://the-simple-notes.web.app)**
 
 ---
 
