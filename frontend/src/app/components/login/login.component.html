@@ -1,0 +1,58 @@
+<mat-card>
+  <h1>Log in to your notes</h1>
+
+  <form (ngSubmit)="onSubmit()" #form="ngForm" class="example-form">
+    <mat-form-field class="example-full-width" hideRequiredMarker>
+      <mat-label>Email</mat-label>
+
+      <br />
+
+      <input
+        type="email"
+        name="email"
+        id="email"
+        ngModel
+        #email
+        matInput
+        email
+        required
+      />
+      <mat-hint>Enter email address</mat-hint>
+      <mat-error>It must be a valid email address</mat-error>
+    </mat-form-field>
+    <br /><br />
+
+    <mat-form-field class="example-full-width" hideRequiredMarker>
+      <mat-label>Password</mat-label>
+
+      <br />
+
+      <input
+        type="password"
+        name="password"
+        id="password"
+        ngModel
+        #password
+        matInput
+        password
+        required
+        minlength="1"
+      />
+      <mat-hint>Choose a password</mat-hint>
+      <mat-error>It must be over 5 characters</mat-error>
+    </mat-form-field>
+
+    <br /><br />
+    <div class="centered-button">
+      <button
+        type="submit"
+        [disabled]="!form.valid"
+        mat-raised-button
+        color="primary"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+  {{ message }}
+</mat-card>

@@ -1,0 +1,112 @@
+<div class="container">
+  <div class="centered">
+    <h1>My notes</h1>
+
+    <div *ngIf="isCreatingNewNote == false">
+      <button
+        (click)="
+          isCreatingNewNote = true; newNote.title = ''; newNote.content = ''
+        "
+        mat-raised-button
+        color="primary"
+      >
+        Add new note
+      </button>
+    </div>
+    <div *ngIf="isCreatingNewNote == true"><br /><br /></div>
+  </div>
+
+  <br /><br />
+
+  <div class="flex-container">
+    <mat-card *ngIf="isCreatingNewNote === true">
+      <mat-form-field>
+        <mat-label for="title">Title</mat-label>
+        <br />
+        <input
+          type="title"
+          id="title"
+          [(ngModel)]="newNote.title"
+          matInput
+          (keydown.escape)="isCreatingNewNote = false"
+          (keydown.control.s)="onFormSubmit($event)"
+          auto-focus
+        />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label for="content">Content</mat-label>
+        <br />
+        <textarea
+          id="content"
+          [(ngModel)]="newNote.content"
+          matInput
+          (keydown.escape)="isCreatingNewNote = false"
+          (keydown.control.s)="onFormSubmit($event)"
+        ></textarea>
+      </mat-form-field>
+
+      <br />
+      <button
+        type="button"
+        (click)="onFormSubmit($event)"
+        mat-raised-button
+        color="primary"
+      >
+        Save note
+      </button>
+      <button
+        (click)="isCreatingNewNote = false"
+        mat-raised-button
+        color="warning"
+      >
+        Cancel
+      </button>
+    </mat-card>
+    <mat-card *ngFor="let userNote of userNotes; let i = index">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+
+        <input type="text" matInput [(ngModel)]="userNote.title" />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Content</mat-label>
+
+        <textarea matInput [(ngModel)]="userNote.content"></textarea>
+      </mat-form-field>
+
+      <br />
+      <button mat-stroked-button color="primary" (click)="onUpdateNote(i)">
+        Save
+      </button>
+      <button mat-stroked-button (click)="onToggleSharing(i)">
+        {{ isPublic(userNote.public) }}
+      </button>
+      <button mat-stroked-button color="warn" (click)="onDeleteNote(i)">
+        Delete
+      </button>
+    </mat-card>
+  </div>
+</div>
+
+<!-- <div *ngIf="!userService.isLoggedIn">
+  <mat-card>
+    <mat-form-field class="example-form">
+      <mat-label for="title">Title</mat-label>
+      <br />
+      <input type="title" id="title" [(ngModel)]="newNote.title" matInput />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-form">
+      <mat-label for="content">Content</mat-label>
+      <br />
+      <textarea id="content" [(ngModel)]="newNote.content" matInput></textarea>
+    </mat-form-field>
+    <br />
+    <div class="centered-button">
+      <button type="button" mat-raised-button color="primary">Save note</button>
+     You can save your note, as soon as you register or login.
+    </div>
+  </mat-card>
+</div> -->

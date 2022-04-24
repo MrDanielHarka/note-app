@@ -1,3 +1,2 @@
 
-*.ffs_db
-*.webm
+firebase/functions/mysql-credentials.js
