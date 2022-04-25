@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { UserNote } from 'src/app/models/UserNote';
 import { NoteService } from 'src/app/services/note.service';
 import { UserService } from 'src/app/services/user.service';
@@ -38,8 +37,7 @@ export class NoteComponent implements OnInit {
 
   constructor(
     public userService: UserService,
-    private noteService: NoteService,
-    private router: Router
+    private noteService: NoteService
   ) {}
 
   getUserNotes() {

@@ -24,7 +24,7 @@ editor:
 
 A note taking app for anybody.
 
-**[the-simple-notes.web.app](https://the-simple-notes.web.app)**
+**[the-note-app.herokuapp.com](https://the-note-app.herokuapp.com)**
 
 ---
 
@@ -67,12 +67,7 @@ Note:
 - **Git(Hub):** Verziókezelés és csapatmunka
 
 Note:  
-**Max 10:00-ig**
-
-- Our roles in the project
-- Introducing the projectfdgfdg
-- What was the goal?dfgfdg
-- What were the tasks?
+**Kb. 19:00-ig**
 
 ---
 
@@ -86,11 +81,6 @@ Note:
 
 Note:  
 **Max 10:00-ig**
-
-- Our roles in the project
-- Introducing the project
-- What was the goal?
-- What were the tasks?fdgfdg
 
 ---
 
@@ -116,7 +106,7 @@ Note:
 ## Összefoglalás
 
 Több info:
-[GitHub](https://github.com/MrDanielHarka/note-app)
+[GitHub](https://github.com/MrDanielHarka/the-note-app)
 
 Note:  
 **Max 10:00-ig**
