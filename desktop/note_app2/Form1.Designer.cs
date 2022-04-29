@@ -52,13 +52,13 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.btpublic = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.noteTitleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noteContentDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.class2BindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.panel6 = new System.Windows.Forms.Panel();
             this.class1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.class2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.class2BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -302,6 +302,26 @@
             this.panel8.Size = new System.Drawing.Size(291, 274);
             this.panel8.TabIndex = 30;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label6.Location = new System.Drawing.Point(136, 149);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 13);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "Password";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label5.Location = new System.Drawing.Point(145, 96);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "E-mail";
+            // 
             // dataGridView2
             // 
             this.dataGridView2.AllowDrop = true;
@@ -325,40 +345,13 @@
             this.noteTitleDataGridViewTextBoxColumn1,
             this.noteContentDataGridViewTextBoxColumn1});
             this.dataGridView2.DataSource = this.class2BindingSource2;
-            this.dataGridView2.Location = new System.Drawing.Point(398, 148);
+            this.dataGridView2.Location = new System.Drawing.Point(279, 108);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(528, 119);
+            this.dataGridView2.Size = new System.Drawing.Size(645, 119);
             this.dataGridView2.TabIndex = 10;
-            // 
-            // panel6
-            // 
-            this.panel6.Location = new System.Drawing.Point(322, 89);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(628, 304);
-            this.panel6.TabIndex = 31;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label5.Location = new System.Drawing.Point(145, 96);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "E-mail";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label6.Location = new System.Drawing.Point(136, 149);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 13);
-            this.label6.TabIndex = 33;
-            this.label6.Text = "Password";
             // 
             // noteTitleDataGridViewTextBoxColumn1
             // 
@@ -377,6 +370,13 @@
             // class2BindingSource2
             // 
             this.class2BindingSource2.DataSource = typeof(note_app2.Class2);
+            // 
+            // panel6
+            // 
+            this.panel6.Location = new System.Drawing.Point(221, 89);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(816, 363);
+            this.panel6.TabIndex = 31;
             // 
             // class1BindingSource
             // 

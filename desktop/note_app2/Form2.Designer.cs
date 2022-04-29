@@ -39,13 +39,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.noteTitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noteContentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.class1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.noteTitleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noteContentDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.class2BindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.BtSettings = new System.Windows.Forms.Button();
             this.BtChangepass = new System.Windows.Forms.Button();
@@ -59,16 +53,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.noteTitleDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noteContentDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.From = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.class3BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numbersofnotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numbersofsharednotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numbersofpublicnotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.class6BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel6 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.BtSave = new System.Windows.Forms.Button();
@@ -77,19 +63,33 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numbersofnotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numbersofsharednotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numbersofpublicnotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.class6BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.noteTitleDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noteContentDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.class3BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.noteTitleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noteContentDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.class2BindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.noteTitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noteContentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.class1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.class2BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.class2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.class1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.class2BindingSource2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.class3BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.class6BindingSource)).BeginInit();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.class6BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.class3BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.class2BindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.class1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.class2BindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.class2BindingSource)).BeginInit();
             this.SuspendLayout();
@@ -179,24 +179,6 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // noteTitleDataGridViewTextBoxColumn
-            // 
-            this.noteTitleDataGridViewTextBoxColumn.DataPropertyName = "Note_Title";
-            this.noteTitleDataGridViewTextBoxColumn.HeaderText = "Note_Title";
-            this.noteTitleDataGridViewTextBoxColumn.Name = "noteTitleDataGridViewTextBoxColumn";
-            this.noteTitleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // noteContentDataGridViewTextBoxColumn
-            // 
-            this.noteContentDataGridViewTextBoxColumn.DataPropertyName = "Note_Content";
-            this.noteContentDataGridViewTextBoxColumn.HeaderText = "Note_Content";
-            this.noteContentDataGridViewTextBoxColumn.Name = "noteContentDataGridViewTextBoxColumn";
-            this.noteContentDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // class1BindingSource
-            // 
-            this.class1BindingSource.DataSource = typeof(note_app2.Class1);
-            // 
             // dataGridView2
             // 
             this.dataGridView2.AllowDrop = true;
@@ -220,32 +202,14 @@
             this.noteTitleDataGridViewTextBoxColumn1,
             this.noteContentDataGridViewTextBoxColumn1});
             this.dataGridView2.DataSource = this.class2BindingSource2;
-            this.dataGridView2.Location = new System.Drawing.Point(256, 137);
+            this.dataGridView2.Location = new System.Drawing.Point(234, 133);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(528, 119);
+            this.dataGridView2.Size = new System.Drawing.Size(766, 119);
             this.dataGridView2.TabIndex = 9;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // noteTitleDataGridViewTextBoxColumn1
-            // 
-            this.noteTitleDataGridViewTextBoxColumn1.DataPropertyName = "Note_Title";
-            this.noteTitleDataGridViewTextBoxColumn1.HeaderText = "Note_Title";
-            this.noteTitleDataGridViewTextBoxColumn1.Name = "noteTitleDataGridViewTextBoxColumn1";
-            this.noteTitleDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // noteContentDataGridViewTextBoxColumn1
-            // 
-            this.noteContentDataGridViewTextBoxColumn1.DataPropertyName = "Note_Content";
-            this.noteContentDataGridViewTextBoxColumn1.HeaderText = "Note_Content";
-            this.noteContentDataGridViewTextBoxColumn1.Name = "noteContentDataGridViewTextBoxColumn1";
-            this.noteContentDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // class2BindingSource2
-            // 
-            this.class2BindingSource2.DataSource = typeof(note_app2.Class2);
             // 
             // BtSettings
             // 
@@ -399,28 +363,15 @@
             this.noteContentDataGridViewTextBoxColumn2,
             this.From});
             this.dataGridView3.DataSource = this.class3BindingSource;
-            this.dataGridView3.Location = new System.Drawing.Point(234, 139);
+            this.dataGridView3.Location = new System.Drawing.Point(234, 133);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView3.Size = new System.Drawing.Size(538, 117);
+            this.dataGridView3.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dataGridView3.Size = new System.Drawing.Size(779, 117);
             this.dataGridView3.TabIndex = 10;
-            // 
-            // noteTitleDataGridViewTextBoxColumn2
-            // 
-            this.noteTitleDataGridViewTextBoxColumn2.DataPropertyName = "Note_Title";
-            this.noteTitleDataGridViewTextBoxColumn2.HeaderText = "Note_Title";
-            this.noteTitleDataGridViewTextBoxColumn2.Name = "noteTitleDataGridViewTextBoxColumn2";
-            this.noteTitleDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // noteContentDataGridViewTextBoxColumn2
-            // 
-            this.noteContentDataGridViewTextBoxColumn2.DataPropertyName = "Note_Content";
-            this.noteContentDataGridViewTextBoxColumn2.HeaderText = "Note_Content";
-            this.noteContentDataGridViewTextBoxColumn2.Name = "noteContentDataGridViewTextBoxColumn2";
-            this.noteContentDataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // From
             // 
@@ -428,10 +379,6 @@
             this.From.HeaderText = "From";
             this.From.Name = "From";
             this.From.ReadOnly = true;
-            // 
-            // class3BindingSource
-            // 
-            this.class3BindingSource.DataSource = typeof(note_app2.Class3);
             // 
             // dataGridView4
             // 
@@ -459,46 +406,14 @@
             this.numbersofpublicnotesDataGridViewTextBoxColumn});
             this.dataGridView4.DataSource = this.class6BindingSource;
             this.dataGridView4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dataGridView4.Location = new System.Drawing.Point(246, 133);
+            this.dataGridView4.Location = new System.Drawing.Point(234, 118);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.ReadOnly = true;
             this.dataGridView4.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView4.RowHeadersVisible = false;
             this.dataGridView4.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView4.Size = new System.Drawing.Size(538, 150);
+            this.dataGridView4.Size = new System.Drawing.Size(630, 150);
             this.dataGridView4.TabIndex = 0;
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // numbersofnotesDataGridViewTextBoxColumn
-            // 
-            this.numbersofnotesDataGridViewTextBoxColumn.DataPropertyName = "Numbers_of_notes";
-            this.numbersofnotesDataGridViewTextBoxColumn.HeaderText = "Numbers_of_notes";
-            this.numbersofnotesDataGridViewTextBoxColumn.Name = "numbersofnotesDataGridViewTextBoxColumn";
-            this.numbersofnotesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // numbersofsharednotesDataGridViewTextBoxColumn
-            // 
-            this.numbersofsharednotesDataGridViewTextBoxColumn.DataPropertyName = "Numbers_of_shared_notes";
-            this.numbersofsharednotesDataGridViewTextBoxColumn.HeaderText = "Numbers_of_shared_notes";
-            this.numbersofsharednotesDataGridViewTextBoxColumn.Name = "numbersofsharednotesDataGridViewTextBoxColumn";
-            this.numbersofsharednotesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // numbersofpublicnotesDataGridViewTextBoxColumn
-            // 
-            this.numbersofpublicnotesDataGridViewTextBoxColumn.DataPropertyName = "Numbers_of_public_notes";
-            this.numbersofpublicnotesDataGridViewTextBoxColumn.HeaderText = "Numbers_of_public_notes";
-            this.numbersofpublicnotesDataGridViewTextBoxColumn.Name = "numbersofpublicnotesDataGridViewTextBoxColumn";
-            this.numbersofpublicnotesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // class6BindingSource
-            // 
-            this.class6BindingSource.DataSource = typeof(note_app2.Class6);
             // 
             // panel6
             // 
@@ -509,7 +424,7 @@
             this.panel6.Controls.Add(this.textBox2);
             this.panel6.Controls.Add(this.label2);
             this.panel6.Controls.Add(this.textBox1);
-            this.panel6.Location = new System.Drawing.Point(494, 118);
+            this.panel6.Location = new System.Drawing.Point(429, 93);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(262, 288);
             this.panel6.TabIndex = 21;
@@ -580,8 +495,94 @@
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
             this.panel2.Location = new System.Drawing.Point(178, 93);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(877, 432);
+            this.panel2.Size = new System.Drawing.Size(877, 403);
             this.panel2.TabIndex = 23;
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // numbersofnotesDataGridViewTextBoxColumn
+            // 
+            this.numbersofnotesDataGridViewTextBoxColumn.DataPropertyName = "Numbers_of_notes";
+            this.numbersofnotesDataGridViewTextBoxColumn.HeaderText = "Numbers_of_notes";
+            this.numbersofnotesDataGridViewTextBoxColumn.Name = "numbersofnotesDataGridViewTextBoxColumn";
+            this.numbersofnotesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // numbersofsharednotesDataGridViewTextBoxColumn
+            // 
+            this.numbersofsharednotesDataGridViewTextBoxColumn.DataPropertyName = "Numbers_of_shared_notes";
+            this.numbersofsharednotesDataGridViewTextBoxColumn.HeaderText = "Numbers_of_shared_notes";
+            this.numbersofsharednotesDataGridViewTextBoxColumn.Name = "numbersofsharednotesDataGridViewTextBoxColumn";
+            this.numbersofsharednotesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // numbersofpublicnotesDataGridViewTextBoxColumn
+            // 
+            this.numbersofpublicnotesDataGridViewTextBoxColumn.DataPropertyName = "Numbers_of_public_notes";
+            this.numbersofpublicnotesDataGridViewTextBoxColumn.HeaderText = "Numbers_of_public_notes";
+            this.numbersofpublicnotesDataGridViewTextBoxColumn.Name = "numbersofpublicnotesDataGridViewTextBoxColumn";
+            this.numbersofpublicnotesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // class6BindingSource
+            // 
+            this.class6BindingSource.DataSource = typeof(note_app2.Class6);
+            // 
+            // noteTitleDataGridViewTextBoxColumn2
+            // 
+            this.noteTitleDataGridViewTextBoxColumn2.DataPropertyName = "Note_Title";
+            this.noteTitleDataGridViewTextBoxColumn2.HeaderText = "Note_Title";
+            this.noteTitleDataGridViewTextBoxColumn2.Name = "noteTitleDataGridViewTextBoxColumn2";
+            this.noteTitleDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // noteContentDataGridViewTextBoxColumn2
+            // 
+            this.noteContentDataGridViewTextBoxColumn2.DataPropertyName = "Note_Content";
+            this.noteContentDataGridViewTextBoxColumn2.HeaderText = "Note_Content";
+            this.noteContentDataGridViewTextBoxColumn2.Name = "noteContentDataGridViewTextBoxColumn2";
+            this.noteContentDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // class3BindingSource
+            // 
+            this.class3BindingSource.DataSource = typeof(note_app2.Class3);
+            // 
+            // noteTitleDataGridViewTextBoxColumn1
+            // 
+            this.noteTitleDataGridViewTextBoxColumn1.DataPropertyName = "Note_Title";
+            this.noteTitleDataGridViewTextBoxColumn1.HeaderText = "Note_Title";
+            this.noteTitleDataGridViewTextBoxColumn1.Name = "noteTitleDataGridViewTextBoxColumn1";
+            this.noteTitleDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // noteContentDataGridViewTextBoxColumn1
+            // 
+            this.noteContentDataGridViewTextBoxColumn1.DataPropertyName = "Note_Content";
+            this.noteContentDataGridViewTextBoxColumn1.HeaderText = "Note_Content";
+            this.noteContentDataGridViewTextBoxColumn1.Name = "noteContentDataGridViewTextBoxColumn1";
+            this.noteContentDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // class2BindingSource2
+            // 
+            this.class2BindingSource2.DataSource = typeof(note_app2.Class2);
+            // 
+            // noteTitleDataGridViewTextBoxColumn
+            // 
+            this.noteTitleDataGridViewTextBoxColumn.DataPropertyName = "Note_Title";
+            this.noteTitleDataGridViewTextBoxColumn.HeaderText = "Note_Title";
+            this.noteTitleDataGridViewTextBoxColumn.Name = "noteTitleDataGridViewTextBoxColumn";
+            this.noteTitleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // noteContentDataGridViewTextBoxColumn
+            // 
+            this.noteContentDataGridViewTextBoxColumn.DataPropertyName = "Note_Content";
+            this.noteContentDataGridViewTextBoxColumn.HeaderText = "Note_Content";
+            this.noteContentDataGridViewTextBoxColumn.Name = "noteContentDataGridViewTextBoxColumn";
+            this.noteContentDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // class1BindingSource
+            // 
+            this.class1BindingSource.DataSource = typeof(note_app2.Class1);
             // 
             // class2BindingSource1
             // 
@@ -611,18 +612,18 @@
             this.Load += new System.EventHandler(this.Form2_Load);
             this.Click += new System.EventHandler(this.Form2_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.class1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.class2BindingSource2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.class3BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.class6BindingSource)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.class6BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.class3BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.class2BindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.class1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.class2BindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.class2BindingSource)).EndInit();
             this.ResumeLayout(false);
