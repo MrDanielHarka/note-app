@@ -24,7 +24,7 @@ editor:
 
 Simple note taking for anybody.
 
-**[note-app.harka.com](https://the-note-app.herokuapp.com)**
+**[note-app.harka.com](https://note-app.harka.com)**
 
 ---
 
