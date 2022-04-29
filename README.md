@@ -4,7 +4,7 @@ A simple and minimalistic note taking app.
 
 ## Resources
 
-### [Website](https://the-simple-notes.web.app)
+### [Website](https://the-note-app.herokuapp.com)
 
 Mostly in English with some Hungarian content.
 

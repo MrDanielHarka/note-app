@@ -40,33 +40,11 @@ export class SettingsComponent implements OnInit {
           this.userService.email = this.settingsForm.value.email;
           this.userService.firstName = this.settingsForm.value.firstname;
           this.userService.lastName = this.settingsForm.value.lastname;
-          this.message = 'Settings saved successfully.';
+          this.message = 'Settings saved successfully!';
           console.log(this.userService);
         }
       });
   }
-
-  // onSubmit() {
-  //   if (this.settingsForm.value.currentPassword === this.userService.password) {
-  //     this.userData.firstName = this.settingsForm.value.firstname;
-  //     this.userService.firstName = this.settingsForm.value.firstname;
-  //     this.userData.lastName = this.settingsForm.value.lastname;
-  //     this.userService.lastName = this.settingsForm.value.lastname;
-  //     this.userData.email = this.settingsForm.value.email;
-  //     this.userService.email = this.settingsForm.value.email;
-  //     if (this.settingsForm.value.newPassword !== '') {
-  //       this.userData.password = this.settingsForm.value.newPassword;
-  //       this.userService.password = this.settingsForm.value.newPassword;
-  //     }
-  //     this.settingsService.onUpdateSettings(this.userData);
-
-  //     // this.settingsForm.reset();
-  //   } else {
-  //     console.log('Wrong password.');
-  //   }
-  //   console.log(this.userData);
-  //   console.log(this.userService);
-  // }
 
   constructor(
     public userService: UserService,

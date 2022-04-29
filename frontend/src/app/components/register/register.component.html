@@ -100,9 +100,9 @@
         </button>
       </div>
     </form>
-    {{ message }}
+    <div class="centered-text red-text">{{ message }}</div>
   </div>
-  <div *ngIf="submitted">
-    <b>Success! You can now log in.</b>
+  <div *ngIf="submitted" class="centered-text">
+    Success! You can now log in.
   </div>
 </mat-card>

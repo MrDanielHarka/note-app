@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { UserNote } from 'src/app/models/UserNote';
 import { NoteService } from 'src/app/services/note.service';
 import { UserService } from 'src/app/services/user.service';
@@ -38,14 +37,12 @@ export class NoteComponent implements OnInit {
 
   constructor(
     public userService: UserService,
-    private noteService: NoteService,
-    private router: Router
+    private noteService: NoteService
   ) {}
 
   getUserNotes() {
     this.noteService.onGetUserNotes(this.userService).subscribe((response) => {
       this.userNotes = response;
-      // console.log(this.userNotes);
     });
   }
 
@@ -56,9 +53,7 @@ export class NoteComponent implements OnInit {
 
   onNewNote() {
     console.log('Note added.');
-    this.noteService.onNoteAdded(this.newNote).subscribe((response) => {
-      // this.userNotes = response;
-    });
+    this.noteService.onNoteAdded(this.newNote).subscribe((response) => {});
     setTimeout(() => {
       this.newNote.title = '';
       this.newNote.content = '';
@@ -85,7 +80,6 @@ export class NoteComponent implements OnInit {
 
   onDeleteNote(noteIndex: number) {
     this.noteService.onDeleteNote(this.userNotes[noteIndex]);
-    // this.getUserNotes();
     setTimeout(() => {
       this.ngOnInit();
     }, 500);

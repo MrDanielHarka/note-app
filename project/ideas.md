@@ -29,6 +29,7 @@ A note (taking) app for...
 - recruiters (on laptop)
 - teachers (on tablet)
 - couriers (on phone)
+- anybody
 
 README mindegyik almappához GitHub-on.
 Screen recording.
@@ -57,13 +58,3 @@ PPT-be:
 Open programs: VSCode, MySQL, Homepage, Recorder
 
 Open tabs: MarkShow, Note App, Code, phpMyAdmin
-
-## Random
-
-- contributing
-  - How about contribution?
-  - What about contributing?
-  - How to contribute?
-
-- settings / same email error
-

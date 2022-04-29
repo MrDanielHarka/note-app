@@ -1,63 +1,83 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
-const mysql = require('mysql');
-const mysqlCredentials = require('./mysql-credentials');
-const bodyParser = require('body-parser');
+const path = require('path');
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
-const cors = require('cors');
-const corsOptions = { origin: '*' };
-
-const con = mysql.createConnection({
+const cors = require('cors')({ origin: '*' });
+const mysql = require('mysql');
+const mysqlCredentials = require('./mysql-credentials');
+const pool = mysql.createPool({
+  connectionLimit: 10,
   host: mysqlCredentials.host,
   user: mysqlCredentials.user,
   password: mysqlCredentials.password,
   database: mysqlCredentials.database,
 });
 
-con.connect(function (err) {
-  if (err) throw err;
-  console.log('Connected to database.');
+app.use(express.json());
+app.use(express.static('public'));
+app.use(cors);
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
-app.use(express.json());
-app.use(cors(corsOptions));
+app.get('/stats', (req, res) => {
+  userQuery = `SELECT COUNT(*) FROM users;`;
+  noteQuery = `SELECT COUNT(*) FROM notes;`;
+  let stats = {
+    users: 0,
+    notes: 0,
+  };
 
-app.post('/user-notes', (req, res, next) => {
-  console.log(req.body.userId);
+  pool.query(userQuery, (err, result) => {
+    if (err) throw err;
+    stats.users = result[0]['COUNT(*)'];
+  });
+
+  pool.query(noteQuery, (err, result) => {
+    if (err) throw err;
+    stats.notes = result[0]['COUNT(*)'];
+  });
+
+  setTimeout(() => {
+    res.status(200).json(stats);
+  }, 1000);
+});
+
+app.post('/user-notes', (req, res) => {
   userId = req.body.userId;
-  console.log(userId);
   query = `SELECT * FROM notes WHERE user_id = '${req.body.userId}' ORDER BY note_id DESC;`;
 
-  con.query(query, (err, result) => {
+  pool.query(query, (err, result) => {
     if (err) throw err;
-    console.log(result);
     res.status(200).json(result);
   });
-  // return res.send(req.body).status(200);
 });
 
 app.post('/new-note', (req, res) => {
-  console.log((userObject = req.body));
   userId = req.body.userId;
   title = req.body.title;
   content = req.body.content;
   public = req.body.isPublic;
+  shared = 0;
 
   query = `INSERT INTO notes
-  (note_id, user_id, title, content, public)
-  VALUES (?, ?, ?, ?, ?);`;
+  (note_id, user_id, title, content, public, shared)
+  VALUES (?, ?, ?, ?, ?, ?);`;
 
-  con.query(query, [null, userId, title, content, public], (err, rows) => {
-    if (err) throw err;
-    console.log('Note added.');
-  });
+  pool.query(
+    query,
+    [null, userId, title, content, public, shared],
+    (err, rows) => {
+      if (err) throw err;
+    }
+  );
   return res.send(req.body).status(200);
 });
 
 app.put('/update-note', (req, res) => {
-  console.log(req.body);
   noteId = req.body.note_id;
   userId = req.body.user_id;
   title = req.body.title;
@@ -74,16 +94,14 @@ app.put('/update-note', (req, res) => {
   WHERE note_id = ${noteId}
   `;
 
-  con.query(query, (err, result) => {
+  pool.query(query, (err, result) => {
     if (err) throw err;
-    console.log(result);
-    // console.log(result[0].password);
-    return res.status(201).json('Note saved successfully.');
+
+    return res.status(201).json('Note saved successfully!');
   });
 });
 
 app.put('/delete-note', (req, res) => {
-  console.log(req.body);
   noteId = req.body.note_id;
 
   query = `
@@ -91,22 +109,19 @@ app.put('/delete-note', (req, res) => {
   WHERE note_id = ${noteId}
   `;
 
-  con.query(query, (err, result) => {
+  pool.query(query, (err, result) => {
     if (err) throw err;
-    console.log(result);
-    return res.status(201).json('Note deleted successfully.');
+    return res.status(201).json('Note deleted successfully!');
   });
 });
 
-app.get('/public-notes', (req, res, next) => {
+app.get('/public-notes', (req, res) => {
   query = `SELECT * FROM notes WHERE public = '1' ORDER BY note_id DESC;`;
 
-  con.query(query, (err, result) => {
+  pool.query(query, (err, result) => {
     if (err) throw err;
-    console.log(result[0]);
     res.status(200).json(result);
   });
-  // return res.send(req.body).status(200);
 });
 
 app.post('/register', async (req, res) => {
@@ -118,14 +133,13 @@ app.post('/register', async (req, res) => {
   query = `INSERT INTO users (id, email, password, first_name, last_name)
   VALUES (null, '${email}', '${hash}', '${firstName}', '${lastName}')`;
 
-  con.query(query, (err) => {
+  pool.query(query, (err) => {
     if (err) {
       if (err.code == 'ER_DUP_ENTRY' || err.errno == 1062) {
         res.status(200).send(`{
-            "message": "This email address is already registered."
+            "message": "This email address is already registered!"
           }`);
       } else {
-        console.log('Other error in the query');
       }
     } else {
       res.status(200).send(`{
@@ -137,7 +151,6 @@ app.post('/register', async (req, res) => {
 
 app.post('/login', async (req, res) => {
   try {
-    console.log((userObject = req.body));
     email = req.body.email;
     password = req.body.password;
     let user;
@@ -146,24 +159,17 @@ app.post('/login', async (req, res) => {
   FROM users
   WHERE email = '${email}'`;
 
-    con.query(query, async (err, result) => {
+    pool.query(query, async (err, result) => {
       if (err) throw err;
-      // console.log(result);
-      // console.log(result[0].password);
-      // return res.status(201).json(result[0]);
       this.user = result[0];
       if (this.user) {
-        console.log(this.user);
         const validPassword = await bcrypt.compare(
           password,
           this.user.password
         );
-        console.log(password);
-        console.log(this.user.password);
-        console.log(validPassword);
         if (validPassword) {
           res.status(200).send(`{
-            "message": "Valid email and password.",
+            "message": "Valid email and password!",
             "userId": "${this.user.id}",
             "email": "${this.user.email}",
             "firstName": "${this.user.first_name}",
@@ -172,27 +178,24 @@ app.post('/login', async (req, res) => {
           }`);
         } else {
           res.status(200).send(`{
-            "message": "Invalid password."
+            "message": "Invalid password! Recovery email can be sent to the-note-app@harka.com from this exact user email for a temporary password!"
           }`);
         }
       } else {
-        console.log(this.user);
         res.status(200).send(`{
-            "message": "Invalid email."
+            "message": "Invalid email!"
           }`);
       }
     });
   } catch (e) {
-    console.log(e);
     res.status(200).send(`{
-            "message": "Something broke."
+            "message": "Something broke!"
           }`);
   }
 });
 
-app.put('/settings', bodyParser.json(), async (req, res) => {
+app.put('/settings', async (req, res) => {
   try {
-    console.log((userObject = req.body));
     userId = req.body.userId;
     email = req.body.email;
     firstName = req.body.firstName;
@@ -206,21 +209,14 @@ app.put('/settings', bodyParser.json(), async (req, res) => {
   FROM users
   WHERE id = '${userId}'`;
 
-    con.query(query, async (err, result) => {
+    pool.query(query, async (err, result) => {
       if (err) throw err;
-      // console.log(result);
-      // console.log(result[0].password);
-      // return res.status(201).json(result[0]);
       this.user = result[0];
       if (this.user) {
-        console.log(this.user);
         const validPassword = await bcrypt.compare(
           currentPassword,
           this.user.password
         );
-        console.log(newPasswordHash);
-        console.log(this.user.password);
-        console.log(validPassword);
         if (validPassword) {
           query = `
           UPDATE users
@@ -231,153 +227,28 @@ app.put('/settings', bodyParser.json(), async (req, res) => {
               last_name = '${lastName}'
           WHERE id = ${userId}`;
 
-          con.query(query, (err, result) => {
+          pool.query(query, (err, result) => {
             if (err) throw err;
-            console.log(result);
-            // console.log(result[0].password);
             res.status(200).send(`{
-            "success": "Settings saved successfully."
+            "success": "Settings saved successfully!"
           }`);
           });
-
-          // res.status(200).send(`{
-          //   "message": "Valid email and password.",
-          //   "userId": "${this.user.id}",
-          //   "email": "${this.user.email}",
-          //   "firstName": "${this.user.first_name}",
-          //   "lastName": "${this.user.last_name}",
-          //   "isLoggedIn": "${true}"
-          // }`);
         } else {
           res.status(200).send(`{
-            "message": "Invalid password."
+            "message": "Invalid password!"
           }`);
         }
       } else {
-        console.log(this.user);
         res.status(200).send(`{
-            "message": "Invalid email."
+            "message": "Invalid email!"
           }`);
       }
     });
   } catch (e) {
-    console.log(e);
     res.status(200).send(`{
-            "message": "Something broke."
+            "message": "Something broke!"
           }`);
   }
 });
 
-app.listen(port, () => console.log(`Listening on ${port}.`));
-
-// app.get('/login', bodyParser.json(), (req, res) => {
-//   console.log('Get request received.');
-//   con.connect(function (err) {
-//     if (err) throw err;
-//     query = `SELECT * FROM users`;
-//     con.query(query, [null, email, password], (err, result) => {
-//       if (err) throw err;
-//       console.log(result);
-//     });
-//   });
-
-//   console.log((userObject = req.body));
-//   email = req.body.email;
-//   password = req.body.password;
-//   query = `INSERT INTO users
-//         (id, email, password) VALUES (?, ?, ?);`;
-
-//   con.query(query, [null, email, password], (err, rows) => {
-//     if (err) throw err;
-//     console.log('User added.');
-//   });
-//   return res.send(req.body).status(200);
-// });
-
-// app.post('/login', bodyParser.json(), (req, res) => {
-//   console.log((userObject = req.body));
-//   email = req.body.email;
-//   password = req.body.password;
-//   query = `
-//   SELECT *
-//   FROM users
-//   WHERE email = '${email}'`;
-
-//   con.query(query, (err, result) => {
-//     if (err) throw err;
-//     console.log(result);
-//     // console.log(result[0].password);
-//     return res.status(201).json(result[0]);
-//   });
-// });
-
-// app.post('/register', bodyParser.json(), (req, res) => {
-//   firstName = req.body.firstName;
-//   lastName = req.body.lastName;
-//   email = req.body.email;
-//   password = req.body.password;
-//   query = `INSERT INTO users (id, email, password, first_name, last_name)
-//   VALUES (null, '${email}', '${password}', '${firstName}', '${lastName}')`;
-
-//   // try {
-//   //   con.query(query, (err, rows) => {
-//   //     if (err) throw err;
-//   //     console.log('User added.');
-//   //   });
-//   //   return res.send(req.body).status(201);
-//   // } catch (error) {
-//   //   console.error(error);
-//   // }
-
-//   con.query(query, (err) => {
-//     if (err) throw err;
-//     console.log('User added.');
-//   });
-//   return res.send(req.body).status(201);
-// });
-
-// app.post('/register', bodyParser.json(), async (req, res) => {
-//   try {
-//     firstName = req.body.firstName;
-//     lastName = req.body.lastName;
-//     email = req.body.email;
-//     password = req.body.password;
-//     hash = await bcrypt.hash(password, saltRounds);
-//     query = `INSERT INTO users (id, email, password, first_name, last_name)
-//   VALUES (null, '${email}', '${hash}', '${firstName}', '${lastName}')`;
-
-//     con.query(query, (err) => {
-//       if (err) throw err;
-//       console.log('User added.');
-//     });
-//     return res.send(req.body).status(201);
-//   } catch (e) {
-//     console.log(e);
-//     res.status(500).send('Something broke.');
-//   }
-// });
-
-// app.put('/settings', bodyParser.json(), (req, res) => {
-//   console.log(req.body);
-//   userId = req.body.userId;
-//   email = req.body.email;
-//   password = req.body.password;
-//   firstName = req.body.firstName;
-//   lastName = req.body.lastName;
-
-//   query = `
-//   UPDATE users
-//   SET id = ${userId},
-//       email = '${email}',
-//       password = '${password}',
-//       first_name = '${firstName}',
-//       last_name = '${lastName}'
-//   WHERE id = ${userId}`;
-
-//   con.query(query, (err, result) => {
-//     if (err) throw err;
-//     console.log(result);
-//     // console.log(result[0].password);
-//     return res.status(201).json('Settings saved successfully.');
-//   });
-// });
+app.listen(port, () => console.log(`App is running on ${port}.`));

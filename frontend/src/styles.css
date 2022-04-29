@@ -95,3 +95,19 @@ input.example-right-align::-webkit-inner-spin-button {
 input.example-right-align {
   -moz-appearance: textfield;
 }
+
+.centered-text {
+  text-align: center;
+}
+
+.red-text {
+  color: red;
+}
+
+.statistic-card {
+  text-align: center;
+}
+
+.statistic-number {
+  font-size: 1.5rem;
+}
