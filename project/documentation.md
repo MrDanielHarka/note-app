@@ -23,7 +23,6 @@ This is the documentation of the Note App.
   - [Frontend](#frontend)
   - [Backend](#backend)
   - [Desktop](#desktop)
-  - [Resources](#resources)
 - [How was it tested?](#testing)
 
   - [Web app testing](#web-testing)
@@ -35,13 +34,13 @@ This is the documentation of the Note App.
 - [Where was it created?](#where-created)
 - [When was it developed?](#when-developed)
 - [Who helped?](#who-helped)
-- [What are the sources?](#sources)
+- [What were the resources?](#resources)
 
 ## What is this? <a id="what-is-this"></a>
 
 Here is some basic, TLDR information about the project.
 
-Random labels: Rest API, CRUD app, HTTP, JavaScript, TypeScript, Angular, requests, promises, observable, responsive, Cypress
+Random labels: Rest API, CRUD app, HTTP, JavaScript, TypeScript, Angular, requests, promises, observable, responsive, Cypress, C#
 
 ### Introduction <a id="introduction"></a>
 
@@ -574,8 +573,6 @@ using System.IO;
 
 Jozsef carried out this part. Lalalaaaa.
 
-### Resources <a id="resources"></a>
-
 ## How was it tested? <a id="testing"></a>
 
 ### Web app testing <a id="web-testing"></a>
@@ -640,6 +637,12 @@ Special thanks to Róbertné Csilla Dobrocsi, István Bencze, Csaba Kecskeméti 
 [Top ↑](#top)
 
 ## What are the sources? <a id="sources"></a>
+
+**Software**
+
+Visual Studio Code, Visual Studio 2019 Community, XAMPP, phpMyAdmin, Vivaldi Browser, Google Chrome, Git, GitHub, Microsoft Teams, DIscord, Facebook/Messenger.
+
+**Literature**
 
 Tools used:
 

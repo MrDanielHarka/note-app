@@ -18,8 +18,6 @@ export class WelcomeComponent implements OnInit {
   getPublicStats() {
     this.getStats().subscribe((response) => {
       this.stats = response;
-      console.log(response);
-      console.log(this.stats);
     });
   }
 

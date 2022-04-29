@@ -2,6 +2,26 @@
 
 **A Note App elkészítésének a jegyzetei.**
 
+
+
+## 2022.04.26.
+
+- személyes bemutatkozás
+
+- kicsit szakmaibb C#
+
+- admin jogosultság lesz
+
+- valamelyik teszt lehet papíron lesz
+
+- prezentáción lehet saját gépet hozni
+
+- tesztelés
+
+- önértékelés
+
+- UML diagram
+
 ## 2022.03.21.
 
 - email login mysql error

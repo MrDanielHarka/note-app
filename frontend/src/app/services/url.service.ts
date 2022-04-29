@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UrlService {
-  // serverUrl = 'http://localhost:5000';
-  serverUrl = '.';
+  serverUrl = 'http://localhost:5000';
+  // serverUrl = '.';
 
   constructor() {}
 }

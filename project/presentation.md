@@ -30,7 +30,8 @@ A note taking app for anybody.
 
 ### Bevezetés
 
-- Mi?
+- Kik?
+- Mit?
 - Miért?
 - Hogyan?
 
@@ -44,6 +45,7 @@ Note:
 
 ## Introduction
 
+- Who?
 - What?
 - Why?
 - How?
@@ -58,19 +60,6 @@ Note:
 
 ---
 
-## Előkészületek
-
-- **Téma:** Jegyzetek, cetlik, notes(z)
-  <br><br>
-- **Ötletelés:** Feladatelosztás, határidők, drótváz
-  <br><br>
-- **Git(Hub):** Verziókezelés és csapatmunka
-
-Note:  
-**Kb. 19:00-ig**
-
----
-
 ## Asztali app
 
 - **Template:** Windows Forms App (.NET Framework)
@@ -80,7 +69,7 @@ Note:
 - **Using-ok:** System, System.Collections.Generic, System.ComponentModel, System.Data, System.Drawing, System.Linq, System.Text, System.Threading.Tasks, System.Windows.Forms, MySql.Data.MySqlClient
 
 Note:  
-**Max 10:00-ig**
+**Kb 18:00-ig**
 
 ---
 
@@ -88,30 +77,19 @@ Note:
 
 - **Frontend:** JavaScript, TypeScript, Angular, RXJS, HTTP, Material Design
   <br><br>
-- **Backend:** NodeJS, JavaScript, Express, CORS, Bcrypt, JSON
+- **Backend:** Node.js, JavaScript, Express, Bcrypt, JSON
   <br><br>
 - **Adatbázis:** MySQL, phpMyAdmin
 
 Note:  
-**Max 10:00-ig**
-
-- Our roles in the project
-- Introducing the projectfdgfdg
-- What was the goal?
-- What were the tasks?
-  dfgfd
+**Max 16:00-ig**
 
 ---
 
 ## Összefoglalás
 
 Több info:
-[GitHub](https://github.com/MrDanielHarka/the-note-app)
+**[GitHub](https://github.com/MrDanielHarka/the-note-app)**
 
 Note:  
-**Max 10:00-ig**
-
-- Our roles in the project
-- Introducing the project
-- What was the goal?dfgfdg
-- What were the tasks?
+**Max 30:00-ig**
