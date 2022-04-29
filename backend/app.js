@@ -183,7 +183,7 @@ app.post('/login', async (req, res) => {
         }
       } else {
         res.status(200).send(`{
-            "message": "Invalid email!"
+            "message": "Email not registered!"
           }`);
       }
     });
