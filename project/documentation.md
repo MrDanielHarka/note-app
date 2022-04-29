@@ -24,7 +24,6 @@ This is the documentation of the Note App.
   - [Backend](#backend)
   - [Desktop](#desktop)
 - [How was it tested?](#testing)
-
   - [Web app testing](#web-testing)
   - [Desktop app testing](#desktop-testing)
 - [What are the limitations?](#limitations)
@@ -225,11 +224,10 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-note', // This is how the component is accessed.
   templateUrl: './note.component.html', // This is the component's view.
-  styleUrls: ['./note.components.css'], // This is the component's style. 
+  styleUrls: ['./note.components.css'], // This is the component's style.
 })
 
 // This part determined the logic of the component.
-
 export class NoteComponent implements OnInit {
   public userNotes: any;
   isCreatingNewNote = false;
@@ -241,8 +239,8 @@ export class NoteComponent implements OnInit {
     }
   }
 
-// This is the structure of a new note.    
-    
+  // This is the structure of a new note.
+
   newNote: UserNote = {
     noteId: 0,
     userId: this.userService.userId,
@@ -250,8 +248,8 @@ export class NoteComponent implements OnInit {
     content: '',
     isPublic: 0,
   };
-    
-// This is the structure of an updated note.
+
+  // This is the structure of an updated note.
 
   updateNote: UserNote = {
     noteId: 0,
@@ -260,16 +258,16 @@ export class NoteComponent implements OnInit {
     content: '',
     isPublic: 1,
   };
-    
-// The used dependencies are put in the constructor, so no instantiation is needed and our component can use the services.
+
+  // The used dependencies are put in the constructor, so no instantiation is needed and our component can use the services.
 
   constructor(
     public userService: UserService,
     private noteService: NoteService,
     private router: Router
   ) {}
-    
-// This part is needed to get the user notes from the backend.
+
+  // This part is needed to get the user notes from the backend.
 
   getUserNotes() {
     this.noteService.onGetUserNotes(this.userService).subscribe((response) => {
@@ -277,8 +275,8 @@ export class NoteComponent implements OnInit {
       // console.log(this.userNotes);
     });
   }
-    
-// This code runs, when a new note is created.
+
+  // This code runs, when a new note is created.
 
   onFormSubmit(event: any) {
     event.preventDefault();
@@ -297,8 +295,8 @@ export class NoteComponent implements OnInit {
       this.isCreatingNewNote = false;
     }, 500);
   }
-    
- // This code runs, when a note is edited.
+
+  // This code runs, when a note is edited.
 
   onUpdateNote(noteIndex: number) {
     console.log(noteIndex);
@@ -306,8 +304,8 @@ export class NoteComponent implements OnInit {
     console.log(this.userNotes[noteIndex]);
     this.noteService.onUpdateNote(this.userNotes[noteIndex]);
   }
-    
- // This code runs, when the note's public status is toggled.
+
+  // This code runs, when the note's public status is toggled.
 
   onToggleSharing(noteIndex: number) {
     if (this.userNotes[noteIndex].public === 1) {
@@ -317,9 +315,9 @@ export class NoteComponent implements OnInit {
     }
     this.noteService.onUpdateNote(this.userNotes[noteIndex]);
   }
-    
-// This code runs, when a note is deleted.
-    
+
+  // This code runs, when a note is deleted.
+
   onDeleteNote(noteIndex: number) {
     this.noteService.onDeleteNote(this.userNotes[noteIndex]);
     // this.getUserNotes();
@@ -328,14 +326,13 @@ export class NoteComponent implements OnInit {
     }, 500);
   }
 
-// This code runs once, when our component loads.
-    
+  // This code runs once, when our component loads.
+
   ngOnInit(): void {
     this.getUserNotes();
     this.isCreatingNewNote = false;
   }
 }
-
 ```
 
 Services are special type of components, that are widely available within the application and are accessible by all of the components. Those usually contain shared information and logic, that multiple components need and rely on to be able to function correctly.
@@ -369,12 +366,11 @@ import { UrlService } from './url.service';
 })
 
 // The class is exported, so other components can use it.
-
 export class NoteService {
   constructor(private httpClient: HttpClient, private urlService: UrlService) {}
 
- // This part gets the user notes, that are already in the database.
-    
+  // This part gets the user notes, that are already in the database.
+
   public onGetUserNotes(user: User) {
     return this.httpClient.post(
       `${this.urlService.serverUrl}/user-notes`,
@@ -385,8 +381,8 @@ export class NoteService {
     );
   }
 
- // This code runs when a new note is added.
-    
+  // This code runs when a new note is added.
+
   public onNoteAdded(newNote: UserNote) {
     return this.httpClient.post(
       `${this.urlService.serverUrl}/new-note`,
@@ -396,9 +392,9 @@ export class NoteService {
       }
     );
   }
-    
-// This is needed for when a note is updated by a user.
-    
+
+  // This is needed for when a note is updated by a user.
+
   public onUpdateNote(updateData: UserNote) {
     this.httpClient
       .put(`${this.urlService.serverUrl}/update-note`, updateData, {
@@ -409,8 +405,8 @@ export class NoteService {
         return updateData;
       });
   }
-    
- // This one runs, when a note is deleted.
+
+  // This one runs, when a note is deleted.
 
   public onDeleteNote(noteId: number) {
     this.httpClient
@@ -431,21 +427,21 @@ The styling and design of the web app could have been a downloadable, ready-made
 
 ```html
 <mat-form-field class="card-full-width">
-    <mat-label>Password</mat-label>
-    <br />
-    <input
-           type="password"
-           name="password"
-           id="password"
-           ngModel
-           #password
-           matInput
-           password
-           required
-           minlength="6"
-           />
-    <mat-hint>Enter password</mat-hint>
-    <mat-error>It must be over 5 characters</mat-error>
+  <mat-label>Password</mat-label>
+  <br />
+  <input
+    type="password"
+    name="password"
+    id="password"
+    ngModel
+    #password
+    matInput
+    password
+    required
+    minlength="6"
+  />
+  <mat-hint>Enter password</mat-hint>
+  <mat-error>It must be over 5 characters</mat-error>
 </mat-form-field>
 ```
 
@@ -529,8 +525,6 @@ app.post('/register', async (req, res) => {
 });
 ```
 
-
-
 The Nodemon package was also super useful. A node server needs to be stopped every single time a code change has been made and needs to be started again, so that the changes would be reflected on the app. Nodemon solves this useless waste of time by automatically restarting the backend every single time the document is saved. It can be imagined as an HTML 'live server' or Angular's 'ng serve', but for the Node.js backend.
 
 Daniel worked mostly on this part, but got help from Jozsef. NodeJS. Express. Cors. Json. Nodemon.
@@ -604,8 +598,6 @@ World domination of course, khm... on a more serious note:
 
 [Top ↑](#top)
 
-
-
 ## How to collaborate? <a id="collaboration"></a>
 
 This repository can be forked on GitHub, cloned to anyone's computer, then after corrections, fixes or changes are made a pull request can be sent to the developers. The code would be checked and if it's indeed useful, then the pull request is accepted and the changes are published in the web or desktop app.
@@ -636,7 +628,7 @@ Special thanks to Róbertné Csilla Dobrocsi, István Bencze, Csaba Kecskeméti 
 
 [Top ↑](#top)
 
-## What are the sources? <a id="sources"></a>
+## What are the resources? <a id="resources"></a>
 
 **Software**
 

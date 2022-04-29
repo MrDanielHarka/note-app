@@ -6,10 +6,17 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
   >
     <mat-toolbar>Note App</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+    <mat-nav-list *ngIf="!user.isLoggedIn">
+      <a mat-list-item [routerLink]="['/']">Home</a>
+      <a mat-list-item [routerLink]="['/public']">Public</a>
+      <a mat-list-item [routerLink]="['/register']">Register</a>
+      <a mat-list-item [routerLink]="['/login']">Login</a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="user.isLoggedIn">
+      <a mat-list-item [routerLink]="['/']">Home</a>
+      <a mat-list-item [routerLink]="['/public']">Public</a>
+      <a mat-list-item [routerLink]="['/settings']">Settings</a>
+      <a mat-list-item (click)="onLogout()">Logout</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

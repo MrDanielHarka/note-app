@@ -1,6 +1,6 @@
 # Note App
 
-A simple and minimalistic note taking app.
+A simple note taking app for anybody.
 
 ## Resources
 
