@@ -22,9 +22,9 @@ editor:
 
 # Note App
 
-A note taking app for anybody.
+Simple note taking for anybody.
 
-**[the-note-app.herokuapp.com](https://the-note-app.herokuapp.com)**
+**[note-app.harka.com](https://the-note-app.herokuapp.com)**
 
 ---
 
@@ -88,8 +88,8 @@ Note:
 
 ## Összefoglalás
 
-Több info:
-**[GitHub](https://github.com/MrDanielHarka/the-note-app)**
+Bővebb info:
+**[GitHub](https://github.com/MrDanielHarka/note-app)**
 
 Note:  
 **Max 30:00-ig**

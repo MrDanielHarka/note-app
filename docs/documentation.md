@@ -17,6 +17,7 @@ This is the documentation of the Note App.
   - [Desktop app source](#desktop-source)
 - [How was it developed?](#how-developed)
   - [Brainstorming](#brainstorming)
+  - [Teamwork](#teamwork)
   - [Wireframe](#wireframe)
   - [Git(Hub)](#git)
   - [Database](#database)
@@ -28,6 +29,7 @@ This is the documentation of the Note App.
   - [Desktop app testing](#desktop-testing)
 - [What are the limitations?](#limitations)
 - [Which are the future plans?](#future-plans)
+- [What are the self-assessments?](#self-assessments)
 - [How to collaborate?](#collaboration)
 - [Why was it needed?](#why-needed)
 - [Where was it created?](#where-created)
@@ -146,11 +148,17 @@ Here is how the applications function:
 
 Here is how it was made:
 
+[Top ↑](#top)
+
 ### Brainstorming
 
 It was a completely random idea. A project was needed and since Jozsef and Daniel did not have any specific ideas, they just picked a topic which they thought they could learn the most from. Hence the choice was a note taking app, which is somewhat similar to Google Keep, but simpler and more minimalistic.
 
 The idea was that users can save notes after logging in. They can of course edit them. When that's done, then they wanted users to be able to make the notes public, so everybody can see them. After all that is done and there is still time left, then they wanted to enable users to share notes between eachother.
+
+### Teamwork
+
+[Top ↑](#top)
 
 ### Wireframe
 
@@ -177,6 +185,44 @@ Then the Note App repository was born and they have collaborated in that, since 
 The data of the web and desktop app needed to be stored somewhere, so a database was needed.
 
 After spending way to much time on searching for a free database provider, finally the ClearDB service was found. It offers 5MBs of free storage for Heroku users.
+
+There are four tables in the database.
+
+![database2](C:\Users\Asus\Study\OneDrive - BGSzC Pestszentlőrinci Technikum\BJózsef\dokumnetacio\kepek\database2.jpg)
+
+**`users` table**
+
+- id: Unique value of the user, it is automaticly generated. This is a primary key in this table.
+
+- email: It is an unique key.
+
+- password: It is an varchar type field which can be 100 characters. This have to be that long because of encryption.
+
+- The first_name and the last_name are just a basic text type field.
+
+**`notes` table**
+
+- note_id: unique value of the note, it is automaticly generated. This is a primary key in this table.
+
+- user_id: This is the id from the users tablet that is why it has a realationship with the id in this table this is an unique key.
+
+- title: This field is an varchar field which is cointein maximum 30 character.
+
+- content: This is an text field which is for the content for the notes it maximum contain 65535 characters.
+
+- The public and the shared field are a boolean type filed it can be 0 or 1. It is 0 if it is not true, 1 if it is true.
+
+**`note_category` table**
+
+- note_id: unique value of the note, it is automaticly generated. This is a primary key in this table. It has an relationship with the note_id field in the notes table.
+
+- note_category: this an varchar field, with maximum of 30 characters.
+
+**`shares` table**
+
+- note_id: This is an int field which is contain the unique value of the note which is shared.
+
+- email: This is a varchar field which is cointain the the email address of the user you want to share with.
 
 Jozsef worked mostly on this part, but got help from Daniel.
 
@@ -565,13 +611,27 @@ using MySql.Data.MySqlClient;
 
 using System.IO;
 
-Jozsef carried out this part. Lalalaaaa.
+Jozsef carried out this part.
+
+[Top ↑](#top)
 
 ## How was it tested? <a id="testing"></a>
 
 ### Web app testing <a id="web-testing"></a>
 
+[Top ↑](#top)
+
 ### Desktop app testing <a id="desktop-testing"></a>
+
+- The application will not crash if the user does not fill in the text fields when the user is registering or logging in and there are some different rules which the user must be followed at the registration, for example the user have use an e-mail which no one has registered yet, the password must be atleast six characters long. The user also have to add his passwor a second time which have to be the exacly same. If none of this is correct the user will get a message about which of these was wrong.
+
+- The user also able to make new notes which is he able to save it if the note title or the note content emty otherwise he will get an error message.
+
+- If the user want to change his password he is not able to change his password to his old one and he also have to follow the rules in the registration which is about the password. If any of these is wrong the user will get a message which of these was wrong.
+- The user also able to change his email. The user is not able to change his email to his old one. The user also have to follow the rules in the registration which is about the email. If any of these is wrong the user will get a message which of these was wrong.
+
+- The user is able to share his own notes with other users. The user is not able to share his note with the same person multiple times, he is not able to share it with himself, he is not able to share his note if he is leave the textbox empty or that email is not in the database.
+- This part was done by Jozsef.
 
 [Top ↑](#top)
 
@@ -580,6 +640,8 @@ Jozsef carried out this part. Lalalaaaa.
 ## Which are the future plans? <a id="future-plans"></a>
 
 World domination of course, khm... on a more serious note:
+
+**Web app**
 
 - cookies, localstorage, sessionstorage
 - GitHub, Google, Facebook login possibility
@@ -598,7 +660,27 @@ World domination of course, khm... on a more serious note:
 
 [Top ↑](#top)
 
-## How to collaborate? <a id="collaboration"></a>
+**Desktop app**
+
+One is that the user can edit their own notes.
+
+The other some feature would to specify the creation date of the note and change it to the duration of the change if edited another one is to make note categories and use the first name and last name during the registration in the desktoop app.
+
+[Top ↑](#top)
+
+## What are the self-assessments? <a id="self-assessments"></a>
+
+Jozsef's self assessment:
+
+"Thanks to the project work, I gained a lot of new and useful knowledge about both C # and database management. During the project, I ran into several difficulties, but sooner or later I was able to find a solution to each of them or find another well-functioning method to implement it. Despite the difficulties, I really enjoyed making the desktop application."
+
+Daniel's self assessment:
+
+"I was pretty sure I will learn a lot during this project and I was not wrong. It was way harder than I thought and I learnt way more than I thought I will. Also, I was able to do much less than what I planned and wanted to do, but it doesn't mean I can't continue working on it."
+
+[Top ↑](#top)
+
+## How to collaborate? <a id="collaboration"></a
 
 This repository can be forked on GitHub, cloned to anyone's computer, then after corrections, fixes or changes are made a pull request can be sent to the developers. The code would be checked and if it's indeed useful, then the pull request is accepted and the changes are published in the web or desktop app.
 

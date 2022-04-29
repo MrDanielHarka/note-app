@@ -178,7 +178,7 @@ app.post('/login', async (req, res) => {
           }`);
         } else {
           res.status(200).send(`{
-            "message": "Invalid password! For customer support, an email can be sent to the-note-app@harka.com from this user email for a temporary password."
+            "message": "Invalid password! For customer support, an email can be sent to note-app@harka.com from this user email for a temporary recovery password."
           }`);
         }
       } else {

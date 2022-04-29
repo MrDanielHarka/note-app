@@ -4,15 +4,15 @@ A simple note taking app for anybody.
 
 ## Resources
 
-### [Website](https://the-note-app.herokuapp.com)
+### [Website](https://note-app.harka.com)
 
 Mostly in English with some Hungarian content.
 
-### [Documentation](https://github.com/MrDanielHarka/note-app/blob/main/project/documentation.md)
+### [Documentation](https://github.com/MrDanielHarka/note-app/blob/main/docs/documentation.md)
 
 Mostly in English with some Hungarian content.
 
-### [Presentation](https://motyar.github.io/markshow/?source=https://raw.githubusercontent.com/MrDanielHarka/note-app/main/project/presentation.md#/)
+### [Presentation](https://motyar.github.io/markshow/?source=https://raw.githubusercontent.com/MrDanielHarka/note-app/main/docs/presentation.md#/)
 
 Mostly in Hungarian with some English content.
 
@@ -36,7 +36,7 @@ Only in English.
 
 Both English and Hungarian content.
 
-### [Lecture notes](https://github.com/MrDanielHarka/note-app/blob/main/project/notes.md)
+### [Lecture notes](https://github.com/MrDanielHarka/note-app/blob/main/docs/notes.md)
 
 Mostly in Hungarian with some English content.
 
