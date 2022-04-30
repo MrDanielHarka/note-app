@@ -41,11 +41,11 @@ This is the documentation of the Note App.
 
 Here is some basic, TLDR information about the project.
 
-Random labels: Rest API, CRUD app, HTTP, JavaScript, TypeScript, Angular, requests, promises, observable, responsive, Cypress, C#
+Random labels: Rest API, CRUD app, HTTP, JavaScript, TypeScript, Angular, requests, promises, observable, responsive, C#
 
 ### Introduction <a id="introduction"></a>
 
-This is simple and minimalistic note taking app, for developers, recruiters, teachers, couriers and basically anybody, who would like to take quick notes.
+This is simple note taking app, for developers, recruiters, teachers, couriers and basically anybody, who would like to take quick notes.
 
 ### Tech stack <a id="tech-stack"></a>
 
@@ -92,7 +92,22 @@ Moreover, in the desktop application, users can share their notes to specific pe
 
 **Hardware & software requirements**
 
+- Internet connection.
+- JavaScript capable web browser.
+
+[Top ↑](#top)
+
 ### Using the desktop app <a id="using-desktop-app"></a>
+
+**Installation**
+
+The desktop application will be available for download from a link in the web application that will lead to an online storage. There will be three files in the repository. The files cannot be modified by the user. The user have to double click to the the setup file to download it. After installation, the program will be available on your computer as an desktop application.
+
+![setup](assets\setup.jpg)
+
+First run `setup.exe` then click the `Install` button.
+
+[Top ↑](#top)
 
 **Usage**
 
@@ -105,6 +120,8 @@ The second button is the share button, the share button text private if it is no
 The third button is the save as button with this button you can save your note in your pc or laptop.
 
 The fourth button is the delete button with this button you can delete your note.
+
+[Top ↑](#top)
 
 **Operating System**
 
@@ -119,8 +136,6 @@ Minimum 2 GB RAM
 Hard disk space: at least 800 MB
 
 A video card that supports a minimum display resolution of 720p (1280 x 720).
-
-**Hardware & software requirements**
 
 [Top ↑](#top)
 
@@ -158,15 +173,19 @@ The idea was that users can save notes after logging in. They can of course edit
 
 ### Teamwork
 
+Jozsef and Daniel assigned the tasks between each other. Jozsef took responsibility for the desktop app and the database creating, while Daniel was doing the web app's frontend and backend part.
+
+They communicated over Microsoft Teams, Discord, Facebook/Messenger, email, phone and in person when they had the opportunity to meet and shared documents over Git/GitHub and Microsoft Onedrive.
+
+Plans were made in Microsoft Lists and Google Sheets and those were followed more or less, to be able to finish the project on time. Joseph and Daniel are both hard working, so completing the tasks in time did not seem to be a problem, even though they did encounter quite a few challenges and difficulties.
+
 [Top ↑](#top)
 
 ### Wireframe
 
 Sorry, the initial wireframes were made in Hungarian, but hopefully you get the idea. This was just a quick example how the app might look like.
 
-**[Desktop Wireframe]**
-
-**[Mobile Wireframe]**
+<img src="assets\wireframe.jpg" alt="wireframe" style="zoom:40%;" />
 
 [Top ↑](#top)
 
@@ -188,7 +207,7 @@ After spending way to much time on searching for a free database provider, final
 
 There are four tables in the database.
 
-![database2](C:\Users\Asus\Study\OneDrive - BGSzC Pestszentlőrinci Technikum\BJózsef\dokumnetacio\kepek\database2.jpg)
+![database2](assets\database2.jpg)
 
 **`users` table**
 
@@ -491,6 +510,12 @@ The styling and design of the web app could have been a downloadable, ready-made
 </mat-form-field>
 ```
 
+Then a plan was made for the front page slideshow as below:
+
+<img src="assets\home-page-slideshow.jpg" alt="home-page-slideshow" style="zoom:25%;" />
+
+Then that was also written in code.
+
 Daniel carried out this part.
 
 [Top ↑](#top)
@@ -556,7 +581,7 @@ app.post('/register', async (req, res) => {
     if (err) {
       if (err.code == 'ER_DUP_ENTRY' || err.errno == 1062) {
         res.status(200).send(`{
-            "message": "This email address is already registered."
+            "message": "This email address is already registered!"
           }`);
       } else {
         console.log('Other error in the query');
@@ -573,7 +598,9 @@ app.post('/register', async (req, res) => {
 
 The Nodemon package was also super useful. A node server needs to be stopped every single time a code change has been made and needs to be started again, so that the changes would be reflected on the app. Nodemon solves this useless waste of time by automatically restarting the backend every single time the document is saved. It can be imagined as an HTML 'live server' or Angular's 'ng serve', but for the Node.js backend.
 
-Daniel worked mostly on this part, but got help from Jozsef. NodeJS. Express. Cors. Json. Nodemon.
+When it was done, the backend needed to be hosted somewhere and it turned out to be a way bigger challenge than anticipated. Either it was super complicated, expensive or the app would go to 'sleep' after a short period of time, which is not good for obvious resons. First it was deployed on Google Firebase, but there were MySQL errors all the time, so the backend was moved to Glitch. It was free and straight forward, without any issues, but the app sleeps after only 5 minutes on the free plan to conserve resources. Finally the backend was deployed on Heroku which seemed to be a good solution for sleeping only after 30 minutes of inactivity and it is completely free and not so crazy complicated.
+
+Daniel worked mostly on this part, but got help from Jozsef.
 
 [Top ↑](#top)
 
@@ -611,6 +638,262 @@ using MySql.Data.MySqlClient;
 
 using System.IO;
 
+**Login system**
+
+```c#
+i = 0;
+            string kapcsolatString = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
+
+            string parancs21 = "SELECT `password` FROM `users` WHERE email='"+txtemail.Text+"'";
+            string encrypt_password = "";
+            MySqlConnection adatbKapcsolat21 = new MySqlConnection(kapcsolatString);
+            MySqlCommand commandDatabase21 = new MySqlCommand(parancs21, adatbKapcsolat21);
+            commandDatabase21.CommandTimeout = 60;
+            MySqlDataReader reader21;
+
+            try
+            {
+                adatbKapcsolat21.Open();
+                reader21 = commandDatabase21.ExecuteReader();
+
+                if (reader21.HasRows)
+                {
+                    while (reader21.Read())
+                    {
+                        encrypt_password = (Convert.ToString(reader21.GetString(0)));
+                    }
+                }
+                else
+                {
+                }
+```
+
+The encrypt_password variable equal the password of the email if the user add his email right.After that I compare the password which the user typed in and the encrypt password of his account. If it is I specify the user id I save it to a variable and closing the login form and open the home form on a new page.
+
+Show different kind of notes tot he user
+
+```c#
+for (int i = 0; i < title.Count; i++)
+            {
+                string phrase = content[i];
+                string[] words = phrase.Split(' ');
+                string text = "";
+                int counter1 = 0;
+                int counter2 = 0;
+                int counter3 = 0;
+                int counter4 = 0;
+                foreach (var word in words)
+                {
+                    text = text + " " + word;
+                    counter1++;
+                    counter4++;
+                    for (int j = 0;j<words.Length;j++)
+                    {
+                        counter3++;
+                    }
+                    if (counter3 < 5 && counter4 == 1)
+                    {
+                        class1BindingSource.Add(new Class1() { Note_Title = title[i], Note_Content = content[i] });
+                        Fcolumn.Add(title[i]);
+                    }
+                    if (counter1 > 5)
+                    {
+                        counter2++;
+                        if (counter2 == 1)
+                        {
+                            class1BindingSource.Add(new Class1() { Note_Title = title[i], Note_Content = text });
+                            Fcolumn.Add(title[i]);
+                        }
+                        else
+                        {
+                            class1BindingSource.Add(new Class1() { Note_Title = "", Note_Content = text });
+                            Fcolumn.Add("");
+                        }
+
+                        text = "";
+                        counter1 = 0;
+                    }
+                }
+            }
+
+```
+
+I save the note title and the content to lists than I insert in a datagridview
+
+I split the content by spaces than I add to the words block. If the block is contain less than five words a insert in line If the conttent is more than five words I insert the leftover five or more words in a new line.
+
+**Registration**
+
+In the registration the emal have to contain @ and the password have to be atleast six characters. The password is insert into the database encrypted.
+
+```c#
+int error5 = 0;
+            string kapcsolatString = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
+
+            string jelszo = txtpassword2.Text;
+            HashSet<char> karakterek = new HashSet<char>();
+            bool bennevan = false;
+
+            foreach (char betu in jelszo)
+            {
+
+            }
+
+            string parancs = null;
+            if (txtpassword2.Text == txtjelszoujra2.Text || bennevan == true)
+            {
+                parancs = "INSERT INTO users(id,email,password)" + "VALUES (NULL, '" + txtemail.Text + "', '" + BCrypt.Net.BCrypt.HashPassword(txtpassword2.Text) + "')";
+            }
+```
+
+**Datagridview cell click**
+
+I always filter to the button text which is located on the same line as the note title. That is how the code decide which sql command to use.
+
+```c#
+ int row = dataGridView1.CurrentCell.RowIndex;
+            if (dataGridView1.CurrentCell.Value.ToString() == "")
+            {
+            }
+            if (dataGridView1.CurrentCell.Value.ToString() == "Private")
+            {
+                string message = "Do you want to make this note public?";
+                string title = "Public";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+                if (result == DialogResult.Yes)
+                {
+                    int counter = -1;
+                    for (int i = 0; i < Fcolumn.Count; i++)
+                    {
+                        if (Fcolumn[i] != "")
+                        {
+                            counter++;
+                            if (counter == row)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    string kapcsolatString = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
+                    string parancs = " UPDATE `notes` SET `public` = '1' WHERE `notes`.`note_id` ='" + Note_id[counter] +"'";
+                    MySqlConnection adatbKapcsolat = new MySqlConnection(kapcsolatString);
+                    MySqlCommand commandDatabase = new MySqlCommand(parancs, adatbKapcsolat);
+                    commandDatabase.CommandTimeout = 60;
+                    try
+                    {
+                        adatbKapcsolat.Open();
+                        commandDatabase.ExecuteNonQuery();
+                        adatbKapcsolat.Close();
+                    }
+```
+
+**Changing email**
+
+Here I use the specified user id from the login to avoid possible mistakes. Than if the user new email meets all criteria the program executes the sql command. It is also update the new email in the email field in the shares table in the database.
+
+```c#
+string parancs2 = "UPDATE `users` SET `email` = '" + txtemail.Text + "' WHERE `users`.`id` = '" + userid + "'";
+                MySqlConnection adatbKapcsolat2 = new MySqlConnection(kapcsolatString);
+                MySqlCommand commandDatabase2 = new MySqlCommand(parancs2, adatbKapcsolat2);
+                commandDatabase2.CommandTimeout = 60;
+                try
+                {
+                    adatbKapcsolat2.Open();
+                    commandDatabase2.ExecuteNonQuery();
+                    adatbKapcsolat2.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                string parancs3 = "UPDATE `shares` SET `email` = '" + txtemail.Text + "' WHERE `email` = '" + useramail + "';";
+                MySqlConnection adatbKapcsolat3 = new MySqlConnection(kapcsolatString);
+                MySqlCommand commandDatabase3 = new MySqlCommand(parancs3, adatbKapcsolat3);
+                commandDatabase3.CommandTimeout = 60;
+                try
+                {
+                    adatbKapcsolat3.Open();
+                    commandDatabase3.ExecuteNonQuery();
+                    adatbKapcsolat3.Close();
+                }
+```
+
+**Changing password**
+
+During the password changing I also use the specified user id from the login to avoid mistakes with the same method as in the email changing.
+
+```c#
+if (encrypt_password != "")
+            {
+                try
+                {
+                    bool isvalid = BCrypt.Net.BCrypt.Verify(txtpassword.Text, encrypt_password);
+                    if (isvalid == true)
+                    {
+                        i = 1;
+                        Form3.number3 = 0;
+                        string parancs4 = "SELECT `id` FROM `users` WHERE `email` = '" + txtemail.Text + "'";
+                        MySqlConnection adatbKapcsolat4 = new MySqlConnection(kapcsolatString21);
+                        MySqlCommand commandDatabase4 = new MySqlCommand(parancs4, adatbKapcsolat4);
+                        commandDatabase4.CommandTimeout = 60;
+                        MySqlDataReader reader4;
+                        try
+                        {
+                            adatbKapcsolat4.Open();
+                            reader4 = commandDatabase4.ExecuteReader();
+
+                            if (reader4.HasRows)
+                            {
+                                while (reader4.Read())
+                                {
+                                    note_id = (Convert.ToInt32(reader4.GetInt32(0)));
+                                }
+                            }
+                            else
+                            {
+
+                            }
+```
+
+**Sharing notes**
+
+The code is using the right note id during this which I get from a list where we can fin dall of the note id which has created by the user.
+
+```c#
+label1.ForeColor = Color.Green;
+                label1.Text = "You  have successfully shared";
+                string kapcsolatString = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
+                string parancs = "UPDATE `notes` SET `shared` = '1' WHERE `notes`.`note_id` = '" + note_id + "'";
+                MySqlConnection adatbKapcsolat = new MySqlConnection(kapcsolatString);
+                MySqlCommand commandDatabase = new MySqlCommand(parancs, adatbKapcsolat);
+                commandDatabase.CommandTimeout = 60;
+                try
+                {
+                    adatbKapcsolat.Open();
+                    commandDatabase.ExecuteNonQuery();
+                    adatbKapcsolat.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                string parancs2 = "INSERT INTO `shares` (`note_id`, `email`) VALUES ('" + note_id + "','" + txtemail.Text + "');";
+                MySqlConnection adatbKapcsolat2 = new MySqlConnection(kapcsolatString);
+                MySqlCommand commandDatabase2 = new MySqlCommand(parancs2, adatbKapcsolat2);
+                commandDatabase2.CommandTimeout = 60;
+                try
+                {
+                    adatbKapcsolat2.Open();
+                    commandDatabase2.ExecuteNonQuery();
+                    adatbKapcsolat2.Close();
+                }
+```
+
 Jozsef carried out this part.
 
 [Top ↑](#top)
@@ -637,15 +920,20 @@ Jozsef carried out this part.
 
 ## What are the limitations? <a id="limitations"></a>
 
+In both the web and desktop app, only one note can be deleted at a time and note order can not be changed. It is also not possible to extract/download all the notes automatically at this point.
+
+[Top ↑](#top)
+
 ## Which are the future plans? <a id="future-plans"></a>
 
 World domination of course, khm... on a more serious note:
 
-**Web app**
+**Web app future plans** 
 
 - cookies, localstorage, sessionstorage
+- note sharing to specific email addresses
 - GitHub, Google, Facebook login possibility
-- email intergration for registration and forgotten passwords
+- email intergration for registration confirmation and forgotten passwords
 - dark mode
 - language selector
 - public note content search
@@ -660,7 +948,7 @@ World domination of course, khm... on a more serious note:
 
 [Top ↑](#top)
 
-**Desktop app**
+**Desktop app future plans**
 
 One is that the user can edit their own notes.
 
@@ -680,7 +968,7 @@ Daniel's self assessment:
 
 [Top ↑](#top)
 
-## How to collaborate? <a id="collaboration"></a
+## How to collaborate? <a id="collaboration"></a>
 
 This repository can be forked on GitHub, cloned to anyone's computer, then after corrections, fixes or changes are made a pull request can be sent to the developers. The code would be checked and if it's indeed useful, then the pull request is accepted and the changes are published in the web or desktop app.
 
@@ -712,20 +1000,14 @@ Special thanks to Róbertné Csilla Dobrocsi, István Bencze, Csaba Kecskeméti 
 
 ## What are the resources? <a id="resources"></a>
 
-**Software**
+**Software and services**
 
-Visual Studio Code, Visual Studio 2019 Community, XAMPP, phpMyAdmin, Vivaldi Browser, Google Chrome, Git, GitHub, Microsoft Teams, DIscord, Facebook/Messenger.
+Visual Studio Code, Visual Studio 2019 Community, XAMPP, phpMyAdmin, Postman, Vivaldi Browser, Google Chrome, Git, GitHub, Microsoft Teams, Discord, Facebook/Messenger, Microsoft Lists, Google Drive.
 
 **Literature**
 
-Tools used:
+C#, Node.js, Angular, angular.io, nodemon, ng-book, angular material, Postman, Heroku, ClearDB,
 
-Apps used:
-
-Literature used:
-
-C#, Node.js, Angular, angular.io, nodemon, ng-book, angular material, Postman, Cypress, Heroku, ClearDB,
-
-Code sources:
+**Videos**
 
 [Top ↑](#top)

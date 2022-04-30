@@ -1,6 +1,6 @@
 # Note App
 
-A simple note taking app for anybody.
+Simple note taking for anybody.
 
 ## Resources
 
@@ -32,7 +32,7 @@ Only in English.
 
 Only in English.
 
-### [Project files](https://github.com/MrDanielHarka/note-app/tree/main/project)
+### [Project files](https://github.com/MrDanielHarka/note-app/tree/main/docs)
 
 Both English and Hungarian content.
 
