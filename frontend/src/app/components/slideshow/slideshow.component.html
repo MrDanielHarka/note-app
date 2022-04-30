@@ -1,0 +1,43 @@
+<!-- <div class="slideshow-container">
+  <ng-container *ngFor="let slide of slides; let i = index">
+    <div *ngIf="i === activePicture" class="mySlides fade">
+      <div class="toptext">{{ slide.toptext }}</div>
+      <img src="{{ slide.image }}" style="width: 100%" />
+      <div class="bottomtext">{{ slide.bottomtext }}</div>
+    </div>
+  </ng-container>
+</div> -->
+
+<div class="slideshow-container">
+  <ng-container *ngFor="let slide of slides; let i = index">
+    <div [ngClass]="{ mySlides: i != activePicture }" class="fade">
+      <div class="toptext">{{ slide.toptext }}</div>
+      <img src="{{ slide.image }}" style="width: 100%" />
+      <div class="bottomtext">{{ slide.bottomtext }}</div>
+    </div>
+  </ng-container>
+</div>
+
+<!-- <div class="slideshow-container">
+  <div *ngFor="let slide of slides; let i = index">
+    <div class="mySlides fade">
+      <div class="toptext">{{ slide.toptext }}</div>
+      <img
+        src="{{ slide.image }}"
+        style="width: 100%"
+        width="1000"
+        height="350"
+      />
+      <div class="bottomtext">{{ slide.bottomtext }}</div>
+    </div>
+  </div>
+</div> -->
+
+<br />
+
+<div style="text-align: center">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>

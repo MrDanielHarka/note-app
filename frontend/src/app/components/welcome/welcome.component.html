@@ -1,59 +1,19 @@
-<h1>Simple note taking for anybody.</h1>
+<h1>Simple note taking for...</h1>
 
-<div class="slideshow-container">
-  <div class="mySlides fade">
-    <div class="toptext">developers.</div>
-    <img src="assets/developers.jpg" style="width: 100%" />
-    <div class="bottomtext">(on desktop)</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="toptext">recruiters.</div>
-    <img src="assets/recruiters.jpg" style="width: 100%" />
-    <div class="bottomtext">(on laptop)</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="toptext">teachers.</div>
-    <img src="assets/teachers.jpg" style="width: 100%" />
-    <div class="bottomtext">(on tablet)</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="toptext">couriers.</div>
-    <img src="assets/couriers.jpg" style="width: 100%" />
-    <div class="bottomtext">(on phone)</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="toptext">anybody.</div>
-    <img src="assets/anybody.jpg" style="width: 100%" />
-    <div class="bottomtext">(anywhere)</div>
-  </div>
-</div>
-<br />
-
-<div style="text-align: center">
-  <span class="dot"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>
-</div>
-
-<br />
+<app-slideshow></app-slideshow>
 
 Some statistics
 <div class="flex-container">
   <mat-card class="statistic-card">
     <br />
-    <span class="statistic-number">{{ stats.users }}</span>
+    <span class="statistic-number">{{ stats?.users }}</span>
     <br />
     users
   </mat-card>
 
   <mat-card class="statistic-card">
     <br />
-    <span class="statistic-number">{{ stats.notes }}</span>
+    <span class="statistic-number">{{ stats?.notes }}</span>
     <br />
     notes
   </mat-card>
