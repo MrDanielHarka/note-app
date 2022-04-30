@@ -8,11 +8,11 @@ Simple note taking for anybody.
 
 Mostly in English with some Hungarian content.
 
-### [Documentation](https://github.com/MrDanielHarka/note-app/blob/main/docs/documentation.md)
+### [Documentation](https://github.com/MrDanielHarka/note-app/blob/main/docs/files/documentation.md)
 
 Mostly in English with some Hungarian content.
 
-### [Presentation](https://motyar.github.io/markshow/?source=https://raw.githubusercontent.com/MrDanielHarka/note-app/main/docs/presentation.md#/)
+### [Presentation](https://motyar.github.io/markshow/?source=https://raw.githubusercontent.com/MrDanielHarka/note-app/main/docs/files/presentation.md#/)
 
 Mostly in Hungarian with some English content.
 
@@ -32,11 +32,11 @@ Only in English.
 
 Only in English.
 
-### [Project files](https://github.com/MrDanielHarka/note-app/tree/main/docs)
+### [Project files](https://github.com/MrDanielHarka/note-app/tree/main/docs/files)
 
 Both English and Hungarian content.
 
-### [Lecture notes](https://github.com/MrDanielHarka/note-app/blob/main/docs/notes.md)
+### [Lecture notes](https://github.com/MrDanielHarka/note-app/blob/main/docs/files/notes.md)
 
 Mostly in Hungarian with some English content.
 

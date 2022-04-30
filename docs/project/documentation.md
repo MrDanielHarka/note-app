@@ -103,7 +103,7 @@ Moreover, in the desktop application, users can share their notes to specific pe
 
 The desktop application will be available for download from a link in the web application that will lead to an online storage. There will be three files in the repository. The files cannot be modified by the user. The user have to double click to the the setup file to download it. After installation, the program will be available on your computer as an desktop application.
 
-![setup](assets/setup.jpg)
+![setup](files/setup.jpg)
 
 First run `setup.exe` then click the `Install` button.
 
@@ -185,7 +185,7 @@ Plans were made in Microsoft Lists and Google Sheets and those were followed mor
 
 Sorry, the initial wireframes were made in Hungarian, but hopefully you get the idea. This was just a quick example how the app might look like.
 
-<img src="assets/wireframe.jpg" alt="wireframe" style="zoom:40%;" />
+<img src="files/wireframe.jpg" alt="wireframe" style="zoom:40%;" />
 
 [Top ↑](#top)
 
@@ -207,7 +207,7 @@ After spending way to much time on searching for a free database provider, final
 
 There are four tables in the database.
 
-![database2](assets/database2.jpg)
+![database2](files/database2.jpg)
 
 **`users` table**
 
@@ -512,11 +512,11 @@ The styling and design of the web app could have been a downloadable, ready-made
 
 Then a plan was made for the front page slideshow as below:
 
-<img src="assets/home-page-slideshow.jpg" alt="home-page-slideshow" style="zoom:25%;" />
+<img src="files/home-page-slideshow.jpg" alt="home-page-slideshow" style="zoom:25%;" />
 
 Then that was also written in code.
 
-The frontend needed to be hosted somewhere and the 
+The frontend needed to be hosted somewhere and the
 
 Daniel carried out this part.
 
@@ -930,7 +930,7 @@ In both the web and desktop app, only one note can be deleted at a time and note
 
 World domination of course, khm... on a more serious note:
 
-**Web app future plans** 
+**Web app future plans**
 
 - cookies, localstorage, sessionstorage
 - note sharing to specific email addresses
