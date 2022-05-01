@@ -39,13 +39,13 @@ This is the documentation of the Note App.
 
 ## What is this? <a id="what-is-this"></a>
 
-Here is some basic, TLDR information about the project.
+Here is some basic information about the project.
 
 Random labels: Rest API, CRUD app, HTTP, JavaScript, TypeScript, Angular, requests, promises, observable, responsive, C#
 
 ### Introduction <a id="introduction"></a>
 
-This is simple note taking app, for developers, recruiters, teachers, couriers and basically anybody, who would like to take quick notes.
+This is simple note taking app, for developers, recruiters, teachers, couriers and basically anyone, who would like to take quick notes.
 
 ### Tech stack <a id="tech-stack"></a>
 
@@ -74,6 +74,8 @@ These are the developers and maintainers of the project:
 - Jozsef Biro ([https://github.com/bjozsef02](https://github.com/bjozsef02))
 - Daniel Harka ([https://github.com/MrDanielHarka](https://github.com/MrDanielHarka))
 
+The C# and database part of this documentation was written by Jozsef, the frontend and backend part was written by Daniel. All the rest was written by both.
+
 [Top ↑](#top)
 
 ## What are the features? <a id="features"></a>
@@ -88,7 +90,29 @@ Moreover, in the desktop application, users can share their notes to specific pe
 
 ### Using the web app <a id="using-web-app"></a>
 
-**Usage**
+**Registration and logging in**
+
+1. Click on the `Register` link.
+2. Fill out your details.
+3. Click the `Register` button.
+4. Click the `Login` link.
+5. Fill in your details.
+6. Click the `Login` button.
+
+![registration-login](files/registration-login.jpg)
+
+**Note taking and changing settings**
+
+1. Click the `Add new note` button for adding a new note.
+2. Fill in the note details.
+3. Click the `Save note` button.
+4. You can edit your note, then you can click the `Save` button again. You can also make your note public or delete it by using the dedicated buttons.
+5. Click the `Settings` link to change your settings.
+6. Change your desired details.
+7. Fill in your current password.
+8. Click the `Save` button.
+
+![note-settings](files/note-settings.jpg)
 
 **Hardware & software requirements**
 
@@ -242,8 +266,6 @@ There are four tables in the database.
 - note_id: This is an int field which is contain the unique value of the note which is shared.
 
 - email: This is a varchar field which is cointain the the email address of the user you want to share with.
-
-Jozsef worked mostly on this part, but got help from Daniel.
 
 [Top ↑](#top)
 
@@ -516,9 +538,7 @@ Then a plan was made for the front page slideshow as below:
 
 Then that was also written in code.
 
-The frontend needed to be hosted somewhere and the
-
-Daniel carried out this part.
+The frontend needed to be hosted somewhere and GitHub Pages were perfect for just that.
 
 [Top ↑](#top)
 
@@ -601,8 +621,6 @@ app.post('/register', async (req, res) => {
 The Nodemon package was also super useful. A node server needs to be stopped every single time a code change has been made and needs to be started again, so that the changes would be reflected on the app. Nodemon solves this useless waste of time by automatically restarting the backend every single time the document is saved. It can be imagined as an HTML 'live server' or Angular's 'ng serve', but for the Node.js backend.
 
 When it was done, the backend needed to be hosted somewhere and it turned out to be a way bigger challenge than anticipated. Either it was super complicated, expensive or the app would go to 'sleep' after a short period of time, which is not good for obvious resons. First it was deployed on Google Firebase, but there were MySQL errors all the time, so the backend was moved to Glitch. It was free and straight forward, without any issues, but the app sleeps after only 5 minutes on the free plan to conserve resources. Finally the backend was deployed on Heroku which seemed to be a good solution for sleeping only after 30 minutes of inactivity and it is completely free and not so crazy complicated.
-
-Daniel worked mostly on this part, but got help from Jozsef.
 
 [Top ↑](#top)
 
@@ -896,13 +914,39 @@ label1.ForeColor = Color.Green;
                 }
 ```
 
-Jozsef carried out this part.
-
 [Top ↑](#top)
 
 ## How was it tested? <a id="testing"></a>
 
 ### Web app testing <a id="web-testing"></a>
+
+The web app was thoroughly tested during development, but here are 6 test cases documented.
+
+**Test case 1. | Registration** 
+
+When a required field is not filled out or it does not meet the requirements, then the field changes to red. Also, the `Register` button can not be clicked, until all the requirements are fulfilled.
+
+**Test case 2. | Registration** 
+
+When everything is filled out correctly, but the email address is already registered, then the user is notified about it.
+
+**Test case 3. | Login** 
+
+When a required field is not filled out or it does not meet the requirements, then the field changes to red. Also, the `Login` button can not be clicked, until all the requirements are fulfilled.
+
+**Test case 4. | Login** 
+
+When everything is filled out correctly, but the email address is not registered, then the user is notified about it.
+
+**Test case 5. | Login** 
+
+When everything is filled out correctly and the email address is also correct, but the password does not match the one in the database, then the user is notified about it.
+
+**Test case 6. | Settings** 
+
+When settings are changed, but the password does not match the one in the database, then the user is notified about it.
+
+![testing](files/testing.jpg)
 
 [Top ↑](#top)
 
@@ -916,7 +960,6 @@ Jozsef carried out this part.
 - The user also able to change his email. The user is not able to change his email to his old one. The user also have to follow the rules in the registration which is about the email. If any of these is wrong the user will get a message which of these was wrong.
 
 - The user is able to share his own notes with other users. The user is not able to share his note with the same person multiple times, he is not able to share it with himself, he is not able to share his note if he is leave the textbox empty or that email is not in the database.
-- This part was done by Jozsef.
 
 [Top ↑](#top)
 
@@ -954,7 +997,7 @@ World domination of course, khm... on a more serious note:
 
 One is that the user can edit their own notes.
 
-The other some feature would to specify the creation date of the note and change it to the duration of the change if edited another one is to make note categories and use the first name and last name during the registration in the desktoop app.
+The other some feature would to specify the creation date of the note and change it to the duration of the change if edited another one is to make note categories and use the first name and last name during the registration in the desktop app.
 
 [Top ↑](#top)
 

@@ -5,10 +5,11 @@
 .slideshow-container {
   max-width: 1000px;
   position: relative;
-  margin: auto;
+  /* margin: auto; */
   height: 35vw;
-  max-height: 340px;
+  max-height: 350px;
   margin: 0.2rem;
+  overflow: hidden;
 }
 
 .slideshow-container img {

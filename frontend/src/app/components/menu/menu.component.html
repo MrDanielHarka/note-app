@@ -5,7 +5,7 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
   >
-    <mat-toolbar>Note App</mat-toolbar>
+    <mat-toolbar> Note App </mat-toolbar>
     <mat-nav-list *ngIf="!user.isLoggedIn">
       <a mat-list-item [routerLink]="['/']">Home</a>
       <a mat-list-item [routerLink]="['/public']">Public</a>

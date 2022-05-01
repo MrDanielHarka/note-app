@@ -2,7 +2,69 @@
 
 <app-slideshow></app-slideshow>
 
-Some statistics
+<h2>Example notes</h2>
+
+<div class="flex-container">
+  <mat-card class="welcome-mat-card">
+    <div class="centered-text">
+      <i> Jozsef B. </i>
+    </div>
+    <br />
+    <b> Favorite code snippet </b>
+    <br />
+    <pre>
+    {{ code }}
+    </pre>
+    <br /><br />
+  </mat-card>
+
+  <mat-card class="welcome-mat-card">
+    <div class="centered-text">
+      <i> Adel B. </i>
+    </div>
+    <br />
+    <b> Interviewing Bill Gates</b>
+    <br />
+    <br />
+    - Appointment at 13:00.
+    <br />
+    - Ask him about dropping out of college.
+    <br />
+    - Make him invert a binary tree.
+    <br /><br />
+  </mat-card>
+
+  <mat-card class="welcome-mat-card">
+    <div class="centered-text">
+      <i> Katalin K. </i>
+    </div>
+    <br />
+    <b> For all lectures </b>
+    <br />
+    <br />
+    - Teach all the things.
+    <br />
+    - Don't give everybody an F.<br /><br />
+  </mat-card>
+
+  <mat-card class="welcome-mat-card">
+    <div class="centered-text">
+      <i> Daniel H. </i>
+    </div>
+    <br />
+    <b> To keep in mind </b>
+    <br />
+    <br />
+    - Do not run all the red lights!
+    <br />
+    - Do not escape from police!
+    <br />
+    - Do not eat customers' food!<br /><br />
+  </mat-card>
+</div>
+
+<h2>Some statistics</h2>
+
 <div class="flex-container">
   <mat-card class="statistic-card">
     <br />
@@ -18,3 +80,57 @@ Some statistics
     notes
   </mat-card>
 </div>
+
+<h2>The creators</h2>
+
+<div class="flex-container">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Jozsef Biro</mat-card-title>
+      <mat-card-subtitle>C# developer</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="assets/jozsef.jpg" alt="Photo of a Jozsef Biro" />
+    <mat-card-content> Loves creating desktop applications. </mat-card-content>
+    <mat-card-actions>
+      <a mat-button href="https://github.com/bjozsef02" target="_blank">
+        GITHUB
+      </a>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Daniel Harka</mat-card-title>
+      <mat-card-subtitle>JavaScript developer</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="https://daniel.harka.com/img/daniel-harka.jpg"
+      alt="Photo of a Daniel Harka"
+    />
+    <mat-card-content> Loves creating web applications. </mat-card-content>
+    <mat-card-actions>
+      <a mat-button href="https://github.com/MrDanielHarka" target="_blank">
+        GITHUB
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<h2>Other stuff</h2>
+
+<mat-card>
+  <mat-list role="list">
+    <mat-list-item role="listitem"
+      ><a
+        href="https://github.com/MrDanielHarka/note-app/blob/main/docs/project/documentation.md"
+        target="_blank"
+        >Documentation</a
+      >
+    </mat-list-item>
+    <mat-list-item role="listitem">Desktop App (Coming soon!)</mat-list-item>
+    <mat-list-item role="listitem"
+      ><a routerLink="/gdpr"> Privacy Policy & GDPR</a>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

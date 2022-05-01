@@ -15,6 +15,9 @@ const pool = mysql.createPool({
 });
 app.use(express.json());
 app.use(cors);
+app.get('/', function (req, res) {
+  res.redirect('https://note-app.harka.com/');
+});
 app.get('/stats', (req, res) => {
   userQuery = `SELECT COUNT(*) FROM users;`;
   noteQuery = `SELECT COUNT(*) FROM notes;`;

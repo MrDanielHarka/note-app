@@ -1,6 +1,6 @@
 # Note App
 
-Simple note taking for anybody.
+Simple note taking for anyone.
 
 ## Resources
 

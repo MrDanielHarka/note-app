@@ -11,12 +11,17 @@ body {
   font-size: 40px;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-y: hide;
 }
 
 h1,
 .centered-button {
   text-align: center;
   padding: 10px 0;
+}
+
+h2 {
+  padding: 0.5rem;
 }
 
 main {
@@ -31,7 +36,11 @@ main {
 
 mat-card {
   margin: 5px;
-  width: 300px;
+  width: 270px;
+}
+
+.welcome-mat-card {
+  height: 4rem;
 }
 
 .container {
@@ -102,6 +111,10 @@ input.example-right-align {
   color: red;
 }
 
+.black-text {
+  color: black;
+}
+
 .statistic-card {
   text-align: center;
 }
@@ -109,3 +122,20 @@ input.example-right-align {
 .statistic-number {
   font-size: 1.5rem;
 }
+
+.wide-card {
+  max-width: 600px;
+  min-width: 270px;
+}
+
+app-gdpr {
+  max-width: 600px;
+  overflow-y: hide;
+}
+
+/* a:link,
+a:visited,
+a:hover,
+a:active {
+  color: #683cb4;
+} */

@@ -113,7 +113,12 @@
       Save
     </button>
   </form>
-  <div class="centered-text">
+  <div
+    class="centered-text"
+    [ngClass]="
+      message !== 'Settings saved successfully!' ? 'red-text' : 'black-text'
+    "
+  >
     {{ message }}
   </div>
 </mat-card>
