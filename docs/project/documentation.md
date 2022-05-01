@@ -74,7 +74,7 @@ These are the developers and maintainers of the project:
 - Jozsef Biro ([https://github.com/bjozsef02](https://github.com/bjozsef02))
 - Daniel Harka ([https://github.com/MrDanielHarka](https://github.com/MrDanielHarka))
 
-The C# and database part of this documentation was written by Jozsef, the frontend and backend part was written by Daniel. All the rest was written by both.
+The C# and database part of this documentation was written by Jozsef, the frontend and backend part was written by Daniel. All the rest was written together.
 
 [Top ↑](#top)
 
@@ -93,7 +93,7 @@ Moreover, in the desktop application, users can share their notes to specific pe
 **Registration and logging in**
 
 1. Click on the `Register` link.
-2. Fill out your details.
+2. Fill in your details.
 3. Click the `Register` button.
 4. Click the `Login` link.
 5. Fill in your details.
@@ -106,7 +106,7 @@ Moreover, in the desktop application, users can share their notes to specific pe
 1. Click the `Add new note` button for adding a new note.
 2. Fill in the note details.
 3. Click the `Save note` button.
-4. You can edit your note, then you can click the `Save` button again. You can also make your note public or delete it by using the dedicated buttons.
+4. You can edit your note, then click the `Save` button again. You can also toggle your note to public or delete it by using the dedicated buttons.
 5. Click the `Settings` link to change your settings.
 6. Change your desired details.
 7. Fill in your current password.
@@ -183,9 +183,7 @@ The application's source can be downloaded from GitHub, then the testing can beg
 
 ## How was it developed? <a id="how-developed"></a>
 
-Here is how the applications function:
-
-Here is how it was made:
+Here are some details of the desktop and the web app development.
 
 [Top ↑](#top)
 
@@ -201,7 +199,7 @@ Jozsef and Daniel assigned the tasks between each other. Jozsef took responsibil
 
 They communicated over Microsoft Teams, Discord, Facebook/Messenger, email, phone and in person when they had the opportunity to meet and shared documents over Git/GitHub and Microsoft Onedrive.
 
-Plans were made in Microsoft Lists and Google Sheets and those were followed more or less, to be able to finish the project on time. Joseph and Daniel are both hard working, so completing the tasks in time did not seem to be a problem, even though they did encounter quite a few challenges and difficulties.
+Plans were made in Microsoft Lists and Google Sheets and those were followed more or less, to be able to finish the project on time. Jozsef and Daniel are both hard working, so completing the tasks in time did not seem to be a problem, even though they did encounter quite a few challenges and difficulties.
 
 [Top ↑](#top)
 
@@ -275,7 +273,7 @@ The frontend of the web app could be made with HTML5, CSS3 and vanilla JavaScrip
 
 Coding in Angular is by using TypeScript, which is a superset of JavaScript. It helps developers by letting them assign types to variables and there is also strict error checking, so there would be less errors during runtime and errors are caught on compilation.
 
-Angular applications are built with components and this complex app is also built by quite a few of them. You can have an insight of the folder and file structure on the image below.
+Angular applications are built with components and this complex app is also built by quite a few of them. You can have an insight of the folder and file structure which can be seen below.
 
 ```
 app/
@@ -920,29 +918,29 @@ label1.ForeColor = Color.Green;
 
 ### Web app testing <a id="web-testing"></a>
 
-The web app was thoroughly tested during development, but here are 6 test cases documented.
+The web app was thoroughly tested during development, but 6 test cases are documented here.
 
-**Test case 1. | Registration** 
+**Test case 1. | Registration**
 
 When a required field is not filled out or it does not meet the requirements, then the field changes to red. Also, the `Register` button can not be clicked, until all the requirements are fulfilled.
 
-**Test case 2. | Registration** 
+**Test case 2. | Registration**
 
 When everything is filled out correctly, but the email address is already registered, then the user is notified about it.
 
-**Test case 3. | Login** 
+**Test case 3. | Login**
 
 When a required field is not filled out or it does not meet the requirements, then the field changes to red. Also, the `Login` button can not be clicked, until all the requirements are fulfilled.
 
-**Test case 4. | Login** 
+**Test case 4. | Login**
 
 When everything is filled out correctly, but the email address is not registered, then the user is notified about it.
 
-**Test case 5. | Login** 
+**Test case 5. | Login**
 
 When everything is filled out correctly and the email address is also correct, but the password does not match the one in the database, then the user is notified about it.
 
-**Test case 6. | Settings** 
+**Test case 6. | Settings**
 
 When settings are changed, but the password does not match the one in the database, then the user is notified about it.
 
@@ -1001,7 +999,7 @@ The other some feature would to specify the creation date of the note and change
 
 [Top ↑](#top)
 
-## What are the self-assessments? <a id="self-assessments"></a>
+## What are the self assessments? <a id="self-assessments"></a>
 
 Jozsef's self assessment:
 
@@ -1009,7 +1007,7 @@ Jozsef's self assessment:
 
 Daniel's self assessment:
 
-"I was pretty sure I will learn a lot during this project and I was not wrong. It was way harder than I thought and I learnt way more than I thought I will. Also, I was able to do much less than what I planned and wanted to do, but it doesn't mean I can't continue working on it."
+"I was pretty sure I will learn a lot during this project and I was not wrong. It was way harder than I thought and I learnt way more than I thought I will. Also, I was able to accomplish much less than what I planned and wanted to do, but it doesn't mean I can't continue working on and improving it later on."
 
 [Top ↑](#top)
 
@@ -1049,6 +1047,8 @@ Special thanks to Róbertné Csilla Dobrocsi, István Bencze, Csaba Kecskeméti 
 
 Visual Studio Code, Visual Studio 2019 Community, XAMPP, phpMyAdmin, Postman, Vivaldi Browser, Google Chrome, Git, GitHub, Microsoft Teams, Discord, Facebook/Messenger, Microsoft Lists, Google Drive, Nodemon, Google Firebase, Glitch, Heroku, ClearDB.
 
+[Top ↑](#top)
+
 **Literature and documentations**
 
 - [C# documentation | Microsoft Build](https://docs.microsoft.com/en-us/dotnet/csharp/)
@@ -1065,9 +1065,9 @@ Visual Studio Code, Visual Studio 2019 Community, XAMPP, phpMyAdmin, Postman, Vi
 
 - [Custom TextBox - Border, Focus Color, Underlined Style - WinForm C#](https://www.youtube.com/watch?v=CkpUQYzYCC8)
 - [How to use DataGridView Control in C#](https://www.youtube.com/watch?v=GyLlpBZGsrE)
-- [Node.js and Express.js - Full Course](https://www.youtube.com/watch?v=Oe421EPjeBE)
 - [Angular - The Complete Guide (2022 Edition)](https://www.udemy.com/course/the-complete-guide-to-angular-2/)
-- [Angular & NodeJS - The MEAN Stack Guide [2022 Edition]](https://www.udemy.com/course/angular-2-and-nodejs-the-practical-guide/)
 - [The Modern Angular Bootcamp](https://www.udemy.com/course/the-modern-angular-bootcamp/)
+- [Angular & NodeJS - The MEAN Stack Guide [2022 Edition]](https://www.udemy.com/course/angular-2-and-nodejs-the-practical-guide/)
+- [Node.js and Express.js - Full Course](https://www.youtube.com/watch?v=Oe421EPjeBE)
 
 [Top ↑](#top)
