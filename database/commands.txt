@@ -1,3 +1,0 @@
-Create new user
-
-INSERT INTO `users` (`id`, `mail_address`, `password`, `username`, `first_name`, `last_name`) VALUES (NULL, 'daniel@harka.com', '19930209', 'MrDanielHarka', 'Daniel', 'Harka');

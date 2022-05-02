@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Már 21. 20:06
--- Kiszolgáló verziója: 10.4.22-MariaDB
--- PHP verzió: 8.1.2
+-- Host: eu-cdbr-west-02.cleardb.net
+-- Generation Time: May 02, 2022 at 02:06 AM
+-- Server version: 5.6.50-log
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `note_app`
+-- Database: `heroku_afb9b8b1a529dbe`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `notes`
+-- Table structure for table `notes`
 --
 
 CREATE TABLE `notes` (
@@ -33,29 +33,61 @@ CREATE TABLE `notes` (
   `title` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL,
   `content` text COLLATE utf8mb4_hungarian_ci NOT NULL,
   `public` tinyint(1) NOT NULL,
-  `shared` tinyint(1) NOT NULL,
-  `creation_date` date NOT NULL,
-  `last_saved` date NOT NULL
+  `shared` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `notes`
+-- Dumping data for table `notes`
 --
 
-INSERT INTO `notes` (`note_id`, `user_id`, `title`, `content`, `public`, `shared`, `creation_date`, `last_saved`) VALUES
-(3, 1, 'test3', 'test3', 0, 0, '0000-00-00', '0000-00-00'),
-(4, 1, 'test4', 'test4', 1, 0, '0000-00-00', '0000-00-00'),
-(5, 1, 'daniel@harka.com', '', 1, 0, '0000-00-00', '0000-00-00'),
-(6, 1, 'test5', 'test5', 1, 0, '0000-00-00', '0000-00-00'),
-(7, 17, '6 title', '6 content', 1, 0, '0000-00-00', '0000-00-00'),
-(59, 2, '5555555', '5555555', 1, 0, '0000-00-00', '0000-00-00'),
-(61, 2, '6666', '666666', 1, 0, '0000-00-00', '0000-00-00'),
-(66, 2, '8888', '88888', 1, 0, '0000-00-00', '0000-00-00');
+INSERT INTO `notes` (`note_id`, `user_id`, `title`, `content`, `public`, `shared`) VALUES
+(15, 30, 'jegyzet2 jegyzet', 'jegyzet2 jegyzet2 jegyzet2 jegyzet2 jegyzet2 jegyzet2 jegyzet2 jegyzet2 jegyzet2 jegyzet2 jegyzet2 jegyzet2 ', 1, 0),
+(36, 52, 'jegyzet', 'jegyzet', 0, 1),
+(41, 2, '1111111111111', '11111111', 0, 0),
+(51, 2, '222222222', '2222222222222', 0, 0),
+(61, 2, '3333333', '3333333', 0, 0),
+(71, 2, '444444', '444444', 0, 0),
+(91, 71, 'ssssssssssss', 'sssssssss', 1, 0),
+(101, 2, '555', '55555555', 1, 0),
+(111, 2, '6666666', '6666666 6666666 6666666666 6666666666666 6666666 666666 66666', 1, 0),
+(121, 91, '1111', '11111111', 0, 0),
+(131, 91, '2222222', '222222', 1, 0),
+(141, 2, '77777777', '777777', 0, 0),
+(151, 2, '88888', '8888888888', 0, 0),
+(171, 81, '11111', '1111111', 1, 0),
+(181, 81, 'public note', 'public noted\nsf\nsd\nf\nsd\nf\nsd\nfsdfsdg\nds\nfsd', 1, 0),
+(191, 2, '999999', '999999', 1, 0),
+(201, 81, 'aaa', 'aaaa', 0, 0),
+(211, 2, 'Trying xss attack', 'alert(\"This alert should not work.\");', 1, 0),
+(221, 2, 'Trying html formatting', '<h1>Hello there.</h1>', 1, 0),
+(231, 201, '1111111', '11111111111111', 0, 0),
+(241, 201, '1111111', '1111111', 0, 0),
+(251, 201, '1111111', '1111111', 0, 0),
+(261, 201, '1111111', '1111111', 0, 0),
+(271, 201, '1111111', '1111111', 0, 0),
+(281, 201, '1111111', '1111111', 0, 0),
+(291, 201, '1111111', '1111111', 0, 0),
+(301, 201, '1111111', '1111111', 0, 0),
+(311, 211, 'Brum matek', 'Egy brum, meg két brum, az három brum. Négy brum, meg öt brum, az kilenc brum.', 1, 0),
+(321, 221, 'aaa', '<html><h1>hi</h1></html>', 0, 0),
+(331, 2, 'new note', 'new note', 0, 0),
+(341, 291, 'My title', 'My content', 0, 0),
+(351, 201, '-----------', '-----------', 0, 0),
+(361, 201, '-----------', '-----------', 0, 0),
+(371, 201, '-----------', '-----------', 0, 0),
+(381, 201, '-----------', '-----------', 0, 0),
+(391, 201, '-----------', '-----------', 0, 0),
+(401, 201, '-----------', '-----------', 0, 0),
+(411, 201, '-----------', '-----------', 0, 0),
+(421, 201, '-----------', '-----------', 0, 0),
+(431, 201, '-----------', '-----------', 0, 0),
+(441, 201, '-----------', '-----------', 0, 0),
+(451, 201, '-----------', '-----------', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `note_category`
+-- Table structure for table `note_category`
 --
 
 CREATE TABLE `note_category` (
@@ -66,7 +98,7 @@ CREATE TABLE `note_category` (
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `shares`
+-- Table structure for table `shares`
 --
 
 CREATE TABLE `shares` (
@@ -74,10 +106,17 @@ CREATE TABLE `shares` (
   `email` varchar(30) COLLATE utf8mb4_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
+--
+-- Dumping data for table `shares`
+--
+
+INSERT INTO `shares` (`note_id`, `email`) VALUES
+(36, 'a');
+
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -89,98 +128,95 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`) VALUES
-(1, 'birojozsi6@gmail.com', 'C#Master', 'Jozsef', 'Biro'),
-(2, 'daniel@harka.com', '19930209', 'Daniel', 'Harka'),
-(3, 'test1', 'test1', '', ''),
-(4, 'test2', 'test2', '', ''),
-(5, 'test3', 'test3', '', ''),
-(6, 'test4', 'test4', '', ''),
-(7, 'test5', 'test5', '', ''),
-(11, 'test6', 'test6', '', ''),
-(12, 'naszi@gmail.com', 'dsfdsfgdg', '', ''),
-(17, '6@66.6', '666666', 'first 6', 'last 6'),
-(22, '7@7.7', '$2b$12$yiTTaBErs.B0.uk38v5ytOJLtUvpS8DwMQRipH4zgHy', '77777', '777777'),
-(23, '8@8.8', '$2b$12$b88zgSyTL13co9f6FNR86O4EUZ4auZdRcxGyDosEvRnUOQxionOcG', '88888', '88888');
+(1, 'admin1', '$2a$11$1P./i3aDOjnmO8pf3Zv42eOUc3GsRF2WTXtmz.6u1Mm5jgVvx6Xoe', '', ''),
+(2, 'daniel@harka.com', '$2b$12$lBWH0MRePpSuIf2F/LJWG.DaOgUDsClw.EngKAjjYD7e1HgTwsNIW', 'Daniel', 'Harka'),
+(30, 'a', '$2a$11$dBV4qO2xxH2Tq2Dy2lDG8OXlp4CITh3fGd5c/3XSr1tgLzyohfWOW', '', ''),
+(52, 'b', '$2a$11$5fAL2mj0M7K4C5uGmn4C3eJ3pM8q5xwBJeX1ERU2vkjpsQId4Agdm', '', ''),
+(53, '99', '$2b$12$/lsYi6pv81Lh8XX9UQQpN.43GhkN0AxhjopW9GmKWXzU7tTrM4BPC', '', ''),
+(54, 'admin1@gmail.com', '$2a$11$FLjsFIsGpAH9xQLaOPmmnOIkzmiJxnJsc/0WVqyn83jlpxalvn09i', '', ''),
+(55, 's', '$2a$11$mEE8bCHHvkJZ2pTPzMM8XeNcXieyvrYg4OjRVNlDQFtAJXEVUmRFq', '', ''),
+(56, 'w', '$2a$11$Ni02fj.eg3dT/wAvlmYxuObjthsc/PLLzjuEJNlvhYLEfpc08DdRG', '', ''),
+(57, 'a@', '$2a$11$45zjSrP/Jo4gROJbz1c26OzTdp0hllncEn5B5OLJPiDfIOFTB3sdu', '', ''),
+(58, 'aq', '$2a$11$fz.0dfj2tiN9O8zoj3HmhuBSeoBnsxLoY3OuQX5VMGl2JwPesaBZK', '', ''),
+(71, 'sara@harka.com', '$2b$12$iVupxB48KYlAubNbrUjCB.MvDKXIcSEUSgJZkS5Xqs8Uef6UKH692', 'Sara', 'Harka'),
+(81, 'b@harka.com', '$2b$12$ctMll4is9XYe/6XiEcruzu334B3m3EOrJju.GhptRNIxlSx1faIU.', 'bbbbb', 'bbbbb'),
+(91, 'csabak@gmailllll.com', '$2b$12$.7Kk38cHxeeHHk2CqqOt9O071hSURGMzHLILcUBUGnry3VYryjV.i', 'Csaba', 'Kkk'),
+(101, 'testuser1@testuser1.com', '$2b$12$h0djK.O1mG1q9euS9alRUObppsD9Et7c8jMUO6ovUYugtrzU.PSPW', 'TestUser1', 'TestUser1'),
+(141, 'hali@harka.com', '$2b$12$SJ9pvqJdUQ9WqwW.hn7hk.pbvijThmrvcSZBQtf.C1e2CjNcE/BMe', 'Hali.', 'Hali.'),
+(151, 'user@harka.com', '$2b$12$g5rk1iLNACuR86CFsR6gbePmOedUTGhz8Mx5xGB6xe.N.aci0NjYK', 'user', 'user'),
+(201, 'many@harka.com', '$2b$12$EPZwVSRhJjVQvAgzSFc.len6ETrHm5bdmrrC7iYTWT/CQvAVEGpzK', 'Many', 'Notes'),
+(211, 'medvekoma@brum.com', '$2b$12$FEq6vrrXurQeZsVub1ZeieJ.c.vJbJ/2PTwVFnfSSQQr2nVG6/by.', 'Brumba', 'Maci'),
+(221, 'aa@a', '$2b$12$SSWWHlmlKWGzVGPCUilfhuzcab9cHSK2NtmecMmVURZ6J5Ia2iPzy', 'aaa', 'aaa'),
+(231, 'birojozsi@gmail.com', '$2b$12$lwuPszO84xdSK7rf.zzT2.vXF3zbDdI6jZ8lVhstBFVho.dHMgXo2', 'Biró ', 'József'),
+(241, 'felhasznalo@gmail.com', '$2b$12$vlLBhdSmnXd.33rxJXb08.r8LwjV7SqCGvD59ATKecyMNuRBL7Sgq', 'felhasznalo', 'felhasznalo'),
+(251, 'felhasznalo2@gmail.com', '$2b$12$XAXHcg6C7yPeqQxDmSDnWOvPfYvm0RfHTRYAYNqPSonLjJY5pRi1.', 'felhasznalo2', 'felhasznalo2'),
+(291, 'random-user@harka.com', '$2b$12$ef6/GQ3xR4VLBzWti0f3POkTjsb9O4OvZ85QyZI6lLNIy.ETn1UK2', 'Random', 'User');
 
 --
--- Indexek a kiírt táblákhoz
+-- Indexes for dumped tables
 --
 
 --
--- A tábla indexei `notes`
+-- Indexes for table `notes`
 --
 ALTER TABLE `notes`
   ADD PRIMARY KEY (`note_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- A tábla indexei `note_category`
+-- Indexes for table `note_category`
 --
 ALTER TABLE `note_category`
   ADD PRIMARY KEY (`note_id`);
 
 --
--- A tábla indexei `shares`
---
-ALTER TABLE `shares`
-  ADD PRIMARY KEY (`note_id`),
-  ADD UNIQUE KEY `note_id` (`email`);
-
---
--- A tábla indexei `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`email`);
 
 --
--- A kiírt táblák AUTO_INCREMENT értéke
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT a táblához `notes`
+-- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `note_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `note_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=461;
 
 --
--- AUTO_INCREMENT a táblához `note_category`
+-- AUTO_INCREMENT for table `note_category`
 --
 ALTER TABLE `note_category`
   MODIFY `note_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=301;
 
 --
--- Megkötések a kiírt táblákhoz
+-- Constraints for dumped tables
 --
 
 --
--- Megkötések a táblához `notes`
+-- Constraints for table `notes`
 --
 ALTER TABLE `notes`
   ADD CONSTRAINT `notes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Megkötések a táblához `note_category`
+-- Constraints for table `note_category`
 --
 ALTER TABLE `note_category`
   ADD CONSTRAINT `note_category_ibfk_1` FOREIGN KEY (`note_id`) REFERENCES `notes` (`note_id`);
-
---
--- Megkötések a táblához `shares`
---
-ALTER TABLE `shares`
-  ADD CONSTRAINT `shares_ibfk_1` FOREIGN KEY (`email`) REFERENCES `users` (`email`),
-  ADD CONSTRAINT `shares_ibfk_2` FOREIGN KEY (`note_id`) REFERENCES `notes` (`note_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
