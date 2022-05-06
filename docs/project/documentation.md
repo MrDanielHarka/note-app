@@ -41,11 +41,11 @@ This is the documentation of the Note App.
 
 Here is some basic information about the project.
 
-Random labels: Rest API, CRUD app, HTTP, JavaScript, TypeScript, Angular, requests, promises, observable, responsive, C#
-
 ### Introduction <a id="introduction"></a>
 
 This is simple note taking app, for developers, recruiters, teachers, couriers and basically anyone, who would like to take quick notes.
+
+Random labels: Rest API, CRUD app, HTTP, JavaScript, TypeScript, Angular, requests, promises, observable, responsive, C#
 
 ### Tech stack <a id="tech-stack"></a>
 
@@ -125,7 +125,7 @@ Moreover, in the desktop application, users can share their notes to specific pe
 
 **Installation**
 
-The desktop application will be available for download from a link in the web application that will lead to an online storage. There will be three files in the repository. The files cannot be modified by the user. The user have to double click to the the setup file to download it. After installation, the program will be available on your computer as an desktop application.
+The desktop application will be available for download from a link in the web application that will lead to an online storage. There will be three files in the folder. The files cannot be modified by the user. The user has to double click the setup file to install it. After installation, the program will be available on your computer as a desktop application.
 
 ![setup](files/setup.jpg)
 
@@ -135,15 +135,15 @@ First run `setup.exe` then click the `Install` button.
 
 **Usage**
 
-The user must log in first or register if they are not already registered. The password is encrypted in the database during registration. Password encryption works “back and forth” between the web application and the desktop. After logging in your can check your notes, the publical notes and the shared notes which you get from other people. All these three categories of notes will apper in three different tables.
+The user must log in first or register if they are not already registered. The password is encrypted in the database during registration. Password encryption works “back and forth” between the web application and the desktop. After logging in you can check your notes, the public notes and the shared notes which are shared with you by the other users. All these three categories of notes will appear in three different tables.
 
-Your own notes table have a four buttons column the first button is tell yout is it publical or not. If it is not a publical note the button text is private if it is publical the button text is publical, if the button text is publical and you press it you can make it private, if it is private and you press it you can make it publical.
+Your own notes table have four buttons column. The first button indicates whether the specific note is public. If it is not a public note the button text is private if it is public the button text is public. If the button text is public and you press it, you can make it private, if it is private and you press it you can make it public.
 
-The second button is the share button, the share button text private if it is not a shared note, if the button text is shared the note is shared with atleast one person.If the button text is private and you press it you can share it if you know his email address , if the button text is shared you still can share with some else buti f you want you also can make it private. It is also possible to unshare a note with someone.
+The second button is the share button. Te share button text says private if it is not a shared note. If the button text is shared the note is shared with at least one person. If the button text is private and you press it you can share it with someone, if you know their registered email address. If the button text is shared you can still share it with someone else, but if you want, you can also make it private. It is also possible to unshare a note.
 
-The third button is the save as button with this button you can save your note in your pc or laptop.
+The third button is the save as button. With this button you can export your note to your computer.
 
-The fourth button is the delete button with this button you can delete your note.
+The fourth button is the delete button. With this button you can delete your note.
 
 [Top ↑](#top)
 
@@ -197,7 +197,7 @@ The idea was that users can save notes after logging in. They can of course edit
 
 Jozsef and Daniel assigned the tasks between each other. Jozsef took responsibility for the desktop app and the database creating, while Daniel was doing the web app's frontend and backend part.
 
-They communicated over Microsoft Teams, Discord, Facebook/Messenger, email, phone and in person when they had the opportunity to meet and shared documents over Git/GitHub and Microsoft Onedrive.
+They communicated over Microsoft Teams, Discord, Facebook/Messenger, email, phone and in person when they had the opportunity to meet and shared documents over Git/GitHub and Microsoft OneDrive.
 
 Plans were made in Microsoft Lists and Google Sheets and those were followed more or less, to be able to finish the project on time. Jozsef and Daniel are both hard working, so completing the tasks in time did not seem to be a problem, even though they did encounter quite a few challenges and difficulties.
 
@@ -233,21 +233,21 @@ There are four tables in the database.
 
 **`users` table**
 
-- id: Unique value of the user, it is automaticly generated. This is a primary key in this table.
+- id: Unique value of the user, it is automatically generated. This is a primary key in this table.
 
 - email: It is an unique key.
 
-- password: It is an varchar type field which can be 100 characters. This have to be that long because of encryption.
+- password: It is a varchar type field which can be 100 characters. This have to be that long because of encryption.
 
 - The first_name and the last_name are just a basic text type field.
 
 **`notes` table**
 
-- note_id: unique value of the note, it is automaticly generated. This is a primary key in this table.
+- note_id: unique value of the note, it is automatically generated. This is a primary key in this table.
 
-- user_id: This is the id from the users tablet that is why it has a realationship with the id in this table this is an unique key.
+- user_id: This is the id from the users tablet that is why it has a relationshipp with the id in this table this is an unique key.
 
-- title: This field is an varchar field which is cointein maximum 30 character.
+- title: This field is an varchar field which can contain maximum 30 character.
 
 - content: This is an text field which is for the content for the notes it maximum contain 65535 characters.
 
@@ -255,7 +255,7 @@ There are four tables in the database.
 
 **`note_category` table**
 
-- note_id: unique value of the note, it is automaticly generated. This is a primary key in this table. It has an relationship with the note_id field in the notes table.
+- note_id: unique value of the note, it is automatically generated. This is a primary key in this table. It has an relationship with the note_id field in the notes table.
 
 - note_category: this an varchar field, with maximum of 30 characters.
 
@@ -263,7 +263,7 @@ There are four tables in the database.
 
 - note_id: This is an int field which is contain the unique value of the note which is shared.
 
-- email: This is a varchar field which is cointain the the email address of the user you want to share with.
+- email: This is a varchar field which is contain the the email address of the user you want to share with.
 
 [Top ↑](#top)
 
@@ -686,9 +686,9 @@ i = 0;
                 }
 ```
 
-The encrypt_password variable equal the password of the email if the user add his email right.After that I compare the password which the user typed in and the encrypt password of his account. If it is I specify the user id I save it to a variable and closing the login form and open the home form on a new page.
+The encrypt_password variable equal the password of the email if the user inputs his email correctly. After that the password is compared with the value the user typed in and the encrypt password of his account. If it is the user id is specified and is saved to a variable. Then the login form is closed and the home form is opened on a new page.
 
-Show different kind of notes tot he user
+**Showing different kind of notes to the user**
 
 ```c#
 for (int i = 0; i < title.Count; i++)
@@ -736,13 +736,13 @@ for (int i = 0; i < title.Count; i++)
 
 ```
 
-I save the note title and the content to lists than I insert in a datagridview
+The note title and content is saved to lists than it is inserted in a DataGridView.
 
-I split the content by spaces than I add to the words block. If the block is contain less than five words a insert in line If the conttent is more than five words I insert the leftover five or more words in a new line.
+The content is split by spaces then the words block is added. If the block is contains less than five words a line is inserted. If the content is more than five words the leftover five or more words are inserted in a new line.
 
 **Registration**
 
-In the registration the emal have to contain @ and the password have to be atleast six characters. The password is insert into the database encrypted.
+In the registration the email has to contain an @ and the password have to be at least six characters. The password is inserted into the database in an encrypted form.
 
 ```c#
 int error5 = 0;
@@ -764,9 +764,9 @@ int error5 = 0;
             }
 ```
 
-**Datagridview cell click**
+**DataGridView cell click**
 
-I always filter to the button text which is located on the same line as the note title. That is how the code decide which sql command to use.
+It is always filtered to the button text which is located on the same line as the note title. That is how the application decides which SQL command to use.
 
 ```c#
  int row = dataGridView1.CurrentCell.RowIndex;
@@ -808,7 +808,7 @@ I always filter to the button text which is located on the same line as the note
 
 **Changing email**
 
-Here I use the specified user id from the login to avoid possible mistakes. Than if the user new email meets all criteria the program executes the sql command. It is also update the new email in the email field in the shares table in the database.
+Here the specified user id is used from the login to avoid possible mistakes. Than if the user's new email meets all criteria, then the program executes the SQL query. It also updates the new email in the email field in the shares table in the database.
 
 ```c#
 string parancs2 = "UPDATE `users` SET `email` = '" + txtemail.Text + "' WHERE `users`.`id` = '" + userid + "'";
@@ -841,7 +841,7 @@ string parancs2 = "UPDATE `users` SET `email` = '" + txtemail.Text + "' WHERE `u
 
 **Changing password**
 
-During the password changing I also use the specified user id from the login to avoid mistakes with the same method as in the email changing.
+During the password changing the user id is also specified from the login to avoid mistakes with the same method as in the email changing.
 
 ```c#
 if (encrypt_password != "")
@@ -878,7 +878,7 @@ if (encrypt_password != "")
 
 **Sharing notes**
 
-The code is using the right note id during this which I get from a list where we can fin dall of the note id which has created by the user.
+The code is using the correct note id during this, which is specified from a list, where all of the note ids can be found, which was created created by the user.
 
 ```c#
 label1.ForeColor = Color.Green;
@@ -950,14 +950,14 @@ When settings are changed, but the password does not match the one in the databa
 
 ### Desktop app testing <a id="desktop-testing"></a>
 
-- The application will not crash if the user does not fill in the text fields when the user is registering or logging in and there are some different rules which the user must be followed at the registration, for example the user have use an e-mail which no one has registered yet, the password must be atleast six characters long. The user also have to add his passwor a second time which have to be the exacly same. If none of this is correct the user will get a message about which of these was wrong.
+- The application will not crash if the user does not fill in the text fields when the user is registering or logging in and there are some different rules which the user must follow at the registration. For example, the user has use an e-mail which no one has registered yet, the password must be at least six characters long. The user also has to add his password a second time which has to be the exact same as the previous one. If none of this is correct the user will get a message about which of these was wrong.
 
-- The user also able to make new notes which is he able to save it if the note title or the note content emty otherwise he will get an error message.
+- The user is also able to create new notes which they can save. If the note title or the content is empty the they will get an error message.
 
-- If the user want to change his password he is not able to change his password to his old one and he also have to follow the rules in the registration which is about the password. If any of these is wrong the user will get a message which of these was wrong.
-- The user also able to change his email. The user is not able to change his email to his old one. The user also have to follow the rules in the registration which is about the email. If any of these is wrong the user will get a message which of these was wrong.
+- If the user wants to change their password, it is not possible to change their password to the old one and they also have to follow the rules for password creating, just like upon registration.
+- The user is also able to change his email. The user is not able to change his email to their old one. The user also has to follow the rules for the email format, just like at registration. If any of these are wrong, then the user will get a message which of these were wrong.
 
-- The user is able to share his own notes with other users. The user is not able to share his note with the same person multiple times, he is not able to share it with himself, he is not able to share his note if he is leave the textbox empty or that email is not in the database.
+- The user is able to share their own notes with other users. The user is not able to share their note with the same person multiple times. They are not able to share it with themselves. They are not able to share the note if he leaves the text box empty or user email is not in the database.
 
 [Top ↑](#top)
 
@@ -988,6 +988,7 @@ World domination of course, khm... on a more serious note:
 - user profile picture
 - note categories
 - filter personal and public notes by category
+- account deletion possibility
 
 [Top ↑](#top)
 

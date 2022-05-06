@@ -38,7 +38,7 @@ app.get('/stats', (req, res) => {
 
   setTimeout(() => {
     res.status(200).json(stats);
-  }, 500);
+  }, 750);
 });
 app.post('/user-notes', (req, res) => {
   userId = req.body.userId;

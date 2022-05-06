@@ -22,7 +22,7 @@ editor:
 
 # Note App
 
-Simple note taking for anybody.
+Simple note taking for anyone.
 
 **[note-app.harka.com](https://note-app.harka.com)**
 
@@ -77,7 +77,7 @@ Note:
 
 - **Frontend:** JavaScript, TypeScript, Angular, RXJS, HTTP, Material Design
   <br><br>
-- **Backend:** Node.js, JavaScript, Express, Bcrypt, JSON
+- **Backend:** Node.js, JavaScript, Express, Bcrypt, CORS, JSON
   <br><br>
 - **Adatbázis:** MySQL, phpMyAdmin
 

@@ -32,6 +32,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  overflow-y: hidden;
 }
 
 mat-card {
