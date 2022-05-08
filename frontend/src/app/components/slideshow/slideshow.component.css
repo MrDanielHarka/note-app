@@ -20,10 +20,10 @@
 
 .toptext {
   color: black;
-  font-size: 50px;
+  font-size: 72px;
   padding: 8px 12px;
   position: absolute;
-  top: 0.2rem;
+  top: 0.5rem;
   left: 0;
 }
 
@@ -51,21 +51,39 @@
   }
 }
 
-@media only screen and (max-width: 660px) {
+@media only screen and (max-width: 1000px) {
   .toptext {
-    font-size: 25px;
+    font-size: 7vw;
+    top: 0.4rem;
+    padding: 1vw;
   }
   .bottomtext {
-    font-size: 20px;
+    /* font-size: 22px; */
+    font-size: 2.5vw;
+    padding: 1vw;
   }
 }
 
+/* @media only screen and (max-width: 660px) {
+  .toptext {
+    font-size: 25px;
+    top: 0.05rem;
+  }
+  .bottomtext {
+    font-size: 20px;
+  }
+} */
+
 @media only screen and (max-width: 520px) {
   .toptext {
-    font-size: 20px;
+    top: 0;
+    left: 0;
+    padding: 5px 7px;
   }
 
   .bottomtext {
-    font-size: 15px;
+    font-size: 13px;
+    left: 0;
+    padding: 5px 7px;
   }
 }

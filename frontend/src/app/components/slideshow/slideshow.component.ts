@@ -51,9 +51,5 @@ export class SlideshowComponent implements OnInit {
 
   ngOnInit(): void {
     this.slideshow();
-
-    // let changeImage = setInterval(() => {
-    //   this.activePicture++;
-    // }, 3000);
   }
 }

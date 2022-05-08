@@ -15,9 +15,6 @@ const pool = mysql.createPool({
 });
 app.use(express.json());
 app.use(cors);
-app.get('/', function (req, res) {
-  res.redirect('https://note-app.harka.com/');
-});
 app.get('/stats', (req, res) => {
   userQuery = `SELECT COUNT(*) FROM users;`;
   noteQuery = `SELECT COUNT(*) FROM notes;`;
@@ -205,14 +202,27 @@ app.put('/settings', async (req, res) => {
           this.user.password
         );
         if (validPassword) {
-          query = `
+          let query;
+
+          if (newPassword === '') {
+            query = `
           UPDATE users
           SET id = ${userId},
               email = '${email}',
-              password = '${newPasswordHash}',
+              password = '${this.user.password}',
               first_name = '${firstName}',
               last_name = '${lastName}'
           WHERE id = ${userId}`;
+          } else {
+            query = `
+            UPDATE users
+            SET id = ${userId},
+                email = '${email}',
+                password = '${newPasswordHash}',
+                first_name = '${firstName}',
+                last_name = '${lastName}'
+            WHERE id = ${userId}`;
+          }
 
           pool.query(query, (err, result) => {
             if (err) throw err;

@@ -17,9 +17,5 @@ export class LoginService {
         headers: { 'content-type': 'application/json' },
       }
     );
-    // .subscribe((userData) => {
-    //   console.log(userData);
-    //   return userData;
-    // });
   }
 }

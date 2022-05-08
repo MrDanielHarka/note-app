@@ -32,7 +32,6 @@ export class SettingsComponent implements OnInit {
     this.settingsService
       .onUpdateSettings(this.userData)
       .subscribe((response) => {
-        console.log(response);
         this.userInfo = response;
         this.message = this.userInfo.message;
         if (this.userInfo.message === undefined) {
@@ -41,7 +40,6 @@ export class SettingsComponent implements OnInit {
           this.userService.firstName = this.settingsForm.value.firstname;
           this.userService.lastName = this.settingsForm.value.lastname;
           this.message = 'Settings saved successfully!';
-          console.log(this.userService);
         }
       });
   }

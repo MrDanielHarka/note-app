@@ -11,7 +11,6 @@ body {
   font-size: 40px;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  overflow-y: hide;
 }
 
 h1,
@@ -32,7 +31,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
 }
 
 mat-card {
@@ -67,7 +66,8 @@ app-settings {
 
 app-note,
 app-public,
-app-home {
+app-home,
+app-gdpr {
   padding: 0 10px;
   margin: 10px auto;
   max-width: 700px;
@@ -127,11 +127,6 @@ input.example-right-align {
 .wide-card {
   max-width: 600px;
   min-width: 270px;
-}
-
-app-gdpr {
-  max-width: 600px;
-  overflow-y: hide;
 }
 
 /* a:link,
