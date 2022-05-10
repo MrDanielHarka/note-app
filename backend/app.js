@@ -53,8 +53,7 @@ app.post('/new-note', (req, res) => {
   public = req.body.isPublic;
   shared = 0;
 
-  query = `INSERT INTO notes
-  (note_id, user_id, title, content, public, shared)
+  query = `INSERT INTO notes (note_id, user_id, title, content, public, shared)
   VALUES (?, ?, ?, ?, ?, ?);`;
 
   pool.query(

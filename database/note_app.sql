@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.7.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: eu-cdbr-west-02.cleardb.net
--- Generation Time: May 02, 2022 at 02:06 AM
+-- Generation Time: May 08, 2022 at 06:04 PM
 -- Server version: 5.6.50-log
--- PHP Version: 8.1.2
+-- PHP Version: 7.0.33-0ubuntu0.16.04.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -82,7 +83,11 @@ INSERT INTO `notes` (`note_id`, `user_id`, `title`, `content`, `public`, `shared
 (421, 201, '-----------', '-----------', 0, 0),
 (431, 201, '-----------', '-----------', 0, 0),
 (441, 201, '-----------', '-----------', 0, 0),
-(451, 201, '-----------', '-----------', 0, 0);
+(451, 201, '-----------', '-----------', 0, 0),
+(461, 301, 'Bevásárlás lista', 'Chips\nKukorica\nMarha hús\nCoca cola\n', 0, 0),
+(471, 321, 'Teszt', 'Csak sikerült a felület is, tetsztik! :-) A többit késöbb…', 0, 0),
+(481, 331, 'Záró dolgozat', 'Szoftverfejlesztő és tesztelő', 1, 0),
+(491, 331, 'Eredmény', 'Köszönöm a linket! A regisztráció, a belépés és a jegyzetkészítés működik, készüljenek a gyakorlati vizsgákra!\nCsak egy kérdés, nem kellene látszani, hogy kié az üzenet? Már a publikus részben…', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -133,20 +138,18 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`) VALUES
 (1, 'admin1', '$2a$11$1P./i3aDOjnmO8pf3Zv42eOUc3GsRF2WTXtmz.6u1Mm5jgVvx6Xoe', '', ''),
-(2, 'daniel@harka.com', '$2b$12$lBWH0MRePpSuIf2F/LJWG.DaOgUDsClw.EngKAjjYD7e1HgTwsNIW', 'Daniel', 'Harka'),
+(2, 'daniel@harka.com', '$2b$12$YXd953.zP988jCsG.3/9MOAjH7ntf4anf6J/qoVAfQ6ppOeBGdsue', 'Daniel', 'Harka'),
 (30, 'a', '$2a$11$dBV4qO2xxH2Tq2Dy2lDG8OXlp4CITh3fGd5c/3XSr1tgLzyohfWOW', '', ''),
 (52, 'b', '$2a$11$5fAL2mj0M7K4C5uGmn4C3eJ3pM8q5xwBJeX1ERU2vkjpsQId4Agdm', '', ''),
 (53, '99', '$2b$12$/lsYi6pv81Lh8XX9UQQpN.43GhkN0AxhjopW9GmKWXzU7tTrM4BPC', '', ''),
 (54, 'admin1@gmail.com', '$2a$11$FLjsFIsGpAH9xQLaOPmmnOIkzmiJxnJsc/0WVqyn83jlpxalvn09i', '', ''),
 (55, 's', '$2a$11$mEE8bCHHvkJZ2pTPzMM8XeNcXieyvrYg4OjRVNlDQFtAJXEVUmRFq', '', ''),
-(56, 'w', '$2a$11$Ni02fj.eg3dT/wAvlmYxuObjthsc/PLLzjuEJNlvhYLEfpc08DdRG', '', ''),
 (57, 'a@', '$2a$11$45zjSrP/Jo4gROJbz1c26OzTdp0hllncEn5B5OLJPiDfIOFTB3sdu', '', ''),
 (58, 'aq', '$2a$11$fz.0dfj2tiN9O8zoj3HmhuBSeoBnsxLoY3OuQX5VMGl2JwPesaBZK', '', ''),
 (71, 'sara@harka.com', '$2b$12$iVupxB48KYlAubNbrUjCB.MvDKXIcSEUSgJZkS5Xqs8Uef6UKH692', 'Sara', 'Harka'),
 (81, 'b@harka.com', '$2b$12$ctMll4is9XYe/6XiEcruzu334B3m3EOrJju.GhptRNIxlSx1faIU.', 'bbbbb', 'bbbbb'),
 (91, 'csabak@gmailllll.com', '$2b$12$.7Kk38cHxeeHHk2CqqOt9O071hSURGMzHLILcUBUGnry3VYryjV.i', 'Csaba', 'Kkk'),
 (101, 'testuser1@testuser1.com', '$2b$12$h0djK.O1mG1q9euS9alRUObppsD9Et7c8jMUO6ovUYugtrzU.PSPW', 'TestUser1', 'TestUser1'),
-(141, 'hali@harka.com', '$2b$12$SJ9pvqJdUQ9WqwW.hn7hk.pbvijThmrvcSZBQtf.C1e2CjNcE/BMe', 'Hali.', 'Hali.'),
 (151, 'user@harka.com', '$2b$12$g5rk1iLNACuR86CFsR6gbePmOedUTGhz8Mx5xGB6xe.N.aci0NjYK', 'user', 'user'),
 (201, 'many@harka.com', '$2b$12$EPZwVSRhJjVQvAgzSFc.len6ETrHm5bdmrrC7iYTWT/CQvAVEGpzK', 'Many', 'Notes'),
 (211, 'medvekoma@brum.com', '$2b$12$FEq6vrrXurQeZsVub1ZeieJ.c.vJbJ/2PTwVFnfSSQQr2nVG6/by.', 'Brumba', 'Maci'),
@@ -154,7 +157,11 @@ INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`) VALUE
 (231, 'birojozsi@gmail.com', '$2b$12$lwuPszO84xdSK7rf.zzT2.vXF3zbDdI6jZ8lVhstBFVho.dHMgXo2', 'Biró ', 'József'),
 (241, 'felhasznalo@gmail.com', '$2b$12$vlLBhdSmnXd.33rxJXb08.r8LwjV7SqCGvD59ATKecyMNuRBL7Sgq', 'felhasznalo', 'felhasznalo'),
 (251, 'felhasznalo2@gmail.com', '$2b$12$XAXHcg6C7yPeqQxDmSDnWOvPfYvm0RfHTRYAYNqPSonLjJY5pRi1.', 'felhasznalo2', 'felhasznalo2'),
-(291, 'random-user@harka.com', '$2b$12$ef6/GQ3xR4VLBzWti0f3POkTjsb9O4OvZ85QyZI6lLNIy.ETn1UK2', 'Random', 'User');
+(291, 'random-user@harka.com', '$2b$12$ef6/GQ3xR4VLBzWti0f3POkTjsb9O4OvZ85QyZI6lLNIy.ETn1UK2', 'Random', 'User'),
+(301, 'akosmateffy11@gmail.com', '$2b$12$hykcJvGIizHW/bzO/r.u4O3NGgjnNdngOV5LPYEvswa0KpCNmvtO2', 'Ákos', 'Mátéffy'),
+(311, 'stevecsoka@gmail.com', '$2b$12$tJBVb5AhdhYOj3agbR.2/eTY2vUC0uQVKjK7atwOrExKD3bV5giMi', 'Steve', 'Csoka'),
+(321, 'bencze780@gmail.com', '$2b$12$W77JsGt2IJZYgnTQs1AAiOEJXftyPef9gxRx2OcjB/yyt3nZEPCXq', 'István', 'Bencze'),
+(331, 'mravcsi@gmail.com', '$2b$12$WKHKxLoT22JGjwbifITh6OHS6P8OYe5fryKLYlC.ggCb3w/lm53cW', 'Dobrocsi', 'Róbertné');
 
 --
 -- Indexes for dumped tables
@@ -188,20 +195,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `note_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=461;
-
+  MODIFY `note_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
 --
 -- AUTO_INCREMENT for table `note_category`
 --
 ALTER TABLE `note_category`
   MODIFY `note_id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=301;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=341;
 --
 -- Constraints for dumped tables
 --
