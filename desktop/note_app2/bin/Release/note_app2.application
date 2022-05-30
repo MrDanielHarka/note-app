@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="note_app2.exe.manifest" size="13040">
+    <dependentAssembly dependencyType="install" codebase="note_app2.exe.manifest" size="13039">
       <assemblyIdentity name="note_app2.exe" version="1.0.0.5" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>t6Zc98qxh/MvOd1IXO04QGqJf0LOZO3XKSBqOzOEf7g=</dsig:DigestValue>
+        <dsig:DigestValue>p4A2pZLt83b5yOMQih8sDuEvqQFOMdoK84ZFnrn4o6w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

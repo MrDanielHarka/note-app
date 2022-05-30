@@ -499,9 +499,12 @@ namespace note_app2
                     }
                 }
             }
-
             panel2.BringToFront();
             dataGridView1.BringToFront();
+            if (title.Count < 0)
+            {
+                
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -514,6 +517,7 @@ namespace note_app2
             button1.BackColor = Color.Red;
             panel4.BackColor = Color.Red;
             panel3.BackColor = Color.DarkRed;
+
 
             if (btdb == 0)
             {
@@ -640,7 +644,11 @@ namespace note_app2
 
             panel2.BringToFront();
             dataGridView1.BringToFront();
-        }
+        
+
+
+
+    }
         private void Form2_Click(object sender, EventArgs e)
         {
 
@@ -648,370 +656,65 @@ namespace note_app2
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int row = dataGridView1.CurrentCell.RowIndex;
-            if (dataGridView1.CurrentCell.Value.ToString() == "")
-            {// enter
-            }
-            if (dataGridView1.CurrentCell.Value.ToString() == "Private")
-            {
-                string message = "Do you want to make this note public?";
-                string title = "Public";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-                if (result == DialogResult.Yes)
-                {
-                    int counter = -1;
-                    for (int i = 0; i < Fcolumn.Count; i++)
-                    {
-                        if (Fcolumn[i] != "")
-                        {
-                            counter++;
-                            if (counter == row)
-                            {
-                                break;
-                            }
-                        }
-                    }
-                    string kapcsolatString = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
-                    string parancs = " UPDATE `notes` SET `public` = '1' WHERE `notes`.`note_id` ='" + Note_id[counter] +"'";
-                    MySqlConnection adatbKapcsolat = new MySqlConnection(kapcsolatString);
-                    MySqlCommand commandDatabase = new MySqlCommand(parancs, adatbKapcsolat);
-                    commandDatabase.CommandTimeout = 60;
-                    try
-                    {
-                        adatbKapcsolat.Open();
-                        commandDatabase.ExecuteNonQuery();
-                        adatbKapcsolat.Close();
-                    }
+            string kapcsolatStrin = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
+            int number = 0;
+            string parancs5 = "SELECT COUNT(`note_id`) FROM `notes` WHERE `note_id` = '" + noteid + "'";
+            MySqlConnection adatbKapcsolat5 = new MySqlConnection(kapcsolatStrin);
+            MySqlCommand commandDatabase5 = new MySqlCommand(parancs5, adatbKapcsolat5);
+            commandDatabase5.CommandTimeout = 60;
+            MySqlDataReader reader5;
 
-                    catch (Exception ex)
+            try
+            {
+                adatbKapcsolat5.Open();
+                reader5 = commandDatabase5.ExecuteReader();
+
+                if (reader5.HasRows)
+                {
+                    while (reader5.Read())
                     {
-                        MessageBox.Show(ex.Message);
+                        number = (Convert.ToInt32(reader5.GetInt32(0)));
                     }
-                    DataGridViewButtonCell ButtonCell = new DataGridViewButtonCell();
-                    dataGridView1[2, row] = ButtonCell;
-                    dataGridView1[2, row].Value = "Public";
                 }
                 else
                 {
+
                 }
+
+                adatbKapcsolat5.Close();
             }
-            else if (dataGridView1.CurrentCell.Value.ToString() == "Public")
+            catch (Exception ex)
             {
-                string message = "Do you want to make this note private?";
-                string title = "Private";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-                if (result == DialogResult.Yes)
-                {
-                    int counter = -1;
-                    for (int i = 0; i < Fcolumn.Count; i++)
-                    {
-                        if (Fcolumn[i] != "")
-                        {
-                            counter++;
-                            if (counter == row)
-                            {
-                                break;
-                            }
-                        }
-                    }
-                    string kapcsolatString = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
-                    string parancs = " UPDATE `notes` SET `public` = '0' WHERE `notes`.`note_id` ='" + Note_id[counter] + "'";
-                    MySqlConnection adatbKapcsolat = new MySqlConnection(kapcsolatString);
-                    MySqlCommand commandDatabase = new MySqlCommand(parancs, adatbKapcsolat);
-                    commandDatabase.CommandTimeout = 60;
-                    try
-                    {
-                        adatbKapcsolat.Open();
-                        commandDatabase.ExecuteNonQuery();
-                        adatbKapcsolat.Close();
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    DataGridViewButtonCell ButtonCell = new DataGridViewButtonCell();
-                    dataGridView1[2, row] = ButtonCell;
-                    dataGridView1[2, row].Value = "Private";
-                }
-                else
-                {
-                }
+                MessageBox.Show(ex.Message);
             }
-            int darab = 0;
-            if (dataGridView1.CurrentCell.Value.ToString() == "Delete")
-            {
-                string message = "Are you sure you want to delete this note";
-                string boxtitle = "Delete";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, boxtitle, buttons);
-                if (result == DialogResult.Yes)
+           
+                int row = dataGridView1.CurrentCell.RowIndex;
+
+                if (dataGridView1.CurrentCell.Value.ToString() == "")
                 {
-                    int counter = -1;
-                    for(int i = 0;i<Fcolumn.Count;i++)
-                    {
-                        if(Fcolumn[i] != "")
-                        {
-                            counter++;
-                            if(counter == row)
-                            {
-                                break;
-                            }
-                        }
-                    }
-                    string kapcsolatString2 = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
-                    string parancs2 = "SELECT COUNT(note_id) FROM `shares` WHERE `note_id`='" + Note_id[counter] + "'";
-                    MySqlConnection adatbKapcsolat2 = new MySqlConnection(kapcsolatString2);
-                    MySqlCommand commandDatabase2 = new MySqlCommand(parancs2, adatbKapcsolat2);
-                    commandDatabase2.CommandTimeout = 60;
-                    MySqlDataReader reader2;
-
-                    try
-                    {
-                        adatbKapcsolat2.Open();
-                        reader2 = commandDatabase2.ExecuteReader();
-
-                        if (reader2.HasRows)
-                        {
-                            while (reader2.Read())
-                            {
-                                darab = (Convert.ToInt32(reader2.GetInt32(0)));
-                            }
-                        }
-                        else
-                        {
-
-                        }
-
-                        adatbKapcsolat2.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-
-                    if (darab > 0)
-                    {
-                        string kapcsolatString21 = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
-                        string parancs21 = "DELETE FROM shares WHERE shares.note_id='" + Note_id[counter] + "'";
-                        MySqlConnection adatbKapcsolat21 = new MySqlConnection(kapcsolatString21);
-                        MySqlCommand commandDatabase21 = new MySqlCommand(parancs21, adatbKapcsolat21);
-                        commandDatabase21.CommandTimeout = 60;
-                        try
-                        {
-                            adatbKapcsolat21.Open();
-                            commandDatabase21.ExecuteNonQuery();
-                            adatbKapcsolat21.Close();
-                        }
-
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                    }
-                    string kapcsolatString3 = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
-                    string parancs3 = "DELETE FROM notes WHERE notes.note_id='" + Note_id[counter] + "'";
-                    MySqlConnection adatbKapcsolat3 = new MySqlConnection(kapcsolatString3);
-                    MySqlCommand commandDatabase3 = new MySqlCommand(parancs3, adatbKapcsolat3);
-                    commandDatabase3.CommandTimeout = 60;
-                    try
-                    {
-                        adatbKapcsolat3.Open();
-                        commandDatabase3.ExecuteNonQuery();
-                        adatbKapcsolat3.Close();
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-
-                    dataGridView1.Columns.Remove("Public");
-                    dataGridView1.Columns.Remove("Shared");
-                    dataGridView1.Columns.Remove("Save");
-                    dataGridView1.Columns.Remove("Delete");
-                    dataGridView1.Rows.Clear();
-                    Fcolumn.Clear();
-                    Note_id.Clear();
-                    Publical.Clear();
-                    title.Clear();
-                    content.Clear();
-                    shared.Clear();
-                    notes();
-                    Bt1_click();
-
-
-                    dataGridView1.EnableHeadersVisualStyles = false;
-                    dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-                    dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Red;
-
-
-                    for (int i = 0; i < Fcolumn.Count; i++)
-                    {
-                        if (Fcolumn[i] == "")
-                        {
-                            DataGridViewButtonCell ButtonCell = new DataGridViewButtonCell();
-                            dataGridView1[3, i] = ButtonCell;
-                            dataGridView1[3, i].Value = "";
-                        }
-                    }
-                    for (int i = 0; i < Fcolumn.Count; i++)
-                    {
-                        if (Fcolumn[i] == "")
-                        {
-                            DataGridViewButtonCell ButtonCell = new DataGridViewButtonCell();
-                            dataGridView1[2, i] = ButtonCell;
-                            dataGridView1[2, i].Value = "";
-                        }
-                        else
-                        {
-                            List<int> numbers = new List<int>();
-                            int counter2 = 0;
-                            numbers.Add(0);
-                            for (int k = 0; k < Fcolumn.Count; k++)
-                            {
-                                if (Fcolumn[k] == "")
-                                {
-                                    counter2++;
-                                }
-                                if (k < Fcolumn.Count - 1)
-                                {
-                                    if (Fcolumn[k + 1] != "")
-                                    {
-                                        numbers.Add(counter2);
-                                        counter2 = 0;
-                                    }
-                                }
-                            }
-
-                            for (int j = 0; j < title.Count; j++)
-                            {
-                                if (Publical[j] == 0)
-                                {
-                                    DataGridViewButtonCell ButtonCell2 = new DataGridViewButtonCell();
-                                    dataGridView1[2, j + numbers[j]] = ButtonCell2;
-                                    dataGridView1[2, j + numbers[j]].Value = "Private";
-                                }
-                                else if ((Publical[j] == 1))
-                                {
-                                    DataGridViewButtonCell ButtonCell = new DataGridViewButtonCell();
-                                    dataGridView1[2, j + numbers[j]] = ButtonCell;
-                                    dataGridView1[2, j + numbers[j]].Value = "Public";
-                                }
-                            }
-
-                            for (int j = 0; j < title.Count; j++)
-                            {
-                                if (shared[j] == 0)
-                                {
-                                    DataGridViewButtonCell ButtonCell2 = new DataGridViewButtonCell();
-                                    dataGridView1[3, j + numbers[j]] = ButtonCell2;// 
-                                    dataGridView1[3, j + numbers[j]].Value = " Private ";//
-                                }
-                                else if ((shared[j] == 1))
-                                {
-                                    DataGridViewButtonCell ButtonCell = new DataGridViewButtonCell();
-                                    dataGridView1[3, j + numbers[j]] = ButtonCell;//
-                                    dataGridView1[3, j + numbers[j]].Value = "Shared";// 
-                                }
-                            }
-                        }
-                    }
-                    for (int i = 0; i < Fcolumn.Count; i++)
-                    {
-                        if (Fcolumn[i] == "")
-                        {
-                            for (int j = 0; j < 4; j++)
-                            {
-                                var cell = ((DataGridViewButtonCell)dataGridView1.Rows[i].Cells[j + 2]);
-                                cell.FlatStyle = FlatStyle.Flat;
-                                dataGridView1.Rows[i].Cells[j + 2].Style.ForeColor = Color.White;
-                            }
-                        }
-                    }
-
-
                 }
-            }
-            else
-            {
-
-            }
-            if(dataGridView1.CurrentCell.Value.ToString() == " Private ")
-            {
-                int counter = -1;
-                for (int i = 0; i < Fcolumn.Count; i++)
+                if (dataGridView1.CurrentCell.Value.ToString() == "Private")
                 {
-                    if (Fcolumn[i] != "")
+                    string message = "Do you want to make this note public?";
+                    string title = "Public";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                    if (result == DialogResult.Yes)
                     {
-                        counter++;
-                        if (counter == row)
+                        int counter = -1;
+                        for (int i = 0; i < Fcolumn.Count; i++)
                         {
-                            break;
+                            if (Fcolumn[i] != "")
+                            {
+                                counter++;
+                                if (counter == row)
+                                {
+                                    break;
+                                }
+                            }
                         }
-                    }
-                }
-                noteid =Note_id[counter];
-                Form5 F5 = new Form5();
-                F5.Show();
-                this.Hide();
-            }
-            if (dataGridView1.CurrentCell.Value.ToString() == "Shared")
-            {
-                string message = "Do you want to share this note with someone else?";
-                string title = "Share";
-                int counter = -1;
-                for (int i = 0; i < Fcolumn.Count; i++)
-                {
-                    if (Fcolumn[i] != "")
-                    {
-                        counter++;
-                        if (counter == row)
-                        {
-                            break;
-                        }
-                    }
-                }
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-                if (result == DialogResult.Yes)
-                {
-                    noteid = Note_id[counter];
-                    Form5 F5 = new Form5();
-                    F5.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    string message2 = "Do you want to make this note private?";
-                    string title2 = "Share";
-                    MessageBoxButtons buttons2 = MessageBoxButtons.YesNo;
-                   
-                    DialogResult result2 = MessageBox.Show(message2, title2, buttons2);
-                    if (result2 == DialogResult.Yes)
-                    {
-                        string kapcsolatString3 = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
-                        string parancs3 = "DELETE FROM `shares` WHERE `note_id`='" + Note_id[counter] + "'";
-                        MySqlConnection adatbKapcsolat3 = new MySqlConnection(kapcsolatString3);
-                        MySqlCommand commandDatabase3 = new MySqlCommand(parancs3, adatbKapcsolat3);
-                        commandDatabase3.CommandTimeout = 60;
-                        try
-                        {
-                            adatbKapcsolat3.Open();
-                            commandDatabase3.ExecuteNonQuery();
-                            adatbKapcsolat3.Close();
-                        }
-
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-
-
                         string kapcsolatString = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
-                        string parancs = "UPDATE `notes` SET `shared` = '0' WHERE `notes`.`note_id` ='" + Note_id[counter] + "'";
+                        string parancs = " UPDATE `notes` SET `public` = '1' WHERE `notes`.`note_id` ='" + Note_id[counter] + "'";
                         MySqlConnection adatbKapcsolat = new MySqlConnection(kapcsolatString);
                         MySqlCommand commandDatabase = new MySqlCommand(parancs, adatbKapcsolat);
                         commandDatabase.CommandTimeout = 60;
@@ -1027,32 +730,372 @@ namespace note_app2
                             MessageBox.Show(ex.Message);
                         }
                         DataGridViewButtonCell ButtonCell = new DataGridViewButtonCell();
-                        dataGridView1[3, row] = ButtonCell;
-                        dataGridView1[3, row].Value = " Private ";
+                        dataGridView1[2, row] = ButtonCell;
+                        dataGridView1[2, row].Value = "Public";
                     }
                     else
+                    {
+                    }
+                }
+                else if (dataGridView1.CurrentCell.Value.ToString() == "Public")
+                {
+                    string message = "Do you want to make this note private?";
+                    string title = "Private";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+                        int counter = -1;
+                        for (int i = 0; i < Fcolumn.Count; i++)
+                        {
+                            if (Fcolumn[i] != "")
+                            {
+                                counter++;
+                                if (counter == row)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        string kapcsolatString = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
+                        string parancs = " UPDATE `notes` SET `public` = '0' WHERE `notes`.`note_id` ='" + Note_id[counter] + "'";
+                        MySqlConnection adatbKapcsolat = new MySqlConnection(kapcsolatString);
+                        MySqlCommand commandDatabase = new MySqlCommand(parancs, adatbKapcsolat);
+                        commandDatabase.CommandTimeout = 60;
+                        try
+                        {
+                            adatbKapcsolat.Open();
+                            commandDatabase.ExecuteNonQuery();
+                            adatbKapcsolat.Close();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        DataGridViewButtonCell ButtonCell = new DataGridViewButtonCell();
+                        dataGridView1[2, row] = ButtonCell;
+                        dataGridView1[2, row].Value = "Private";
+                    }
+                    else
+                    {
+                    }
+                }
+                int darab = 0;
+                if (dataGridView1.CurrentCell.Value.ToString() == "Delete")
+                {
+                    string message = "Are you sure you want to delete this note";
+                    string boxtitle = "Delete";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show(message, boxtitle, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+                        int counter = -1;
+                        for (int i = 0; i < Fcolumn.Count; i++)
+                        {
+                            if (Fcolumn[i] != "")
+                            {
+                                counter++;
+                                if (counter == row)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        string kapcsolatString2 = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
+                        string parancs2 = "SELECT COUNT(note_id) FROM `shares` WHERE `note_id`='" + Note_id[counter] + "'";
+                        MySqlConnection adatbKapcsolat2 = new MySqlConnection(kapcsolatString2);
+                        MySqlCommand commandDatabase2 = new MySqlCommand(parancs2, adatbKapcsolat2);
+                        commandDatabase2.CommandTimeout = 60;
+                        MySqlDataReader reader2;
+
+                        try
+                        {
+                            adatbKapcsolat2.Open();
+                            reader2 = commandDatabase2.ExecuteReader();
+
+                            if (reader2.HasRows)
+                            {
+                                while (reader2.Read())
+                                {
+                                    darab = (Convert.ToInt32(reader2.GetInt32(0)));
+                                }
+                            }
+                            else
+                            {
+
+                            }
+
+                            adatbKapcsolat2.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+
+                        if (darab > 0)
+                        {
+                            string kapcsolatString21 = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
+                            string parancs21 = "DELETE FROM shares WHERE shares.note_id='" + Note_id[counter] + "'";
+                            MySqlConnection adatbKapcsolat21 = new MySqlConnection(kapcsolatString21);
+                            MySqlCommand commandDatabase21 = new MySqlCommand(parancs21, adatbKapcsolat21);
+                            commandDatabase21.CommandTimeout = 60;
+                            try
+                            {
+                                adatbKapcsolat21.Open();
+                                commandDatabase21.ExecuteNonQuery();
+                                adatbKapcsolat21.Close();
+                            }
+
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                        string kapcsolatString3 = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
+                        string parancs3 = "DELETE FROM notes WHERE notes.note_id='" + Note_id[counter] + "'";
+                        MySqlConnection adatbKapcsolat3 = new MySqlConnection(kapcsolatString3);
+                        MySqlCommand commandDatabase3 = new MySqlCommand(parancs3, adatbKapcsolat3);
+                        commandDatabase3.CommandTimeout = 60;
+                        try
+                        {
+                            adatbKapcsolat3.Open();
+                            commandDatabase3.ExecuteNonQuery();
+                            adatbKapcsolat3.Close();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+
+                        dataGridView1.Columns.Remove("Public");
+                        dataGridView1.Columns.Remove("Shared");
+                        dataGridView1.Columns.Remove("Save");
+                        dataGridView1.Columns.Remove("Delete");
+                        dataGridView1.Rows.Clear();
+                        Fcolumn.Clear();
+                        Note_id.Clear();
+                        Publical.Clear();
+                        title.Clear();
+                        content.Clear();
+                        shared.Clear();
+                        notes();
+                        Bt1_click();
+
+
+                        dataGridView1.EnableHeadersVisualStyles = false;
+                        dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                        dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Red;
+
+
+                        for (int i = 0; i < Fcolumn.Count; i++)
+                        {
+                            if (Fcolumn[i] == "")
+                            {
+                                DataGridViewButtonCell ButtonCell = new DataGridViewButtonCell();
+                                dataGridView1[3, i] = ButtonCell;
+                                dataGridView1[3, i].Value = "";
+                            }
+                        }
+                        for (int i = 0; i < Fcolumn.Count; i++)
+                        {
+                            if (Fcolumn[i] == "")
+                            {
+                                DataGridViewButtonCell ButtonCell = new DataGridViewButtonCell();
+                                dataGridView1[2, i] = ButtonCell;
+                                dataGridView1[2, i].Value = "";
+                            }
+                            else
+                            {
+                                List<int> numbers = new List<int>();
+                                int counter2 = 0;
+                                numbers.Add(0);
+                                for (int k = 0; k < Fcolumn.Count; k++)
+                                {
+                                    if (Fcolumn[k] == "")
+                                    {
+                                        counter2++;
+                                    }
+                                    if (k < Fcolumn.Count - 1)
+                                    {
+                                        if (Fcolumn[k + 1] != "")
+                                        {
+                                            numbers.Add(counter2);
+                                            counter2 = 0;
+                                        }
+                                    }
+                                }
+
+                                for (int j = 0; j < title.Count; j++)
+                                {
+                                    if (Publical[j] == 0)
+                                    {
+                                        DataGridViewButtonCell ButtonCell2 = new DataGridViewButtonCell();
+                                        dataGridView1[2, j + numbers[j]] = ButtonCell2;
+                                        dataGridView1[2, j + numbers[j]].Value = "Private";
+                                    }
+                                    else if ((Publical[j] == 1))
+                                    {
+                                        DataGridViewButtonCell ButtonCell = new DataGridViewButtonCell();
+                                        dataGridView1[2, j + numbers[j]] = ButtonCell;
+                                        dataGridView1[2, j + numbers[j]].Value = "Public";
+                                    }
+                                }
+
+                                for (int j = 0; j < title.Count; j++)
+                                {
+                                    if (shared[j] == 0)
+                                    {
+                                        DataGridViewButtonCell ButtonCell2 = new DataGridViewButtonCell();
+                                        dataGridView1[3, j + numbers[j]] = ButtonCell2;// 
+                                        dataGridView1[3, j + numbers[j]].Value = " Private ";//
+                                    }
+                                    else if ((shared[j] == 1))
+                                    {
+                                        DataGridViewButtonCell ButtonCell = new DataGridViewButtonCell();
+                                        dataGridView1[3, j + numbers[j]] = ButtonCell;//
+                                        dataGridView1[3, j + numbers[j]].Value = "Shared";// 
+                                    }
+                                }
+                            }
+                        }
+                        for (int i = 0; i < Fcolumn.Count; i++)
+                        {
+                            if (Fcolumn[i] == "")
+                            {
+                                for (int j = 0; j < 4; j++)
+                                {
+                                    var cell = ((DataGridViewButtonCell)dataGridView1.Rows[i].Cells[j + 2]);
+                                    cell.FlatStyle = FlatStyle.Flat;
+                                    dataGridView1.Rows[i].Cells[j + 2].Style.ForeColor = Color.White;
+                                }
+                            }
+                        }
+
+
+                    }
+                }
+                else
+                {
+
+                }
+                if (dataGridView1.CurrentCell.Value.ToString() == " Private ")
+                {
+                    int counter = -1;
+                    for (int i = 0; i < Fcolumn.Count; i++)
+                    {
+                        if (Fcolumn[i] != "")
+                        {
+                            counter++;
+                            if (counter == row)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    noteid = Note_id[counter];
+                    Form5 F5 = new Form5();
+                    F5.Show();
+                    this.Hide();
+                }
+                if (dataGridView1.CurrentCell.Value.ToString() == "Shared")
+                {
+                    string message = "Do you want to share this note with someone else?";
+                    string title = "Share";
+                    int counter = -1;
+                    for (int i = 0; i < Fcolumn.Count; i++)
+                    {
+                        if (Fcolumn[i] != "")
+                        {
+                            counter++;
+                            if (counter == row)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+                        noteid = Note_id[counter];
+                        Form5 F5 = new Form5();
+                        F5.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        string message2 = "Do you want to make this note private?";
+                        string title2 = "Share";
+                        MessageBoxButtons buttons2 = MessageBoxButtons.YesNo;
+
+                        DialogResult result2 = MessageBox.Show(message2, title2, buttons2);
+                        if (result2 == DialogResult.Yes)
+                        {
+                            string kapcsolatString3 = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
+                            string parancs3 = "DELETE FROM `shares` WHERE `note_id`='" + Note_id[counter] + "'";
+                            MySqlConnection adatbKapcsolat3 = new MySqlConnection(kapcsolatString3);
+                            MySqlCommand commandDatabase3 = new MySqlCommand(parancs3, adatbKapcsolat3);
+                            commandDatabase3.CommandTimeout = 60;
+                            try
+                            {
+                                adatbKapcsolat3.Open();
+                                commandDatabase3.ExecuteNonQuery();
+                                adatbKapcsolat3.Close();
+                            }
+
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+
+
+                            string kapcsolatString = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
+                            string parancs = "UPDATE `notes` SET `shared` = '0' WHERE `notes`.`note_id` ='" + Note_id[counter] + "'";
+                            MySqlConnection adatbKapcsolat = new MySqlConnection(kapcsolatString);
+                            MySqlCommand commandDatabase = new MySqlCommand(parancs, adatbKapcsolat);
+                            commandDatabase.CommandTimeout = 60;
+                            try
+                            {
+                                adatbKapcsolat.Open();
+                                commandDatabase.ExecuteNonQuery();
+                                adatbKapcsolat.Close();
+                            }
+
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                            DataGridViewButtonCell ButtonCell = new DataGridViewButtonCell();
+                            dataGridView1[3, row] = ButtonCell;
+                            dataGridView1[3, row].Value = " Private ";
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                if (dataGridView1.CurrentCell.Value.ToString() == "Save as")
+                {
+                    try
+                    {
+                        saveFileDialog1.ShowDialog();
+                        string faljnev = saveFileDialog1.FileName;
+                        StreamWriter ki = new StreamWriter(faljnev);
+                        ki.WriteLine(title[row]);
+                        ki.WriteLine();
+                        ki.WriteLine(content[row]);
+                        ki.Close();
+                    }
+                    catch
                     {
 
                     }
                 }
-            }
-            if(dataGridView1.CurrentCell.Value.ToString() == "Save as")
-            {
-                try
-                {
-                    saveFileDialog1.ShowDialog();
-                    string faljnev = saveFileDialog1.FileName;
-                    StreamWriter ki = new StreamWriter(faljnev);
-                    ki.WriteLine(title[row]);
-                    ki.WriteLine();
-                    ki.WriteLine(content[row]);
-                    ki.Close();
-                }
-                catch
-                {
-
-                }
-            }
+            
+           
 
         }
         private void shares()
