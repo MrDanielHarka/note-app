@@ -30,17 +30,13 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.loginForm.value.email);
-    console.log(this.loginForm.value.password);
     this.userData.email = this.loginForm.value.email;
     this.userData.password = this.loginForm.value.password;
     this.getUserInfo();
-    // this.loginForm.reset();
   }
 
   getUserInfo() {
     this.loginService.onLoginUser(this.userData).subscribe((response) => {
-      console.log(response);
       this.userInfo = response;
       this.message = this.userInfo.message;
       this.userService.userId = this.userInfo.userId;
@@ -48,31 +44,9 @@ export class LoginComponent implements OnInit {
       this.userService.firstName = this.userInfo.firstName;
       this.userService.lastName = this.userInfo.lastName;
       this.userService.isLoggedIn = this.userInfo.isLoggedIn;
-      console.log(this.userService);
       if (this.userService.isLoggedIn) {
         this.router.navigate(['/']);
       }
-      // this.message = response.message;
-      // if (
-      //   this.userData.email === this.user.email &&
-      //   this.userData.password === this.user.password
-      // ) {
-      //   this.userService.userId = this.user.id;
-      //   this.userService.email = this.user.email;
-      //   this.userService.password = this.user.password;
-      //   this.userService.firstName = this.user.first_name;
-      //   this.userService.lastName = this.user.last_name;
-      //   this.userService.username = this.user.username;
-      //   this.router.navigate(['/']);
-      //   this.userService.isLoggedIn = true
-      //     ? this.user.email === this.userData.email
-      //     : false;
-      // } else if (
-      //   this.userData.email === this.user.email &&
-      //   this.userData.password !== this.user.password
-      // ) {
-      //   console.log('Wrong password!');
-      // }
     });
   }
 

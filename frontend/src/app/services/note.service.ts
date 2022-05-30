@@ -36,7 +36,6 @@ export class NoteService {
         headers: { 'content-type': 'application/json' },
       })
       .subscribe((updateData) => {
-        console.log(updateData);
         return updateData;
       });
   }
@@ -47,7 +46,6 @@ export class NoteService {
         headers: { 'content-type': 'application/json' },
       })
       .subscribe((updateData) => {
-        console.log(updateData);
         return updateData;
       });
   }

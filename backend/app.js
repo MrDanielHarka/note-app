@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
-const path = require('path');
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
 const cors = require('cors')({ origin: '*' });
@@ -14,15 +13,8 @@ const pool = mysql.createPool({
   password: mysqlCredentials.password,
   database: mysqlCredentials.database,
 });
-
 app.use(express.json());
-app.use(express.static('public'));
 app.use(cors);
-
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '/public/index.html'));
-});
-
 app.get('/stats', (req, res) => {
   userQuery = `SELECT COUNT(*) FROM users;`;
   noteQuery = `SELECT COUNT(*) FROM notes;`;
@@ -43,9 +35,8 @@ app.get('/stats', (req, res) => {
 
   setTimeout(() => {
     res.status(200).json(stats);
-  }, 1000);
+  }, 750);
 });
-
 app.post('/user-notes', (req, res) => {
   userId = req.body.userId;
   query = `SELECT * FROM notes WHERE user_id = '${req.body.userId}' ORDER BY note_id DESC;`;
@@ -55,7 +46,6 @@ app.post('/user-notes', (req, res) => {
     res.status(200).json(result);
   });
 });
-
 app.post('/new-note', (req, res) => {
   userId = req.body.userId;
   title = req.body.title;
@@ -63,8 +53,7 @@ app.post('/new-note', (req, res) => {
   public = req.body.isPublic;
   shared = 0;
 
-  query = `INSERT INTO notes
-  (note_id, user_id, title, content, public, shared)
+  query = `INSERT INTO notes (note_id, user_id, title, content, public, shared)
   VALUES (?, ?, ?, ?, ?, ?);`;
 
   pool.query(
@@ -76,7 +65,6 @@ app.post('/new-note', (req, res) => {
   );
   return res.send(req.body).status(200);
 });
-
 app.put('/update-note', (req, res) => {
   noteId = req.body.note_id;
   userId = req.body.user_id;
@@ -100,7 +88,6 @@ app.put('/update-note', (req, res) => {
     return res.status(201).json('Note saved successfully!');
   });
 });
-
 app.put('/delete-note', (req, res) => {
   noteId = req.body.note_id;
 
@@ -114,7 +101,6 @@ app.put('/delete-note', (req, res) => {
     return res.status(201).json('Note deleted successfully!');
   });
 });
-
 app.get('/public-notes', (req, res) => {
   query = `SELECT * FROM notes WHERE public = '1' ORDER BY note_id DESC;`;
 
@@ -123,7 +109,6 @@ app.get('/public-notes', (req, res) => {
     res.status(200).json(result);
   });
 });
-
 app.post('/register', async (req, res) => {
   firstName = req.body.firstName;
   lastName = req.body.lastName;
@@ -148,7 +133,6 @@ app.post('/register', async (req, res) => {
     }
   });
 });
-
 app.post('/login', async (req, res) => {
   try {
     email = req.body.email;
@@ -178,7 +162,7 @@ app.post('/login', async (req, res) => {
           }`);
         } else {
           res.status(200).send(`{
-            "message": "Invalid password! For customer support, an email can be sent to the-note-app@harka.com from this user email for a temporary password."
+            "message": "Invalid password! For customer support, an email can be sent to note-app@harka.com from this user email for a temporary recovery password."
           }`);
         }
       } else {
@@ -193,7 +177,6 @@ app.post('/login', async (req, res) => {
           }`);
   }
 });
-
 app.put('/settings', async (req, res) => {
   try {
     userId = req.body.userId;
@@ -218,14 +201,27 @@ app.put('/settings', async (req, res) => {
           this.user.password
         );
         if (validPassword) {
-          query = `
+          let query;
+
+          if (newPassword === '') {
+            query = `
           UPDATE users
           SET id = ${userId},
               email = '${email}',
-              password = '${newPasswordHash}',
+              password = '${this.user.password}',
               first_name = '${firstName}',
               last_name = '${lastName}'
           WHERE id = ${userId}`;
+          } else {
+            query = `
+            UPDATE users
+            SET id = ${userId},
+                email = '${email}',
+                password = '${newPasswordHash}',
+                first_name = '${firstName}',
+                last_name = '${lastName}'
+            WHERE id = ${userId}`;
+          }
 
           pool.query(query, (err, result) => {
             if (err) throw err;
@@ -250,5 +246,4 @@ app.put('/settings', async (req, res) => {
           }`);
   }
 });
-
 app.listen(port, () => console.log(`App is running on ${port}.`));

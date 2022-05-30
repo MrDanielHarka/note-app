@@ -9,6 +9,12 @@ import { UrlService } from 'src/app/services/url.service';
 })
 export class WelcomeComponent implements OnInit {
   public stats: any;
+
+  code = `while (!false && true)
+{
+Console.WriteLine("Code all day.")
+}`;
+
   constructor(private httpClient: HttpClient, private urlService: UrlService) {}
 
   public getStats() {

@@ -1,4 +1,4 @@
-# Note App - Project files
+# Note App - Project documents
 
 **All files related to the project itself can be found here.**
 

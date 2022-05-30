@@ -22,9 +22,9 @@ editor:
 
 # Note App
 
-A note taking app for anybody.
+Simple note taking for anyone.
 
-**[the-note-app.herokuapp.com](https://the-note-app.herokuapp.com)**
+**[note-app.harka.com](https://note-app.harka.com)**
 
 ---
 
@@ -77,7 +77,7 @@ Note:
 
 - **Frontend:** JavaScript, TypeScript, Angular, RXJS, HTTP, Material Design
   <br><br>
-- **Backend:** Node.js, JavaScript, Express, Bcrypt, JSON
+- **Backend:** Node.js, JavaScript, Express, Bcrypt, CORS, JSON
   <br><br>
 - **Adatbázis:** MySQL, phpMyAdmin
 
@@ -88,8 +88,8 @@ Note:
 
 ## Összefoglalás
 
-Több info:
-**[GitHub](https://github.com/MrDanielHarka/the-note-app)**
+Bővebb info:
+**[GitHub](https://github.com/MrDanielHarka/note-app)**
 
 Note:  
 **Max 30:00-ig**

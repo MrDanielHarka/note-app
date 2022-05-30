@@ -5,6 +5,7 @@ import { PublicComponent } from './components/public/public.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { GdprComponent } from './components/gdpr/gdpr.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,6 +13,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'settings', component: SettingsComponent },
+  { path: 'gdpr', component: GdprComponent },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({

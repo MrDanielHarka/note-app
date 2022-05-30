@@ -17,9 +17,5 @@ export class SettingsService {
         headers: { 'content-type': 'application/json' },
       }
     );
-    // .subscribe((settingsData) => {
-    //   console.log(settingsData);
-    //   return settingsData;
-    // });
   }
 }

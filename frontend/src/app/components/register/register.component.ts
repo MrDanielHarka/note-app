@@ -32,21 +32,11 @@ export class RegisterComponent implements OnInit {
     this.registerService.onRegisterUser(this.userData).subscribe((response) => {
       this.userInfo = response;
       this.message = this.userInfo.message;
-      console.log(response);
-      console.log(this.userInfo.message);
       if (this.userInfo.message === undefined) {
         this.submitted = true;
-        this.message = this.userInfo.message; // Kell ez ide?
+        this.message = this.userInfo.message;
       }
-      // if (
-      //   this.userInfo.message === 'This email address is already registered.'
-      // ) {
-      //   this.message = this.userInfo.message;
-      // } else {
-      //   this.submitted = true;
-      // }
     });
-    // this.registerForm.reset();
   }
 
   ngOnInit(): void {}

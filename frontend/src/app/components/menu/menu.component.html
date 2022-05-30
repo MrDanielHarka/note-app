@@ -5,18 +5,28 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
   >
-    <mat-toolbar>Note App</mat-toolbar>
+    <mat-toolbar> Note App </mat-toolbar>
     <mat-nav-list *ngIf="!user.isLoggedIn">
-      <a mat-list-item [routerLink]="['/']">Home</a>
-      <a mat-list-item [routerLink]="['/public']">Public</a>
-      <a mat-list-item [routerLink]="['/register']">Register</a>
-      <a mat-list-item [routerLink]="['/login']">Login</a>
+      <a mat-list-item [routerLink]="['/']" (click)="drawer.toggle()">Home</a>
+      <a mat-list-item [routerLink]="['/public']" (click)="drawer.toggle()"
+        >Public</a
+      >
+      <a mat-list-item [routerLink]="['/register']" (click)="drawer.toggle()"
+        >Register</a
+      >
+      <a mat-list-item [routerLink]="['/login']" (click)="drawer.toggle()"
+        >Login</a
+      >
     </mat-nav-list>
     <mat-nav-list *ngIf="user.isLoggedIn">
-      <a mat-list-item [routerLink]="['/']">Home</a>
-      <a mat-list-item [routerLink]="['/public']">Public</a>
-      <a mat-list-item [routerLink]="['/settings']">Settings</a>
-      <a mat-list-item (click)="onLogout()">Logout</a>
+      <a mat-list-item [routerLink]="['/']" (click)="drawer.toggle()">Home</a>
+      <a mat-list-item [routerLink]="['/public']" (click)="drawer.toggle()"
+        >Public</a
+      >
+      <a mat-list-item [routerLink]="['/settings']" (click)="drawer.toggle()"
+        >Settings</a
+      >
+      <a mat-list-item (click)="drawer.toggle(); onLogout()">Logout</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -54,29 +64,3 @@
     <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
-<!-- 
-<header>
-  <h1>Note App</h1>
-  <p>A simple note taking app.</p>
-
-  <nav *ngIf="!user.isLoggedIn">
-    <a mat-button [routerLink]="['/']">Home</a>
-
-    <a mat-button [routerLink]="['/public']">Public notes</a>
-
-    <a mat-button [routerLink]="['/register']">Register</a>
-
-    <a mat-button [routerLink]="['/login']">Login</a>
-  </nav>
-
-  <nav *ngIf="user.isLoggedIn">
-    <a mat-button [routerLink]="['/']">My notes</a>
-
-    <a mat-button [routerLink]="['/public']">Public notes</a>
-
-    <a mat-button [routerLink]="['/settings']">Settings</a>
-
-    <a mat-button (click)="onLogout()">Logout</a>
-  </nav>
-  <hr />
-</header> -->

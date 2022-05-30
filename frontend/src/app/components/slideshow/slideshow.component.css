@@ -1,0 +1,89 @@
+.mySlides {
+  display: none;
+}
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  /* margin: auto; */
+  height: 35vw;
+  max-height: 350px;
+  margin: 0.2rem;
+  overflow: hidden;
+}
+
+.slideshow-container img {
+  border-radius: 5px;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+
+.toptext {
+  color: black;
+  font-size: 72px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+}
+
+.bottomtext {
+  color: black;
+  font-size: 22px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  left: 0;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .toptext {
+    font-size: 7vw;
+    top: 0.4rem;
+    padding: 1vw;
+  }
+  .bottomtext {
+    /* font-size: 22px; */
+    font-size: 2.5vw;
+    padding: 1vw;
+  }
+}
+
+/* @media only screen and (max-width: 660px) {
+  .toptext {
+    font-size: 25px;
+    top: 0.05rem;
+  }
+  .bottomtext {
+    font-size: 20px;
+  }
+} */
+
+@media only screen and (max-width: 520px) {
+  .toptext {
+    top: 0;
+    left: 0;
+    padding: 5px 7px;
+  }
+
+  .bottomtext {
+    font-size: 13px;
+    left: 0;
+    padding: 5px 7px;
+  }
+}

@@ -33,6 +33,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { PopupComponent } from './components/popup/popup.component';
+import { SlideshowComponent } from './components/slideshow/slideshow.component';
+import { GdprComponent } from './components/gdpr/gdpr.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { PopupComponent } from './components/popup/popup.component';
     NoteComponent,
     WelcomeComponent,
     PopupComponent,
+    SlideshowComponent,
+    GdprComponent,
   ],
   imports: [
     BrowserModule,

@@ -52,7 +52,6 @@ export class NoteComponent implements OnInit {
   }
 
   onNewNote() {
-    console.log('Note added.');
     this.noteService.onNoteAdded(this.newNote).subscribe((response) => {});
     setTimeout(() => {
       this.newNote.title = '';
@@ -63,9 +62,6 @@ export class NoteComponent implements OnInit {
   }
 
   onUpdateNote(noteIndex: number) {
-    console.log(noteIndex);
-    console.log(this.userNotes);
-    console.log(this.userNotes[noteIndex]);
     this.noteService.onUpdateNote(this.userNotes[noteIndex]);
   }
 
