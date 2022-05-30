@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UrlService {
-  // serverUrl = 'http://localhost:5000';
   serverUrl = 'https://the-note-app.herokuapp.com';
 
   constructor() {}

@@ -53,7 +53,8 @@ app.post('/new-note', (req, res) => {
   public = req.body.isPublic;
   shared = 0;
 
-  query = `INSERT INTO notes (note_id, user_id, title, content, public, shared)
+  query = `INSERT INTO notes
+  (note_id, user_id, title, content, public, shared)
   VALUES (?, ?, ?, ?, ?, ?);`;
 
   pool.query(
@@ -102,7 +103,14 @@ app.put('/delete-note', (req, res) => {
   });
 });
 app.get('/public-notes', (req, res) => {
-  query = `SELECT * FROM notes WHERE public = '1' ORDER BY note_id DESC;`;
+  query = `
+  SELECT users.last_name, users.first_name, notes.title, notes.content
+  FROM users
+  INNER JOIN notes
+  ON users.id = notes.user_id
+  WHERE users.id = notes.user_id AND notes.public = 1
+  ORDER BY note_id DESC
+  ;`;
 
   pool.query(query, (err, result) => {
     if (err) throw err;

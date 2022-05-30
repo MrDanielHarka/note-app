@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/white.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <title>Note App Presentation</title>
+
+    <style>
+      body {
+        cursor: default;
+      }
+
+      body section {
+        font-family: 'Roboto', sans-serif !important;
+      }
+
+      .reveal a,
+      .reveal a:visited,
+      .reveal a:hover {
+        color: #683cb4;
+      }
+      .reveal .controls {
+        color: #683cb4;
+      }
+      .reveal .progress {
+        color: #683cb4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown>
+          <pre data-template>
+# **Note App**
+
+Simple note taking for anyone.
+
+**[note-app.harka.com](https://note-app.harka.com)**
+
+Note: Főoldal
+
+---
+
+### Bevezetés
+
+- Kik?
+- Mit?
+- Miért?
+- Hogyan?
+
+Note:  
+Józsi: **Max 02:30-ig**\
+Dani: **Max 05:00-ig**
+
+**Kik**\
+Ki vagyok én?\
+Miért jelentkeztem ide?\
+Milyen tapasztalatom volt, mielőtt ide jöttem?\
+**Mit**\
+Mi a projekt?\
+Mi volt a cél?\
+**Miért**\
+Miért ezt csináltuk?\
+**Hogyan**\
+Hogyan valósítottuk meg?\
+Milyen technológiákat használtunk?
+
+
+---
+
+## Introduction
+
+- Who?
+- What?
+- Why?
+- How?
+
+Note:  
+Józsi: **Max 07:30-ig**\
+Dani: **Max 10:00-ig**
+
+**Who**\
+Who am I?\
+Why did I apply to this school?\
+What expereiences did I have before?\
+**What**\
+What is the project?\
+What was the goal?\
+**Why**\
+Why did we do this?\
+**How**\
+How did we do it?\
+What tech did we use?
+
+---
+
+## Asztali app
+
+- **Template:** Windows Forms App (.NET Framework)
+
+- **Package:** BCrypt.Net-Next
+
+- **Using-ok:** System, System.Collections.Generic, System.ComponentModel, System.Data, System.Drawing, System.Linq, System.Text, System.Threading.Tasks, System.Windows.Forms, MySql.Data.MySqlClient
+
+Note:  
+Józsi: **Max 18:00-ig**
+
+Jegyzetek kiírása\
+Gombok müködése\
+Megosztás müködése\
+Admin funkciók
+
+
+---
+
+## Web app
+
+- **Frontend:** JavaScript, TypeScript, Angular, RXJS, HTTP, Material Design
+  <br><br>
+- **Backend:** Node.js, JavaScript, Express, Bcrypt, CORS, JSON
+  <br><br>
+- **Adatbázis:** MySQL, phpMyAdmin
+
+Note:  
+Dani: **Max 26:00-ig**
+
+---
+
+## Összefoglalás
+
+Bővebb info:
+**[GitHub](https://github.com/MrDanielHarka/note-app)**
+
+Note:
+Józsi: **Max 28:00-ig**\
+Dani: **Max 30:00-ig**
+
+Végső gondolatok.
+  </pre>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        plugins: [RevealMarkdown, RevealNotes],
+      });
+    </script>
+  </body>
+</html>

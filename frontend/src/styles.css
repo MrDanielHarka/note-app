@@ -73,10 +73,6 @@ app-gdpr {
   max-width: 700px;
 }
 
-.centered {
-  text-align: center;
-}
-
 .example-form {
   min-width: 150px;
   max-width: 300px;
@@ -104,6 +100,7 @@ input.example-right-align {
   -moz-appearance: textfield;
 }
 
+.centered,
 .centered-text {
   text-align: center;
 }
@@ -129,9 +126,19 @@ input.example-right-align {
   min-width: 270px;
 }
 
-/* a:link,
+a:link,
 a:visited,
 a:hover,
 a:active {
-  color: #683cb4;
-} */
+  text-decoration: none;
+}
+
+.other-stuff a:link,
+.other-stuff a:visited,
+.other-stuff a:active {
+  color: #000;
+}
+
+.other-stuff a:hover {
+  text-decoration: underline;
+}

@@ -1036,7 +1036,7 @@ It was worked on between January and May of 2022.
 
 [Top ↑](#top)
 
-## Who helped? <name id="who-helped"></a>
+## Who helped? <a id="who-helped"></a>
 
 Special thanks to Róbertné Csilla Dobrocsi, István Bencze, Csaba Kecskeméti and Ifj. István Bencze for their support.
 
