@@ -1,0 +1,8 @@
+C:\Users\Bíró József\OneDrive\Desktop\Note App másolata másolata\note_app\SoftControlsLibrary\bin\Release\SoftControlsLibrary.dll
+C:\Users\Bíró József\OneDrive\Desktop\Note App másolata másolata\note_app\SoftControlsLibrary\bin\Release\SoftControlsLibrary.pdb
+C:\Users\Bíró József\OneDrive\Desktop\Note App másolata másolata\note_app\SoftControlsLibrary\obj\Release\SoftControlsLibrary.csprojAssemblyReference.cache
+C:\Users\Bíró József\OneDrive\Desktop\Note App másolata másolata\note_app\SoftControlsLibrary\obj\Release\SoftControlsLibrary.CustomBorder.resources
+C:\Users\Bíró József\OneDrive\Desktop\Note App másolata másolata\note_app\SoftControlsLibrary\obj\Release\SoftControlsLibrary.csproj.GenerateResource.cache
+C:\Users\Bíró József\OneDrive\Desktop\Note App másolata másolata\note_app\SoftControlsLibrary\obj\Release\SoftControlsLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Bíró József\OneDrive\Desktop\Note App másolata másolata\note_app\SoftControlsLibrary\obj\Release\SoftControlsLibrary.dll
+C:\Users\Bíró József\OneDrive\Desktop\Note App másolata másolata\note_app\SoftControlsLibrary\obj\Release\SoftControlsLibrary.pdb

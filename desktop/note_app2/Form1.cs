@@ -235,7 +235,6 @@ namespace note_app2
         {
             i = 0;
             string kapcsolatString21 = "datasource=127.0.0.1;port=3306;username=root;password=;database=note_app;";
-            // Select all
             string parancs21 = "SELECT `password` FROM `users` WHERE email='"+txtemail.Text+"'";
             string titkos_jelszo = "";
             MySqlConnection adatbKapcsolat21 = new MySqlConnection(kapcsolatString21);
@@ -409,7 +408,7 @@ namespace note_app2
                 panel2.BackColor = Color.Red;
             }
 
-            if (txtemail.Text != "" && txtpassword.Text == "")
+            else if (txtemail.Text != "" && txtpassword.Text == "")
             {
                 error1 = 1;
                 lbhelyese.Text = "Please add your password!";
@@ -418,7 +417,7 @@ namespace note_app2
                 panel1.BringToFront();
                 panel1.BackColor = Color.Red;
             }
-            if(error3 != 1)
+            else if(error3 != 1)
             {
                 lbhelyese.Text = "Please fill all the text boxes!";
                 txtemail.Text = "";

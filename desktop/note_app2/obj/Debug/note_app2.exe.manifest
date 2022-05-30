@@ -126,14 +126,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="note_app2.exe" size="108040">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="note_app2.exe" size="108552">
       <assemblyIdentity name="note_app2" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2PuEtxmb8vTirG0taik34XloE8fU6t0PVnfv5xcMe2k=</dsig:DigestValue>
+        <dsig:DigestValue>awQu7/+WIr4gLq5P6pS9jZpy/KN8r4QPwlC5bxz2zwQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
