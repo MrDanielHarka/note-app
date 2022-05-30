@@ -12,7 +12,7 @@ Mostly in English with some Hungarian content.
 
 Mostly in English with some Hungarian content.
 
-### [Presentation](https://note.harka.com/presentation/)
+### [Presentation](https://note-app.harka.com/presentation/)
 
 Mostly in Hungarian with some English content.
 
