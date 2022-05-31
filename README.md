@@ -40,9 +40,9 @@ Both English and Hungarian content.
 
 Mostly in Hungarian with some English content.
 
-<!-- ### [Explanation video]()
+### [Introduction video](https://youtu.be/cMt9knuCaPk)
 
-Mostly in Hungarian with some English content. -->
+Mostly in Hungarian with some English content.
 
 ## Creators
 
