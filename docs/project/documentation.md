@@ -5,6 +5,7 @@ This is the documentation of the Note App.
 ## Table of contents
 
 - [What is this?](#what-is-this)
+  - [Updates](#updates)
   - [Introduction](#introduction)
   - [Tech stack](#tech-stack)
 - [Who created it?](#who-created)
@@ -40,6 +41,10 @@ This is the documentation of the Note App.
 ## What is this? <a id="what-is-this"></a>
 
 Here is some basic information about the project.
+
+## Updates<a id="updates"></a>
+
+**2023-05-20:** Heroku no longer supports free accounts with Node.js and MySQL access, so the backend was moved to CodeSandboxes and the database is no longer MySQL, but a SQLite one and is served together with the backend.
 
 ### Introduction <a id="introduction"></a>
 

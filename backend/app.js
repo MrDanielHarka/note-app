@@ -1,51 +1,45 @@
+console.clear();
+
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
-const cors = require('cors')({ origin: '*' });
-const mysql = require('mysql');
-const mysqlCredentials = require('./mysql-credentials');
-const pool = mysql.createPool({
-  connectionLimit: 10,
-  host: mysqlCredentials.host,
-  user: mysqlCredentials.user,
-  password: mysqlCredentials.password,
-  database: mysqlCredentials.database,
-});
+const cors = require('cors')({ origin: 'https://note-app.harka.com' });
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('../database/note_app.db');
+
 app.use(express.json());
 app.use(cors);
+app.get('/', (req, res) => res.redirect('https://note-app.harka.com'));
+
 app.get('/stats', (req, res) => {
-  userQuery = `SELECT COUNT(*) FROM users;`;
-  noteQuery = `SELECT COUNT(*) FROM notes;`;
-  let stats = {
-    users: 0,
-    notes: 0,
-  };
+  const query = `SELECT
+    (SELECT COUNT(*) FROM users) AS userCount,
+    (SELECT COUNT(*) FROM notes) AS noteCount;`;
 
-  pool.query(userQuery, (err, result) => {
+  db.get(query, (err, row) => {
     if (err) throw err;
-    stats.users = result[0]['COUNT(*)'];
-  });
 
-  pool.query(noteQuery, (err, result) => {
-    if (err) throw err;
-    stats.notes = result[0]['COUNT(*)'];
-  });
+    const stats = {
+      users: row.userCount,
+      notes: row.noteCount,
+    };
 
-  setTimeout(() => {
     res.status(200).json(stats);
-  }, 750);
+  });
 });
+
 app.post('/user-notes', (req, res) => {
   userId = req.body.userId;
-  query = `SELECT * FROM notes WHERE user_id = '${req.body.userId}' ORDER BY note_id DESC;`;
+  query = `SELECT * FROM notes WHERE user_id = ? ORDER BY note_id DESC;`;
 
-  pool.query(query, (err, result) => {
+  db.all(query, [userId], (err, rows) => {
     if (err) throw err;
-    res.status(200).json(result);
+    res.status(200).json(rows);
   });
 });
+
 app.post('/new-note', (req, res) => {
   userId = req.body.userId;
   title = req.body.title;
@@ -57,15 +51,13 @@ app.post('/new-note', (req, res) => {
   (note_id, user_id, title, content, public, shared)
   VALUES (?, ?, ?, ?, ?, ?);`;
 
-  pool.query(
-    query,
-    [null, userId, title, content, public, shared],
-    (err, rows) => {
-      if (err) throw err;
-    }
-  );
+  db.run(query, [null, userId, title, content, public, shared], err => {
+    if (err) throw err;
+  });
+
   return res.send(req.body).status(200);
 });
+
 app.put('/update-note', (req, res) => {
   noteId = req.body.note_id;
   userId = req.body.user_id;
@@ -75,33 +67,34 @@ app.put('/update-note', (req, res) => {
 
   query = `
   UPDATE notes
-  SET note_id = ${noteId},
-      user_id = ${userId},
-      title = '${title}',
-      content = '${content}',
-      public = ${isPublic}
-  WHERE note_id = ${noteId}
+  SET note_id = ?,
+      user_id = ?,
+      title = ?,
+      content = ?,
+      public = ?
+  WHERE note_id = ?
   `;
 
-  pool.query(query, (err, result) => {
+  db.run(query, [noteId, userId, title, content, isPublic, noteId], err => {
     if (err) throw err;
-
     return res.status(201).json('Note saved successfully!');
   });
 });
+
 app.put('/delete-note', (req, res) => {
   noteId = req.body.note_id;
 
   query = `
   DELETE FROM notes
-  WHERE note_id = ${noteId}
+  WHERE note_id = ?
   `;
 
-  pool.query(query, (err, result) => {
+  db.run(query, [noteId], err => {
     if (err) throw err;
     return res.status(201).json('Note deleted successfully!');
   });
 });
+
 app.get('/public-notes', (req, res) => {
   query = `
   SELECT users.last_name, users.first_name, notes.title, notes.content
@@ -112,79 +105,79 @@ app.get('/public-notes', (req, res) => {
   ORDER BY note_id DESC
   ;`;
 
-  pool.query(query, (err, result) => {
+  db.all(query, (err, rows) => {
     if (err) throw err;
-    res.status(200).json(result);
+    res.status(200).json(rows);
   });
 });
+
 app.post('/register', async (req, res) => {
   firstName = req.body.firstName;
   lastName = req.body.lastName;
   email = req.body.email;
   password = req.body.password;
   hash = await bcrypt.hash(password, saltRounds);
-  query = `INSERT INTO users (id, email, password, first_name, last_name)
-  VALUES (null, '${email}', '${hash}', '${firstName}', '${lastName}')`;
+  query = `
+  INSERT INTO users (id, email, password, first_name, last_name)
+  VALUES (null, ?, ?, ?, ?)`;
 
-  pool.query(query, (err) => {
+  db.run(query, [email, hash, firstName, lastName], function (err) {
     if (err) {
-      if (err.code == 'ER_DUP_ENTRY' || err.errno == 1062) {
-        res.status(200).send(`{
-            "message": "This email address is already registered!"
-          }`);
-      } else {
-      }
-    } else {
-      res.status(200).send(`{
-            "success": "Success! You can now log in."
-          }`);
+      if (err.code === 'SQLITE_CONSTRAINT') {
+        return res.status(200).send({
+          message: 'This email address is already registered!',
+        });
+      } else throw err;
     }
+
+    return res.status(200).send({
+      success: 'Success! You can now log in.',
+    });
   });
 });
+
 app.post('/login', async (req, res) => {
   try {
     email = req.body.email;
     password = req.body.password;
-    let user;
-    query = `
-  SELECT *
-  FROM users
-  WHERE email = '${email}'`;
+    query = `SELECT * FROM users WHERE email = ?`;
 
-    pool.query(query, async (err, result) => {
+    db.get(query, [email], async (err, row) => {
       if (err) throw err;
-      this.user = result[0];
+      this.user = row;
       if (this.user) {
         const validPassword = await bcrypt.compare(
           password,
           this.user.password
         );
         if (validPassword) {
-          res.status(200).send(`{
-            "message": "Valid email and password!",
-            "userId": "${this.user.id}",
-            "email": "${this.user.email}",
-            "firstName": "${this.user.first_name}",
-            "lastName": "${this.user.last_name}",
-            "isLoggedIn": "${true}"
-          }`);
+          res.status(200).send({
+            message: 'Valid email and password!',
+            userId: this.user.id,
+            email: this.user.email,
+            firstName: this.user.first_name,
+            lastName: this.user.last_name,
+            isLoggedIn: true,
+          });
         } else {
-          res.status(200).send(`{
-            "message": "Invalid password! For customer support, an email can be sent to note-app@harka.com from this user email for a temporary recovery password."
-          }`);
+          res.status(200).send({
+            message:
+              'Invalid password! For customer support, an email can be sent to note-app@harka.com from this user email for a temporary recovery password.',
+          });
         }
       } else {
-        res.status(200).send(`{
-            "message": "Email not registered!"
-          }`);
+        res.status(200).send({
+          message: 'Email not registered!',
+        });
       }
     });
   } catch (e) {
-    res.status(200).send(`{
-            "message": "Something broke!"
-          }`);
+    res.status(200).send({
+      message: 'Something broke!',
+    });
   }
 });
+
 app.put('/settings', async (req, res) => {
   try {
     userId = req.body.userId;
@@ -194,15 +187,11 @@ app.put('/settings', async (req, res) => {
     currentPassword = req.body.currentPassword;
     newPassword = req.body.newPassword;
     newPasswordHash = await bcrypt.hash(newPassword, saltRounds);
-    let user;
-    query = `
-  SELECT *
-  FROM users
-  WHERE id = '${userId}'`;
+    query = `SELECT * FROM users WHERE id = ?`;
 
-    pool.query(query, async (err, result) => {
+    db.get(query, [userId], async (err, row) => {
       if (err) throw err;
-      this.user = result[0];
+      this.user = row;
       if (this.user) {
         const validPassword = await bcrypt.compare(
           currentPassword,
@@ -214,44 +203,58 @@ app.put('/settings', async (req, res) => {
           if (newPassword === '') {
             query = `
           UPDATE users
-          SET id = ${userId},
-              email = '${email}',
-              password = '${this.user.password}',
-              first_name = '${firstName}',
-              last_name = '${lastName}'
-          WHERE id = ${userId}`;
+          SET id = ?,
+              email = ?,
+              password = ?,
+              first_name = ?,
+              last_name = ?
+          WHERE id = ?`;
+            db.run(
+              query,
+              [userId, email, this.user.password, firstName, lastName, userId],
+              err => {
+                if (err) throw err;
+                res.status(200).send({
+                  success: 'Settings saved successfully!',
+                });
+              }
+            );
           } else {
             query = `
             UPDATE users
-            SET id = ${userId},
-                email = '${email}',
-                password = '${newPasswordHash}',
-                first_name = '${firstName}',
-                last_name = '${lastName}'
-            WHERE id = ${userId}`;
+            SET id = ?,
+                email = ?,
+                password = ?,
+                first_name = ?,
+                last_name = ?
+            WHERE id = ?`;
+            db.run(
+              query,
+              [userId, email, newPasswordHash, firstName, lastName, userId],
+              err => {
+                if (err) throw err;
+                res.status(200).send({
+                  success: 'Settings saved successfully!',
+                });
+              }
+            );
           }
-
-          pool.query(query, (err, result) => {
-            if (err) throw err;
-            res.status(200).send(`{
-            "success": "Settings saved successfully!"
-          }`);
-          });
         } else {
-          res.status(200).send(`{
-            "message": "Invalid password!"
-          }`);
+          res.status(200).send({
+            message: 'Invalid current password!',
+          });
         }
       } else {
-        res.status(200).send(`{
-            "message": "Invalid email!"
-          }`);
+        res.status(200).send({
+          message: 'User not found!',
+        });
       }
     });
   } catch (e) {
-    res.status(200).send(`{
-            "message": "Something broke!"
-          }`);
+    res.status(200).send({
+      message: 'Something broke!',
+    });
   }
 });
-app.listen(port, () => console.log(`App is running on ${port}.`));
+
+app.listen(port, () => console.log(`Running...`));

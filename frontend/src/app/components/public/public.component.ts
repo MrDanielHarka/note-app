@@ -12,7 +12,6 @@ export class PublicComponent implements OnInit {
   getPublicNotes() {
     this.publicService.getPublicNotes().subscribe((response) => {
       this.publicNotes = response;
-      console.log(response);
     });
   }
 

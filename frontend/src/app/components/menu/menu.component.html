@@ -40,7 +40,7 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Note App</span>
+      <span><a mat-button [routerLink]="['/']" class="logo">Note App</a></span>
       <span class="spacer"></span>
       <div *ngIf="!user.isLoggedIn">
         <a mat-button [routerLink]="['/']">Home</a>
