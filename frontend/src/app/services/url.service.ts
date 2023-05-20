@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UrlService {
-  serverUrl = 'http://localhost:5000';
+  serverUrl = 'https://hg3kx0-5000.csb.app/';
 
   constructor() {}
 }
